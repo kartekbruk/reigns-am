@@ -1,0 +1,42 @@
+# ── Godot ────────────────────────────────────────────────────────────────────
+# Generated cache and editor state — never commit these
+.godot/
+
+# Exported binaries
+/android/
+/ios/
+/export/
+
+# ── C# / .NET ─────────────────────────────────────────────────────────────────
+# Build outputs (Godot puts these inside .godot/mono, already ignored above,
+# but cover standard locations too in case of manual dotnet builds)
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userprefs
+
+# NuGet
+.nuget/
+packages/
+*.nupkg
+
+# Rider / VS / VSCode local files
+.idea/
+.vs/
+.vscode/
+*.DotSettings.user
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Claude Code ──────────────────────────────────────────────────────────────
+.claude/
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+*.old

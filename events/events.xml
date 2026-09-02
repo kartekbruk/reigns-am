@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Event schema:
+	id          – unique identifier (slug)
+	title       – short card heading
+	text        – event description shown on the card
+	background  – res:// path to a background image (optional, leave empty if none)
+	left/@text  – label for the left-swipe choice
+	right/@text – label for the right-swipe choice
+	effect/@attribute – one of: wellbeing | morale | prosperity | codebase
+	effect/@value     – integer delta (positive or negative)
+-->
+<events>
+
+  <event id="tech_debt_sprint">
+	<title>Tech Debt Reckoning</title>
+	<text>The team is drowning in legacy code. Your senior dev insists the next sprint must be a full refactor — no features, just cleanup.</text>
+	<background></background>
+	<left text="We ship features, not refactors.">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-12"/>
+	  <effect attribute="prosperity" value="10"/>
+	  <effect attribute="codebase" value="-18"/>
+	</left>
+	<right text="Schedule the refactor sprint.">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="15"/>
+	  <effect attribute="prosperity" value="-8"/>
+	  <effect attribute="codebase" value="22"/>
+	</right>
+  </event>
+
+  <event id="production_incident">
+	<title>Production Is on Fire</title>
+	<text>A critical bug has hit the vehicle telemetry pipeline. Engineers want to push a quick hotfix now. QA says wait for a proper review cycle.</text>
+	<background></background>
+	<left text="Ship the hotfix now.">
+	  <effect attribute="wellbeing" value="-8"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="prosperity" value="12"/>
+	  <effect attribute="codebase" value="-10"/>
+	</left>
+	<right text="Wait for proper QA.">
+	  <effect attribute="wellbeing" value="-12"/>
+	  <effect attribute="morale" value="8"/>
+	  <effect attribute="prosperity" value="-15"/>
+	  <effect attribute="codebase" value="10"/>
+	</right>
+  </event>
+
+  <event id="contractor_hire">
+	<title>Talent Gap</title>
+	<text>A project deadline looms and the team lacks bandwidth. HR proposes hiring an expensive contractor to plug the gap immediately.</text>
+	<background></background>
+	<left text="Hire the contractor.">
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="8"/>
+	  <effect attribute="prosperity" value="-20"/>
+	  <effect attribute="codebase" value="-5"/>
+	</left>
+	<right text="Push the team harder.">
+	  <effect attribute="wellbeing" value="-18"/>
+	  <effect attribute="morale" value="-12"/>
+	  <effect attribute="prosperity" value="8"/>
+	  <effect attribute="codebase" value="-3"/>
+	</right>
+  </event>
+
+  <event id="team_offsite">
+	<title>Team Offsite Proposal</title>
+	<text>The people team wants to organise a two-day offsite at a mountain retreat to boost morale after a tough quarter. It's not cheap.</text>
+    <background></background>
+    <left text="Approve the offsite.">
+      <effect attribute="wellbeing" value="15"/>
+      <effect attribute="morale" value="20"/>
+      <effect attribute="prosperity" value="-14"/>
+      <effect attribute="codebase" value="0"/>
+    </left>
+    <right text="Virtual coffee chat will do.">
+      <effect attribute="wellbeing" value="3"/>
+      <effect attribute="morale" value="-10"/>
+      <effect attribute="prosperity" value="5"/>
+      <effect attribute="codebase" value="0"/>
+    </right>
+  </event>
+
+  <event id="security_audit">
+    <title>Security Audit Findings</title>
+    <text>A third-party audit uncovered three high-severity vulnerabilities in the OTA update system. Fixing them means halting feature work for two weeks.</text>
+    <background></background>
+    <left text="Fix everything now.">
+      <effect attribute="wellbeing" value="-10"/>
+      <effect attribute="morale" value="-5"/>
+      <effect attribute="prosperity" value="-10"/>
+      <effect attribute="codebase" value="25"/>
+    </left>
+    <right text="Patch the worst one, defer the rest.">
+      <effect attribute="wellbeing" value="5"/>
+      <effect attribute="morale" value="5"/>
+      <effect attribute="prosperity" value="5"/>
+      <effect attribute="codebase" value="-15"/>
+    </right>
+  </event>
+
+  <event id="new_framework">
+    <title>Shiny New Stack</title>
+    <text>An architect proposes rewriting the diagnostics service in a trendy new framework. Faster long-term, but six months of migration pain first.</text>
+    <background></background>
+    <left text="Rewrite it. Future-proof the codebase.">
+      <effect attribute="wellbeing" value="-12"/>
+      <effect attribute="morale" value="10"/>
+      <effect attribute="prosperity" value="-15"/>
+      <effect attribute="codebase" value="20"/>
+    </left>
+    <right text="Keep the legacy service. It works.">
+      <effect attribute="wellbeing" value="8"/>
+      <effect attribute="morale" value="-8"/>
+      <effect attribute="prosperity" value="10"/>
+      <effect attribute="codebase" value="-12"/>
+    </right>
+  </event>
+
+  <event id="crunch_deadline">
+    <title>Deadline Crunch</title>
+    <text>The board pushed the product demo date forward by three weeks. Your PM says mandatory weekends will make it. Your team lead looks exhausted.</text>
+    <background></background>
+    <left text="Mandatory crunch. Ship it.">
+      <effect attribute="wellbeing" value="-20"/>
+      <effect attribute="morale" value="-18"/>
+      <effect attribute="prosperity" value="15"/>
+      <effect attribute="codebase" value="-8"/>
+    </left>
+    <right text="Negotiate scope. Protect the team.">
+      <effect attribute="wellbeing" value="10"/>
+      <effect attribute="morale" value="12"/>
+      <effect attribute="prosperity" value="-10"/>
+      <effect attribute="codebase" value="5"/>
+    </right>
+  </event>
+
+  <event id="standup_length">
+    <title>Meeting Culture</title>
+	<text>Standups have crept to 45 minutes. One engineer says they're the only alignment we have. Another says they destroy deep work time.</text>
+	<background></background>
+	<left text="Keep long standups. Communication matters.">
+	  <effect attribute="wellbeing" value="-8"/>
+	  <effect attribute="morale" value="8"/>
+	  <effect attribute="prosperity" value="5"/>
+	  <effect attribute="codebase" value="-5"/>
+	</left>
+	<right text="15-minute cap, async updates for the rest.">
+	  <effect attribute="wellbeing" value="12"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="prosperity" value="3"/>
+	  <effect attribute="codebase" value="8"/>
+	</right>
+  </event>
+
+  <event id="open_source_library">
+	<title>Open Source vs In-House</title>
+	<text>Your team wants to use an open-source CAN bus parsing library. Legal flags it as a potential IP risk. Building in-house takes two months.</text>
+	<background></background>
+	<left text="Use the open-source library. Ship faster.">
+	  <effect attribute="wellbeing" value="8"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="prosperity" value="12"/>
+	  <effect attribute="codebase" value="-8"/>
+	</left>
+	<right text="Build it in-house. Control the IP.">
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="prosperity" value="-8"/>
+	  <effect attribute="codebase" value="15"/>
+	</right>
+  </event>
+
+  <event id="mandatory_code_review">
+	<title>Review Policy</title>
+	<text>After a costly regression, your TL proposes mandatory two-person code reviews on all PRs. Junior devs love it. Senior devs call it a bottleneck.</text>
+	<background></background>
+	<left text="Enforce two-person reviews.">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="prosperity" value="-5"/>
+	  <effect attribute="codebase" value="18"/>
+	</left>
+	<right text="Trust the team. Optional reviews.">
+	  <effect attribute="wellbeing" value="8"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="prosperity" value="8"/>
+	  <effect attribute="codebase" value="-12"/>
+	</right>
+  </event>
+
+  <event id="oncall_rotation">
+	<title>On-Call Roulette</title>
+	<text>Three engineers are bearing the entire on-call load. They want a fair rotation. The rest of the team is nervous — they don't know the system well enough.</text>
+    <background></background>
+    <left text="Fair rotation for everyone.">
+      <effect attribute="wellbeing" value="10"/>
+      <effect attribute="morale" value="12"/>
+      <effect attribute="prosperity" value="-5"/>
+      <effect attribute="codebase" value="8"/>
+    </left>
+    <right text="Keep the specialists on-call.">
+      <effect attribute="wellbeing" value="-15"/>
+      <effect attribute="morale" value="-10"/>
+      <effect attribute="prosperity" value="8"/>
+      <effect attribute="codebase" value="-5"/>
+    </right>
+  </event>
+
+  <event id="enterprise_hack">
+    <title>Customer Shortcut</title>
+    <text>Your biggest client asks for a "temporary" hardcoded config flag to bypass the validation pipeline. They need it by Friday or they walk.</text>
+    <background></background>
+    <left text="Add the flag. Keep the client.">
+      <effect attribute="wellbeing" value="-5"/>
+      <effect attribute="morale" value="-8"/>
+      <effect attribute="prosperity" value="20"/>
+      <effect attribute="codebase" value="-18"/>
+    </left>
+    <right text="Offer a proper solution in three weeks.">
+      <effect attribute="wellbeing" value="5"/>
+      <effect attribute="morale" value="8"/>
+      <effect attribute="prosperity" value="-18"/>
+      <effect attribute="codebase" value="10"/>
+    </right>
+  </event>
+
+  <event id="documentation_day">
+    <title>The Docs Are a Desert</title>
+    <text>New hires are struggling to onboard because almost nothing is documented. Someone proposes a quarterly "docs day" — no feature work, just writing.</text>
+    <background></background>
+    <left text="Dedicate a full day every quarter.">
+      <effect attribute="wellbeing" value="8"/>
+      <effect attribute="morale" value="10"/>
+      <effect attribute="prosperity" value="-5"/>
+      <effect attribute="codebase" value="15"/>
+    </left>
+    <right text="Docs happen organically. Back to coding.">
+      <effect attribute="wellbeing" value="3"/>
+      <effect attribute="morale" value="-8"/>
+      <effect attribute="prosperity" value="8"/>
+      <effect attribute="codebase" value="-10"/>
+    </right>
+  </event>
+
+  <event id="monitoring_setup">
+    <title>Observability Investment</title>
+    <text>The ops team says without proper monitoring, the next incident will take days to diagnose. Setup takes a sprint. The roadmap is already packed.</text>
+    <background></background>
+    <left text="Invest in monitoring now.">
+      <effect attribute="wellbeing" value="5"/>
+      <effect attribute="morale" value="8"/>
+      <effect attribute="prosperity" value="-10"/>
+      <effect attribute="codebase" value="18"/>
+    </left>
+    <right text="Add it to the backlog. Ship the roadmap.">
+      <effect attribute="wellbeing" value="-5"/>
+      <effect attribute="morale" value="-5"/>
+      <effect attribute="prosperity" value="12"/>
+      <effect attribute="codebase" value="-12"/>
+    </right>
+  </event>
+
+  <event id="work_from_home_policy">
+    <title>Return to Office Memo</title>
+	<text>Leadership wants three days in-office per week. Half the team is remote and moved cities during COVID. Some say it'll help collaboration. Others say they'll quit.</text>
+    <background></background>
+    <left text="Enforce the RTO policy.">
+      <effect attribute="wellbeing" value="-15"/>
+      <effect attribute="morale" value="-18"/>
+      <effect attribute="prosperity" value="8"/>
+      <effect attribute="codebase" value="0"/>
+    </left>
+    <right text="Stay fully flexible. Async-first culture.">
+      <effect attribute="wellbeing" value="15"/>
+      <effect attribute="morale" value="18"/>
+      <effect attribute="prosperity" value="-5"/>
+      <effect attribute="codebase" value="5"/>
+    </right>
+  </event>
+
+</events>
