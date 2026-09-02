@@ -33,7 +33,11 @@ public static class EventLoader
                     switch (currentElement)
                     {
                         case "event":
-                            current = new EventData { Id = Attr(parser, "id") };
+                            current = new EventData
+                            {
+                                Id = Attr(parser, "id"),
+                                Positions = ParsePositions(Attr(parser, "positions")),
+                            };
                             currentChoice = null;
                             break;
                         case "left":
@@ -104,5 +108,11 @@ public static class EventLoader
             if (p.GetAttributeName(i) == name)
                 return p.GetAttributeValue(i);
         return "";
+    }
+
+    private static List<string> ParsePositions(string raw)
+    {
+        if (string.IsNullOrWhiteSpace(raw)) return new List<string>();
+        return new List<string>(raw.Split(' ', System.StringSplitOptions.RemoveEmptyEntries));
     }
 }

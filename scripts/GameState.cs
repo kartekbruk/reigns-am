@@ -1,5 +1,8 @@
 using Godot;
+using System;
 using System.Collections.Generic;
+
+public enum CareerLevel { Intern, Junior, Mid, Senior }
 
 public partial class GameState : Node
 {
@@ -26,6 +29,34 @@ public partial class GameState : Node
 
     private bool _gameOver = false;
 
+    private static readonly DateTime StartDate = new(2025, 1, 1);
+    private int _totalMonths = 0;
+
+    public int CurrentSprint => _totalMonths + 1;
+    public DateTime CurrentDate => StartDate.AddMonths(_totalMonths);
+
+    // Career: Intern < 12 months (1 yr), Junior < 36 (2 more yrs), Mid < 60 (2 more yrs), then Senior
+    public CareerLevel CurrentLevel => _totalMonths switch
+    {
+        < 12 => CareerLevel.Intern,
+        < 36 => CareerLevel.Junior,
+        < 60 => CareerLevel.Mid,
+        _    => CareerLevel.Senior,
+    };
+
+    public string LevelName => CurrentLevel switch
+    {
+        CareerLevel.Intern => "Intern",
+        CareerLevel.Junior => "Junior Developer",
+        CareerLevel.Mid    => "Mid Developer",
+        CareerLevel.Senior => "Senior Developer",
+        _                  => "Senior Developer",
+    };
+
+    public string LevelKey => CurrentLevel.ToString().ToLower();
+
+    public void AdvanceMonth() => _totalMonths += 1;
+
     public int Get(string key) => _values.TryGetValue(key, out int v) ? v : 50;
 
     public void Apply(Dictionary<string, int> effects)
@@ -45,6 +76,7 @@ public partial class GameState : Node
     public void Reset()
     {
         _gameOver = false;
+        _totalMonths = 0;
         foreach (var key in Keys)
             _values[key] = 50;
     }

@@ -7,7 +7,6 @@ public partial class GameManager : Control
     private GameState _state = null!;
     private List<EventData> _events = new();
     private EventData? _currentEvent;
-    private int _eventIndex = 0;
 
     private CardController _card = null!;
     private readonly Dictionary<string, ProgressBar> _bars = new();
@@ -20,6 +19,8 @@ public partial class GameManager : Control
     private static readonly Color ColNegative = new(1.00f, 0.32f, 0.32f);
     private Control _gameOverScreen = null!;
     private Label _gameOverLabel = null!;
+    private Label _sprintLabel = null!;
+    private Label _dateLabel = null!;
 
     public override void _Ready()
     {
@@ -31,6 +32,7 @@ public partial class GameManager : Control
 
         BuildBackground();
         BuildAttributeBars();
+        BuildSprintDisplay();
         BuildCard();
         BuildGameOverScreen();
 
@@ -102,6 +104,42 @@ public partial class GameManager : Control
             _barFillStyles[key]   = fillStyle;
             _attrNameLabels[key]  = nameLabel;
         }
+    }
+
+    private void BuildSprintDisplay()
+    {
+        var vp = GetViewportRect().Size;
+
+        var vbox = new VBoxContainer();
+        vbox.Position = new Vector2(0f, 96f);
+        vbox.Size = new Vector2(vp.X, 52f);
+        vbox.Alignment = BoxContainer.AlignmentMode.Center;
+        vbox.AddThemeConstantOverride("separation", 2);
+        vbox.MouseFilter = MouseFilterEnum.Ignore;
+
+        _sprintLabel = new Label();
+        _sprintLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _sprintLabel.HorizontalAlignment = HorizontalAlignment.Center;
+        _sprintLabel.AddThemeFontSizeOverride("font_size", 18);
+        _sprintLabel.AddThemeColorOverride("font_color", new Color(0.88f, 0.88f, 0.88f));
+
+        _dateLabel = new Label();
+        _dateLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _dateLabel.HorizontalAlignment = HorizontalAlignment.Center;
+        _dateLabel.AddThemeFontSizeOverride("font_size", 12);
+        _dateLabel.AddThemeColorOverride("font_color", new Color(0.50f, 0.50f, 0.50f));
+
+        vbox.AddChild(_sprintLabel);
+        vbox.AddChild(_dateLabel);
+        AddChild(vbox);
+
+        UpdateSprintDisplay();
+    }
+
+    private void UpdateSprintDisplay()
+    {
+        _sprintLabel.Text = $"Sprint {_state.CurrentSprint}";
+        _dateLabel.Text = $"{_state.LevelName}  ·  {_state.CurrentDate:MMM yyyy}";
     }
 
     private void BuildCard()
@@ -186,11 +224,18 @@ public partial class GameManager : Control
 
     // ── Game Logic ───────────────────────────────────────────────────────────
 
+    private List<EventData> GetEventPool()
+    {
+        string key = _state.LevelKey;
+        var filtered = _events.FindAll(e => e.Positions.Count == 0 || e.Positions.Contains(key));
+        return filtered.Count > 0 ? filtered : _events;
+    }
+
     private void ShowNextEvent()
     {
-        if (_events.Count == 0) return;
-        _currentEvent = _events[_eventIndex % _events.Count];
-        _eventIndex++;
+        var pool = GetEventPool();
+        if (pool.Count == 0) return;
+        _currentEvent = pool[(int)(GD.Randi() % (uint)pool.Count)];
         _card.LoadEvent(_currentEvent);
     }
 
@@ -200,8 +245,41 @@ public partial class GameManager : Control
         var effects = isRight ? _currentEvent.RightEffects : _currentEvent.LeftEffects;
         _state.Apply(effects);
 
+        var prevLevel = _state.CurrentLevel;
+        _state.AdvanceMonth();
+        var newLevel = _state.CurrentLevel;
+
+        UpdateSprintDisplay();
+
+        if (newLevel != prevLevel)
+            ShowPromotion();
+
         if (!_gameOverScreen.Visible)
             ShowNextEvent();
+    }
+
+    private void ShowPromotion()
+    {
+        var panel = new Panel();
+        panel.SetAnchorsPreset(LayoutPreset.Center);
+        panel.GrowHorizontal = GrowDirection.Both;
+        panel.GrowVertical   = GrowDirection.Both;
+        panel.CustomMinimumSize = new Vector2(460f, 80f);
+        panel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.12f, 0.12f, 0.16f), 12));
+
+        var lbl = new Label { Text = $"Promoted to {_state.LevelName}!" };
+        lbl.SetAnchorsPreset(LayoutPreset.FullRect);
+        lbl.HorizontalAlignment = HorizontalAlignment.Center;
+        lbl.VerticalAlignment   = VerticalAlignment.Center;
+        lbl.AddThemeFontSizeOverride("font_size", 22);
+        lbl.AddThemeColorOverride("font_color", new Color(1f, 0.85f, 0.20f));
+        panel.AddChild(lbl);
+        AddChild(panel);
+
+        var tw = CreateTween();
+        tw.TweenInterval(2.2f);
+        tw.TweenProperty(panel, "modulate:a", 0f, 0.6f);
+        tw.TweenCallback(Callable.From(() => panel.QueueFree()));
     }
 
     private void OnDragDirectionChanged(bool active, bool isRight)
@@ -255,13 +333,13 @@ public partial class GameManager : Control
     private void OnRestart()
     {
         _state.Reset();
-        _eventIndex = 0;
         Shuffle(_events);
         _gameOverScreen.Visible = false;
 
         foreach (var key in GameState.Keys)
             OnAttributeChanged(key, 50);
 
+        UpdateSprintDisplay();
         ShowNextEvent();
     }
 
