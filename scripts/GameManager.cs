@@ -145,10 +145,14 @@ public partial class GameManager : Control
     private void BuildCard()
     {
         var vp    = GetViewportRect().Size;
-        float cardW = Mathf.Min(380f, vp.X * 0.80f);
-        float cardH = Mathf.Min(520f, vp.Y * 0.64f);
-        float cardX = (vp.X - cardW) / 2f;
-        float cardY = 100f + (vp.Y - 100f - cardH) / 2.8f;
+        const float topUI  = 152f; // bars (12+80) + sprint (96+52) + gap
+        const float hintH  =  82f; // 18px gap + 64px hint label
+
+        float cardW   = Mathf.Min(380f, vp.X * 0.90f);
+        float availH  = vp.Y - topUI - hintH;
+        float cardH   = Mathf.Min(520f, availH);
+        float cardX   = (vp.X - cardW) / 2f;
+        float cardY   = topUI + (availH - cardH) / 2f;
 
         _card = new CardController
         {

@@ -19,7 +19,7 @@
   <event id="first_pr_feedback" positions="intern">
 	<title>Your First Pull Request</title>
 	<text>Your tech lead left 52 comments on your first PR. Half are nitpicks about whitespace. You're not sure if this is normal or a sign you should quit.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
     <left text="Rewrite the whole thing from scratch.">
       <effect attribute="wellbeing" value="-18"/>
       <effect attribute="morale" value="-8"/>
@@ -93,7 +93,7 @@
   <event id="first_production_bug" positions="junior">
 	<title>You Broke Production</title>
 	<text>Your deploy went out and something unrelated stopped working. The logs are a maze. Nobody noticed yet — but it's only a matter of time.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
     <left text="Ask for help immediately, own it.">
       <effect attribute="wellbeing" value="5"/>
       <effect attribute="morale" value="8"/>
@@ -111,7 +111,7 @@
   <event id="speak_up_meeting" positions="junior">
     <title>Speak Up in the Meeting</title>
     <text>The team is debating a database schema choice. You have a strong opinion from a side project — but nobody asked, and the seniors seem decided.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Stay quiet. You're too junior.">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="-10"/>
@@ -129,7 +129,7 @@
   <event id="mentor_junior" positions="junior mid">
     <title>New Intern Assigned to You</title>
     <text>HR just assigned you a new intern to mentor. You barely feel settled yourself. They're asking questions every 20 minutes.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Dedicate real time to mentoring them.">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="15"/>
@@ -149,7 +149,7 @@
   <event id="tech_debt_sprint" positions="mid senior">
     <title>Tech Debt Reckoning</title>
     <text>The team is drowning in legacy code. Your senior dev insists the next sprint must be a full refactor — no features, just cleanup.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="We ship features, not refactors.">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-12"/>
@@ -167,7 +167,7 @@
   <event id="standup_length" positions="mid senior">
     <title>Meeting Culture</title>
     <text>Standups have crept to 45 minutes. One engineer says they're the only alignment we have. Another says they destroy deep work time.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Keep long standups. Communication matters.">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="8"/>
@@ -185,7 +185,7 @@
   <event id="mandatory_code_review" positions="mid senior">
     <title>Review Policy</title>
     <text>After a costly regression, your TL proposes mandatory two-person code reviews on all PRs. Junior devs love it. Senior devs call it a bottleneck.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Enforce two-person reviews.">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
@@ -203,7 +203,7 @@
   <event id="new_framework" positions="mid senior">
     <title>Shiny New Stack</title>
     <text>An architect proposes rewriting the diagnostics service in a trendy new framework. Faster long-term, but six months of migration pain first.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Rewrite it. Future-proof the codebase.">
 	  <effect attribute="wellbeing" value="-12"/>
 	  <effect attribute="morale" value="10"/>
@@ -221,7 +221,7 @@
   <event id="contractor_hire" positions="senior">
     <title>Talent Gap</title>
     <text>A project deadline looms and the team lacks bandwidth. HR proposes hiring an expensive contractor to plug the gap immediately.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Hire the contractor.">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="8"/>
@@ -239,7 +239,7 @@
   <event id="security_audit" positions="mid senior">
     <title>Security Audit Findings</title>
     <text>A third-party audit uncovered three high-severity vulnerabilities in the OTA update system. Fixing them means halting feature work for two weeks.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Fix everything now.">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="-5"/>
@@ -257,7 +257,7 @@
   <event id="oncall_rotation" positions="mid senior">
     <title>On-Call Roulette</title>
     <text>Three engineers are bearing the entire on-call load. They want a fair rotation. The rest of the team is nervous — they don't know the system well enough.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Fair rotation for everyone.">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="12"/>
@@ -275,7 +275,7 @@
   <event id="enterprise_hack" positions="mid senior">
     <title>Customer Shortcut</title>
 	<text>Your biggest client asks for a "temporary" hardcoded config flag to bypass the validation pipeline. They need it by Friday or they walk.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Add the flag. Keep the client.">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-8"/>
@@ -293,7 +293,7 @@
   <event id="monitoring_setup" positions="mid senior">
     <title>Observability Investment</title>
     <text>The ops team says without proper monitoring, the next incident will take days to diagnose. Setup takes a sprint. The roadmap is already packed.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Invest in monitoring now.">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="8"/>
@@ -313,7 +313,7 @@
   <event id="team_offsite">
     <title>Team Offsite Proposal</title>
     <text>The people team wants to organise a two-day offsite at a mountain retreat to boost morale after a tough quarter. It's not cheap.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Approve the offsite.">
 	  <effect attribute="wellbeing" value="15"/>
 	  <effect attribute="morale" value="20"/>
@@ -331,7 +331,7 @@
   <event id="crunch_deadline">
     <title>Deadline Crunch</title>
     <text>The board pushed the product demo date forward by three weeks. Your PM says mandatory weekends will make it. Your team lead looks exhausted.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Mandatory crunch. Ship it.">
 	  <effect attribute="wellbeing" value="-20"/>
 	  <effect attribute="morale" value="-18"/>
@@ -349,7 +349,7 @@
   <event id="open_source_library">
     <title>Open Source vs In-House</title>
     <text>Your team wants to use an open-source CAN bus parsing library. Legal flags it as a potential IP risk. Building in-house takes two months.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Use the open-source library. Ship faster.">
 	  <effect attribute="wellbeing" value="8"/>
 	  <effect attribute="morale" value="10"/>
@@ -367,7 +367,7 @@
   <event id="production_incident">
     <title>Production Is on Fire</title>
     <text>A critical bug has hit the vehicle telemetry pipeline. Engineers want to push a quick hotfix now. QA says wait for a proper review cycle.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Ship the hotfix now.">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="-5"/>
@@ -385,7 +385,7 @@
   <event id="documentation_day">
     <title>The Docs Are a Desert</title>
 	<text>New hires are struggling to onboard because almost nothing is documented. Someone proposes a quarterly "docs day" — no feature work, just writing.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Dedicate a full day every quarter.">
 	  <effect attribute="wellbeing" value="8"/>
 	  <effect attribute="morale" value="10"/>
@@ -403,7 +403,7 @@
   <event id="work_from_home_policy">
     <title>Return to Office Memo</title>
     <text>Leadership wants three days in-office per week. Half the team is remote and moved cities. Some say it'll help collaboration. Others say they'll quit.</text>
-    <background></background>
+    <background>res://sprites/manager.png</background>
 	<left text="Enforce the RTO policy.">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="-18"/>
