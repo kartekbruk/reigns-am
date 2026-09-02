@@ -12,8 +12,6 @@ public partial class CardController : Panel
 	public Label? RightHintLabel;
 
 	private TextureRect _bgRect = null!;
-	private Label _titleLabel = null!;
-	private Label _textLabel = null!;
 
 	private bool _dragging;
 	private Vector2 _dragStart;
@@ -49,41 +47,10 @@ public partial class CardController : Panel
 
 		_bgRect = new TextureRect();
 		_bgRect.SetAnchorsPreset(LayoutPreset.FullRect);
-		_bgRect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered;
+		_bgRect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		_bgRect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
 		_bgRect.Modulate = Colors.White;
 		AddChild(_bgRect);
-
-		// Gradient-like dark overlay at bottom for readability
-		var overlay = new ColorRect();
-		overlay.SetAnchorsPreset(LayoutPreset.BottomWide);
-		overlay.AnchorTop = 0.25f;
-		overlay.Color = new Color(0f, 0f, 0f, 0.6f);
-		AddChild(overlay);
-
-		_titleLabel = new Label();
-		_titleLabel.SetAnchorsPreset(LayoutPreset.TopWide);
-		_titleLabel.OffsetLeft = 20;
-		_titleLabel.OffsetRight = -20;
-		_titleLabel.OffsetTop = 24;
-		_titleLabel.OffsetBottom = 84;
-		_titleLabel.AutowrapMode = TextServer.AutowrapMode.Word;
-		_titleLabel.HorizontalAlignment = HorizontalAlignment.Center;
-		_titleLabel.AddThemeFontSizeOverride("font_size", 22);
-		_titleLabel.AddThemeColorOverride("font_color", Colors.White);
-		AddChild(_titleLabel);
-
-		_textLabel = new Label();
-		_textLabel.SetAnchorsPreset(LayoutPreset.FullRect);
-		_textLabel.OffsetLeft = 24;
-		_textLabel.OffsetRight = -24;
-		_textLabel.OffsetTop = 100;
-		_textLabel.OffsetBottom = -20;
-		_textLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-		_textLabel.HorizontalAlignment = HorizontalAlignment.Center;
-		_textLabel.VerticalAlignment = VerticalAlignment.Center;
-		_textLabel.AddThemeFontSizeOverride("font_size", 16);
-		_textLabel.AddThemeColorOverride("font_color", new Color(0.92f, 0.92f, 0.92f));
-		AddChild(_textLabel);
 	}
 
 	public void LoadEvent(EventData ev)
@@ -98,9 +65,6 @@ public partial class CardController : Panel
 		Modulate = Colors.White;
 
 		ClearHintState();
-
-		_titleLabel.Text = ev.Title;
-		_textLabel.Text = ev.Text;
 
 		if (LeftHintLabel != null)  { LeftHintLabel.Text  = $"← {ev.LeftChoiceText}";  LeftHintLabel.Modulate  = HiddenColor; }
 		if (RightHintLabel != null) { RightHintLabel.Text = $"{ev.RightChoiceText} →"; RightHintLabel.Modulate = HiddenColor; }
