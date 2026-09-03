@@ -9,20 +9,30 @@ public partial class GameManager : Control
 	private EventData? _currentEvent;
 
 	private CardController _card = null!;
-	private readonly Dictionary<string, ProgressBar> _bars = new();
-	private readonly Dictionary<string, Label> _barValues = new();
-	private readonly Dictionary<string, StyleBoxFlat> _barFillStyles = new();
+	private readonly Dictionary<string, Label> _statIconLabels = new();
+	private readonly Dictionary<string, Color> _statIconColors = new();
 	private readonly Dictionary<string, Label> _attrNameLabels = new();
+	private readonly Dictionary<string, Label> _statDots = new();
 
 	private static readonly Color ColGrey     = new(0.40f, 0.40f, 0.40f);
 	private static readonly Color ColPositive = new(0.35f, 1.00f, 0.45f);
 	private static readonly Color ColNegative = new(1.00f, 0.32f, 0.32f);
-	private Label _cardTitleLabel = null!;
+
 	private Label _cardTextLabel = null!;
 	private Control _gameOverScreen = null!;
 	private Label _gameOverLabel = null!;
 	private Label _sprintLabel = null!;
-	private Label _dateLabel = null!;
+	private Label _characterNameLabel = null!;
+	private Label _characterRoleLabel = null!;
+
+	// Layout constants shared between BuildCard and BuildCharacterInfo
+	private const float StatsBottom  = 116f; // 48 + 68 (compact stats row)
+	private const float TextPad      = 8f;
+	private const float TextH        = 72f;
+	private const float CardGap      = 6f;
+	private const float HintAreaH    = 38f;
+	private const float CharInfoH    = 80f;
+	private const float MaxColWidth  = 520f; // narrow column — black sides appear on wide screens
 
 	public override void _Ready()
 	{
@@ -33,9 +43,10 @@ public partial class GameManager : Control
 		SetAnchorsPreset(LayoutPreset.FullRect);
 
 		BuildBackground();
-		BuildAttributeBars();
 		BuildSprintDisplay();
+		BuildStatIcons();
 		BuildCard();
+		BuildCharacterInfo();
 		BuildGameOverScreen();
 
 		_events = EventLoader.Load("res://events/events.xml");
@@ -50,130 +61,146 @@ public partial class GameManager : Control
 	{
 		var bg = new ColorRect
 		{
-			Color = new Color(0.07f, 0.07f, 0.10f),
+			Color = new Color(0.04f, 0.04f, 0.04f),
 			MouseFilter = MouseFilterEnum.Ignore,
 		};
 		bg.SetAnchorsPreset(LayoutPreset.FullRect);
 		AddChild(bg);
 	}
 
-	private void BuildAttributeBars()
-	{
-		var vp = GetViewportRect().Size;
-
-		var row = new HBoxContainer();
-		row.Position = new Vector2(16f, 12f);
-		row.Size = new Vector2(vp.X - 32f, 80f);
-		row.AddThemeConstantOverride("separation", 16);
-		AddChild(row);
-
-		var cfg = new (string key, Color color)[]
-		{
-			("wellbeing",  new Color(0.35f, 0.85f, 0.50f)),
-			("morale",     new Color(0.40f, 0.65f, 1.00f)),
-			("prosperity", new Color(1.00f, 0.80f, 0.25f)),
-			("codebase",   new Color(0.80f, 0.40f, 1.00f)),
-		};
-
-		foreach (var (key, color) in cfg)
-		{
-			var col = new VBoxContainer();
-			col.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-
-			var nameLabel = new Label { Text = GameState.DisplayNames[key] };
-			nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
-			nameLabel.AddThemeFontSizeOverride("font_size", 12);
-			nameLabel.AddThemeColorOverride("font_color", ColGrey);
-
-			var fillStyle = RoundedBox(ColGrey, 4);
-			var bar = new ProgressBar { MinValue = 0, MaxValue = 100, Value = 50, ShowPercentage = false };
-			bar.CustomMinimumSize = new Vector2(0f, 18f);
-			bar.AddThemeStyleboxOverride("fill",       fillStyle);
-			bar.AddThemeStyleboxOverride("background", RoundedBox(new Color(0.18f, 0.18f, 0.22f), 4));
-
-			var valLabel = new Label { Text = "50" };
-			valLabel.HorizontalAlignment = HorizontalAlignment.Center;
-			valLabel.AddThemeFontSizeOverride("font_size", 11);
-			valLabel.AddThemeColorOverride("font_color", new Color(0.60f, 0.60f, 0.60f));
-
-			col.AddChild(nameLabel);
-			col.AddChild(bar);
-			col.AddChild(valLabel);
-			row.AddChild(col);
-
-			_bars[key]            = bar;
-			_barValues[key]       = valLabel;
-			_barFillStyles[key]   = fillStyle;
-			_attrNameLabels[key]  = nameLabel;
-		}
-	}
-
 	private void BuildSprintDisplay()
 	{
 		var vp = GetViewportRect().Size;
 
-		var vbox = new VBoxContainer();
-		vbox.Position = new Vector2(0f, 580f);
-		vbox.Size = new Vector2(vp.X, 52f);
-		vbox.Alignment = BoxContainer.AlignmentMode.Center;
-		vbox.AddThemeConstantOverride("separation", 2);
-		vbox.MouseFilter = MouseFilterEnum.Ignore;
-
 		_sprintLabel = new Label();
-		_sprintLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		_sprintLabel.Position = new Vector2(0f, 14f);
+		_sprintLabel.Size = new Vector2(vp.X, 32f);
 		_sprintLabel.HorizontalAlignment = HorizontalAlignment.Center;
-		_sprintLabel.AddThemeFontSizeOverride("font_size", 18);
-		_sprintLabel.AddThemeColorOverride("font_color", new Color(0.88f, 0.88f, 0.88f));
-
-		_dateLabel = new Label();
-		_dateLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-		_dateLabel.HorizontalAlignment = HorizontalAlignment.Center;
-		_dateLabel.AddThemeFontSizeOverride("font_size", 12);
-		_dateLabel.AddThemeColorOverride("font_color", new Color(0.50f, 0.50f, 0.50f));
-
-		vbox.AddChild(_sprintLabel);
-		vbox.AddChild(_dateLabel);
-		AddChild(vbox);
+		_sprintLabel.VerticalAlignment = VerticalAlignment.Center;
+		_sprintLabel.AddThemeFontSizeOverride("font_size", 15);
+		_sprintLabel.AddThemeColorOverride("font_color", new Color(0.70f, 0.70f, 0.70f));
+		_sprintLabel.MouseFilter = MouseFilterEnum.Ignore;
+		AddChild(_sprintLabel);
 
 		UpdateSprintDisplay();
 	}
 
-	private void UpdateSprintDisplay()
+	private void BuildStatIcons()
 	{
-		_sprintLabel.Text = $"Sprint {_state.CurrentSprint}";
-		_dateLabel.Text = $"{_state.LevelName}  ·  {_state.CurrentDate:MMM yyyy}";
+		var vp = GetViewportRect().Size;
+
+		var cfg = new (string key, string icon, Color color, string label)[]
+		{
+			("wellbeing",  "♥",   new Color(0.88f, 0.22f, 0.38f), "WELLBEING"),
+			("morale",     "◉",   new Color(1.00f, 0.58f, 0.15f), "MORALE"),
+			("prosperity", "↗",   new Color(0.20f, 0.85f, 0.65f), "COMPANY"),
+			("codebase",   "</>", new Color(0.65f, 0.35f, 0.90f), "CODE QUALITY"),
+		};
+
+		float colW = ColWidth(vp);
+		float colX = ColX(vp);
+
+		var row = new HBoxContainer();
+		row.Position = new Vector2(colX, 48f);
+		row.Size = new Vector2(colW, 68f);
+		row.AddThemeConstantOverride("separation", 0);
+		row.MouseFilter = MouseFilterEnum.Ignore;
+		AddChild(row);
+
+		foreach (var (key, icon, color, displayLabel) in cfg)
+		{
+			var col = new VBoxContainer();
+			col.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+			col.Alignment = BoxContainer.AlignmentMode.Center;
+			col.AddThemeConstantOverride("separation", 5);
+			col.MouseFilter = MouseFilterEnum.Ignore;
+
+			var iconLabel = new Label { Text = icon };
+			iconLabel.HorizontalAlignment = HorizontalAlignment.Center;
+			iconLabel.AddThemeFontSizeOverride("font_size", 28);
+			iconLabel.AddThemeColorOverride("font_color", color);
+			iconLabel.MouseFilter = MouseFilterEnum.Ignore;
+
+			var nameLabel = new Label { Text = displayLabel };
+			nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
+			nameLabel.AddThemeFontSizeOverride("font_size", 8);
+			nameLabel.AddThemeColorOverride("font_color", new Color(0.42f, 0.42f, 0.42f));
+			nameLabel.MouseFilter = MouseFilterEnum.Ignore;
+
+			var dot = new Label { Text = "●" };
+			dot.HorizontalAlignment = HorizontalAlignment.Center;
+			dot.AddThemeFontSizeOverride("font_size", 7);
+			dot.AddThemeColorOverride("font_color", new Color(0.58f, 0.58f, 0.58f));
+			dot.Modulate = new Color(1f, 1f, 1f, 0f); // hidden initially
+			dot.MouseFilter = MouseFilterEnum.Ignore;
+
+			col.AddChild(dot);
+			col.AddChild(iconLabel);
+			col.AddChild(nameLabel);
+			row.AddChild(col);
+
+			_statIconLabels[key] = iconLabel;
+			_statIconColors[key] = color;
+			_attrNameLabels[key] = nameLabel;
+			_statDots[key]        = dot;
+		}
+	}
+
+	private float ColWidth(Vector2 vp) => Mathf.Min(vp.X - 80f, MaxColWidth);
+	private float ColX(Vector2 vp)    => (vp.X - ColWidth(vp)) / 2f;
+	private float CardY()             => StatsBottom + TextPad + TextH + CardGap;
+
+	// Square card: size = min(column width, available height)
+	private float CardSize(Vector2 vp)
+	{
+		float maxH = vp.Y - CardY() - HintAreaH - CharInfoH;
+		return Mathf.Max(200f, Mathf.Min(ColWidth(vp), maxH));
 	}
 
 	private void BuildCard()
 	{
 		var vp    = GetViewportRect().Size;
-		const float topUI  = 220f; // bars (12+80) + sprint (96+52) + gap
-		const float hintH  =  82f; // 18px gap + 64px hint label
+		float colW = ColWidth(vp);
+		float colX = ColX(vp);
+		float size = CardSize(vp);   // square
+		float cardX = colX + (colW - size) / 2f; // center within column
+		float cardY = CardY();
 
-		float cardW   = Mathf.Min(380f, vp.X * 0.90f);
-		float availH  = vp.Y - topUI - hintH;
-		float cardH   = Mathf.Min(520f, availH);
-		float cardX   = (vp.X - cardW) / 2f;
-		float cardY   = topUI + (availH - cardH) / 2f;
+		// Event text — between stats and card, constrained to column
+		_cardTextLabel = new Label();
+		_cardTextLabel.Position = new Vector2(colX, StatsBottom + TextPad);
+		_cardTextLabel.Size = new Vector2(colW, TextH);
+		_cardTextLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+		_cardTextLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_cardTextLabel.VerticalAlignment = VerticalAlignment.Center;
+		_cardTextLabel.AddThemeFontSizeOverride("font_size", 16);
+		_cardTextLabel.AddThemeColorOverride("font_color", new Color(0.90f, 0.90f, 0.90f));
+		_cardTextLabel.MouseFilter = MouseFilterEnum.Ignore;
+		AddChild(_cardTextLabel);
 
+		// Square card centered in column
 		_card = new CardController
 		{
-			Position        = new Vector2(cardX, cardY),
-			Size            = new Vector2(cardW, cardH),
-			SwipeThreshold  = 130f,
+			Position       = new Vector2(cardX, cardY),
+			Size           = new Vector2(size, size),
+			SwipeThreshold = 120f,
 		};
 		_card.ChoiceMade          += OnChoiceMade;
 		_card.DragDirectionChanged += OnDragDirectionChanged;
 
-		var leftHint  = MakeHintLabel(
-			new Vector2(16f, cardY + cardH + 18f),
-			new Vector2(vp.X / 2f - 24f, 64f),
+		// Choice text hints below card
+		float hintY = cardY + size + 6f;
+		float halfCol = colW / 2f;
+
+		var leftHint = MakeHintLabel(
+			new Vector2(colX, hintY),
+			new Vector2(halfCol - 8f, 38f),
 			new Color(1.00f, 0.40f, 0.40f),
 			HorizontalAlignment.Left);
 
 		var rightHint = MakeHintLabel(
-			new Vector2(vp.X / 2f + 8f, cardY + cardH + 18f),
-			new Vector2(vp.X / 2f - 24f, 64f),
+			new Vector2(colX + halfCol + 8f, hintY),
+			new Vector2(halfCol - 8f, 38f),
 			new Color(0.40f, 1.00f, 0.55f),
 			HorizontalAlignment.Right);
 
@@ -184,17 +211,55 @@ public partial class GameManager : Control
 		_card.LeftHintLabel  = leftHint;
 		_card.RightHintLabel = rightHint;
 
-		_cardTextLabel = new Label();
-		_cardTextLabel.Position = new Vector2(cardX + 24f, cardY - 200);
-		_cardTextLabel.Size = new Vector2(cardW - 48f, cardH - 120f);
-		_cardTextLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-		_cardTextLabel.HorizontalAlignment = HorizontalAlignment.Center;
-		_cardTextLabel.VerticalAlignment = VerticalAlignment.Center;
-		_cardTextLabel.AddThemeFontSizeOverride("font_size", 16);
-		_cardTextLabel.AddThemeColorOverride("font_color", new Color(0.92f, 0.92f, 0.92f));
-		_cardTextLabel.MouseFilter = MouseFilterEnum.Ignore;
+	}
 
-		AddChild(_cardTextLabel);
+	private void BuildCharacterInfo()
+	{
+		var vp    = GetViewportRect().Size;
+		float infoY = CardY() + CardSize(vp) + HintAreaH;
+
+		var center = new CenterContainer();
+		center.Position = new Vector2(0f, infoY);
+		center.Size = new Vector2(vp.X, CharInfoH);
+		center.MouseFilter = MouseFilterEnum.Ignore;
+
+		var vbox = new VBoxContainer();
+		vbox.Alignment = BoxContainer.AlignmentMode.Center;
+		vbox.AddThemeConstantOverride("separation", 8);
+		vbox.MouseFilter = MouseFilterEnum.Ignore;
+
+		_characterNameLabel = new Label { Text = "Kryz" };
+		_characterNameLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_characterNameLabel.AddThemeFontSizeOverride("font_size", 20);
+		_characterNameLabel.AddThemeColorOverride("font_color", Colors.White);
+		_characterNameLabel.MouseFilter = MouseFilterEnum.Ignore;
+
+		var badgePanel = new Panel();
+		badgePanel.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+		badgePanel.MouseFilter = MouseFilterEnum.Ignore;
+		badgePanel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+		{
+			BgColor = new Color(0.16f, 0.16f, 0.24f),
+			CornerRadiusTopLeft     = 12,
+			CornerRadiusTopRight    = 12,
+			CornerRadiusBottomLeft  = 12,
+			CornerRadiusBottomRight = 12,
+			ContentMarginLeft   = 14f,
+			ContentMarginRight  = 14f,
+			ContentMarginTop    = 5f,
+			ContentMarginBottom = 5f,
+		});
+
+		_characterRoleLabel = new Label { Text = "Manager" };
+		_characterRoleLabel.AddThemeFontSizeOverride("font_size", 12);
+		_characterRoleLabel.AddThemeColorOverride("font_color", new Color(0.72f, 0.72f, 0.72f));
+		_characterRoleLabel.MouseFilter = MouseFilterEnum.Ignore;
+
+		badgePanel.AddChild(_characterRoleLabel);
+		vbox.AddChild(_characterNameLabel);
+		vbox.AddChild(badgePanel);
+		center.AddChild(vbox);
+		AddChild(center);
 	}
 
 	private void BuildGameOverScreen()
@@ -256,6 +321,11 @@ public partial class GameManager : Control
 		_currentEvent = pool[(int)(GD.Randi() % (uint)pool.Count)];
 		_card.LoadEvent(_currentEvent);
 		_cardTextLabel.Text = _currentEvent.Text;
+
+		string charName = string.IsNullOrEmpty(_currentEvent.CharacterName) ? "Kryz" : _currentEvent.CharacterName;
+		string charRole = string.IsNullOrEmpty(_currentEvent.CharacterRole) ? "Manager" : _currentEvent.CharacterRole;
+		_characterNameLabel.Text = charName;
+		_characterRoleLabel.Text = charRole;
 	}
 
 	private void OnChoiceMade(bool isRight)
@@ -327,20 +397,16 @@ public partial class GameManager : Control
 
 	private void SetAttrColor(string key, Color c)
 	{
-		if (_barFillStyles.TryGetValue(key, out var style))   style.BgColor = c;
-		if (_attrNameLabels.TryGetValue(key, out var lbl))    lbl.AddThemeColorOverride("font_color", c);
+		if (_statDots.TryGetValue(key, out var dot))
+		{
+			bool affected = c == ColPositive || c == ColNegative;
+			dot.Modulate = affected ? Colors.White : new Color(1f, 1f, 1f, 0f);
+		}
 	}
 
 	private void OnAttributeChanged(string key, int value)
 	{
-		if (_bars.TryGetValue(key, out var bar))
-		{
-			var tw = CreateTween();
-			tw.TweenProperty(bar, "value", (double)value, 0.35f)
-			  .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
-		}
-		if (_barValues.TryGetValue(key, out var lbl))
-			lbl.Text = value.ToString();
+		// Stat values tracked in GameState; no bar animation needed
 	}
 
 	private void OnGameOver(string message, bool isWin)
@@ -356,13 +422,18 @@ public partial class GameManager : Control
 		_gameOverScreen.Visible = false;
 
 		foreach (var key in GameState.Keys)
-			OnAttributeChanged(key, 50);
+			SetAttrColor(key, ColGrey); // restores original icon colors
 
 		UpdateSprintDisplay();
 		ShowNextEvent();
 	}
 
 	// ── Helpers ──────────────────────────────────────────────────────────────
+
+	private void UpdateSprintDisplay()
+	{
+		_sprintLabel.Text = $"Sprint {_state.CurrentSprint}  ·  {_state.CurrentDate:MMM yyyy}";
+	}
 
 	private static Label MakeHintLabel(Vector2 pos, Vector2 size, Color color, HorizontalAlignment align)
 	{
@@ -371,10 +442,36 @@ public partial class GameManager : Control
 		lbl.Size = size;
 		lbl.HorizontalAlignment = align;
 		lbl.AutowrapMode = TextServer.AutowrapMode.Word;
-		lbl.AddThemeFontSizeOverride("font_size", 14);
+		lbl.AddThemeFontSizeOverride("font_size", 13);
 		lbl.AddThemeColorOverride("font_color", color);
 		lbl.Modulate = new Color(1f, 1f, 1f, 0f);
 		return lbl;
+	}
+
+	private static Panel MakeArrowCircle(Vector2 pos, string arrow, Color color)
+	{
+		var panel = new Panel();
+		panel.Position = pos;
+		panel.Size = new Vector2(48f, 48f);
+		panel.MouseFilter = MouseFilterEnum.Ignore;
+		panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+		{
+			BgColor = new Color(0.10f, 0.10f, 0.14f, 0.75f),
+			CornerRadiusTopLeft     = 24,
+			CornerRadiusTopRight    = 24,
+			CornerRadiusBottomLeft  = 24,
+			CornerRadiusBottomRight = 24,
+		});
+
+		var lbl = new Label { Text = arrow };
+		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
+		lbl.HorizontalAlignment = HorizontalAlignment.Center;
+		lbl.VerticalAlignment = VerticalAlignment.Center;
+		lbl.AddThemeFontSizeOverride("font_size", 20);
+		lbl.AddThemeColorOverride("font_color", color);
+		lbl.MouseFilter = MouseFilterEnum.Ignore;
+		panel.AddChild(lbl);
+		return panel;
 	}
 
 	private static StyleBoxFlat RoundedBox(Color color, int radius)
@@ -382,9 +479,9 @@ public partial class GameManager : Control
 		return new StyleBoxFlat
 		{
 			BgColor = color,
-			CornerRadiusTopLeft    = radius,
-			CornerRadiusTopRight   = radius,
-			CornerRadiusBottomLeft = radius,
+			CornerRadiusTopLeft     = radius,
+			CornerRadiusTopRight    = radius,
+			CornerRadiusBottomLeft  = radius,
 			CornerRadiusBottomRight = radius,
 		};
 	}

@@ -12,4 +12,6 @@ public class EventData
 	public Dictionary<string, int> RightEffects { get; set; } = new();
 	// Empty = appears for all levels. Otherwise: "intern" "junior" "mid" "senior"
 	public List<string> Positions { get; set; } = new();
+	public string CharacterName { get; set; } = "";
+	public string CharacterRole { get; set; } = "";
 }

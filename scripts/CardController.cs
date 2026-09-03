@@ -31,25 +31,38 @@ public partial class CardController : Panel
 		BuildVisuals();
 	}
 
+	public override void _Notification(int what)
+	{
+		if (what == NotificationResized && _bgRect != null)
+			_bgRect.Size = Size;
+	}
+
 	private void BuildVisuals()
 	{
 		var style = new StyleBoxFlat
 		{
-			BgColor = new Color(0.13f, 0.13f, 0.18f),
-			CornerRadiusTopLeft = 16,
-			CornerRadiusTopRight = 16,
-			CornerRadiusBottomLeft = 16,
-			CornerRadiusBottomRight = 16,
-			ShadowColor = new Color(0f, 0f, 0f, 0.55f),
-			ShadowSize = 24,
+			BgColor = new Color(0.11f, 0.11f, 0.16f),
+			CornerRadiusTopLeft    = 18,
+			CornerRadiusTopRight   = 18,
+			CornerRadiusBottomLeft = 18,
+			CornerRadiusBottomRight = 18,
+			BorderWidthTop    = 1,
+			BorderWidthBottom = 1,
+			BorderWidthLeft   = 1,
+			BorderWidthRight  = 1,
+			BorderColor = new Color(0.22f, 0.22f, 0.30f),
+			ShadowColor = new Color(0f, 0f, 0f, 0.70f),
+			ShadowSize = 20,
+			ShadowOffset = new Vector2(0, 4),
 		};
 		AddThemeStyleboxOverride("panel", style);
 
 		_bgRect = new TextureRect();
-		_bgRect.SetAnchorsPreset(LayoutPreset.FullRect);
-		_bgRect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
-		_bgRect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
-		_bgRect.Modulate = Colors.White;
+		_bgRect.Position     = Vector2.Zero;
+		_bgRect.Size         = Size;         // fill the card explicitly
+		_bgRect.ExpandMode   = TextureRect.ExpandModeEnum.IgnoreSize;
+		_bgRect.StretchMode  = TextureRect.StretchModeEnum.KeepAspectCovered;
+		_bgRect.Modulate     = Colors.White;
 		AddChild(_bgRect);
 	}
 

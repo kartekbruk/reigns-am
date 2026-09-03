@@ -37,6 +37,8 @@ public static class EventLoader
 							{
 								Id = Attr(parser, "id"),
 								Positions = ParsePositions(Attr(parser, "positions")),
+								CharacterName = Attr(parser, "char_name"),
+								CharacterRole = Attr(parser, "char_role"),
 							};
 							currentChoice = null;
 							break;
