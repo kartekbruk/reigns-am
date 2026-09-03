@@ -14,6 +14,8 @@ public partial class GameManager : Control
 	private readonly Dictionary<string, Label> _attrNameLabels = new();
 	private readonly Dictionary<string, Label> _statDots = new();
 
+	private Font _roboto = null!;
+
 	private static readonly Color ColGrey     = new(0.40f, 0.40f, 0.40f);
 	private static readonly Color ColPositive = new(0.35f, 1.00f, 0.45f);
 	private static readonly Color ColNegative = new(1.00f, 0.32f, 0.32f);
@@ -39,6 +41,12 @@ public partial class GameManager : Control
 		_state = GetNode<GameState>("/root/GameState");
 		_state.AttributeChanged += OnAttributeChanged;
 		_state.GameOver += OnGameOver;
+
+		_roboto = GD.Load<FontFile>("res://fonts/RobotoMono-Regular.ttf");
+
+		var theme = new Theme();
+		theme.DefaultFont = _roboto;
+		Theme = theme;
 
 		SetAnchorsPreset(LayoutPreset.FullRect);
 
@@ -72,7 +80,7 @@ public partial class GameManager : Control
 	{
 		var vp = GetViewportRect().Size;
 
-		_sprintLabel = new Label();
+		_sprintLabel = StyledLabel();
 		_sprintLabel.Position = new Vector2(0f, 14f);
 		_sprintLabel.Size = new Vector2(vp.X, 32f);
 		_sprintLabel.HorizontalAlignment = HorizontalAlignment.Center;
@@ -115,23 +123,23 @@ public partial class GameManager : Control
 			col.AddThemeConstantOverride("separation", 5);
 			col.MouseFilter = MouseFilterEnum.Ignore;
 
-			var iconLabel = new Label { Text = icon };
+			var iconLabel = StyledLabel(); iconLabel.Text = icon;
 			iconLabel.HorizontalAlignment = HorizontalAlignment.Center;
 			iconLabel.AddThemeFontSizeOverride("font_size", 28);
 			iconLabel.AddThemeColorOverride("font_color", color);
 			iconLabel.MouseFilter = MouseFilterEnum.Ignore;
 
-			var nameLabel = new Label { Text = displayLabel };
+			var nameLabel = StyledLabel(); nameLabel.Text = displayLabel;
 			nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
 			nameLabel.AddThemeFontSizeOverride("font_size", 8);
 			nameLabel.AddThemeColorOverride("font_color", new Color(0.42f, 0.42f, 0.42f));
 			nameLabel.MouseFilter = MouseFilterEnum.Ignore;
 
-			var dot = new Label { Text = "●" };
+			var dot = StyledLabel(); dot.Text = "●";
 			dot.HorizontalAlignment = HorizontalAlignment.Center;
 			dot.AddThemeFontSizeOverride("font_size", 7);
 			dot.AddThemeColorOverride("font_color", new Color(0.58f, 0.58f, 0.58f));
-			dot.Modulate = new Color(1f, 1f, 1f, 0f); // hidden initially
+			dot.Modulate = new Color(1f, 1f, 1f, 0f);
 			dot.MouseFilter = MouseFilterEnum.Ignore;
 
 			col.AddChild(dot);
@@ -167,7 +175,7 @@ public partial class GameManager : Control
 		float cardY = CardY();
 
 		// Event text — between stats and card, constrained to column
-		_cardTextLabel = new Label();
+		_cardTextLabel = StyledLabel();
 		_cardTextLabel.Position = new Vector2(colX, StatsBottom + TextPad);
 		_cardTextLabel.Size = new Vector2(colW, TextH);
 		_cardTextLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
@@ -218,48 +226,30 @@ public partial class GameManager : Control
 		var vp    = GetViewportRect().Size;
 		float infoY = CardY() + CardSize(vp) + HintAreaH;
 
-		var center = new CenterContainer();
-		center.Position = new Vector2(0f, infoY);
-		center.Size = new Vector2(vp.X, CharInfoH);
-		center.MouseFilter = MouseFilterEnum.Ignore;
-
 		var vbox = new VBoxContainer();
+		vbox.Position = new Vector2(0f, infoY);
+		vbox.Size = new Vector2(vp.X, CharInfoH);
 		vbox.Alignment = BoxContainer.AlignmentMode.Center;
 		vbox.AddThemeConstantOverride("separation", 8);
 		vbox.MouseFilter = MouseFilterEnum.Ignore;
 
-		_characterNameLabel = new Label { Text = "Kryz" };
+		_characterNameLabel = StyledLabel(); _characterNameLabel.Text = "Kryz";
 		_characterNameLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_characterNameLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 		_characterNameLabel.AddThemeFontSizeOverride("font_size", 20);
 		_characterNameLabel.AddThemeColorOverride("font_color", Colors.White);
 		_characterNameLabel.MouseFilter = MouseFilterEnum.Ignore;
 
-		var badgePanel = new Panel();
-		badgePanel.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
-		badgePanel.MouseFilter = MouseFilterEnum.Ignore;
-		badgePanel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-		{
-			BgColor = new Color(0.16f, 0.16f, 0.24f),
-			CornerRadiusTopLeft     = 12,
-			CornerRadiusTopRight    = 12,
-			CornerRadiusBottomLeft  = 12,
-			CornerRadiusBottomRight = 12,
-			ContentMarginLeft   = 14f,
-			ContentMarginRight  = 14f,
-			ContentMarginTop    = 5f,
-			ContentMarginBottom = 5f,
-		});
-
-		_characterRoleLabel = new Label { Text = "Manager" };
+		_characterRoleLabel = StyledLabel(); _characterRoleLabel.Text = "Manager";
+		_characterRoleLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_characterRoleLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 		_characterRoleLabel.AddThemeFontSizeOverride("font_size", 12);
 		_characterRoleLabel.AddThemeColorOverride("font_color", new Color(0.72f, 0.72f, 0.72f));
 		_characterRoleLabel.MouseFilter = MouseFilterEnum.Ignore;
 
-		badgePanel.AddChild(_characterRoleLabel);
 		vbox.AddChild(_characterNameLabel);
-		vbox.AddChild(badgePanel);
-		center.AddChild(vbox);
-		AddChild(center);
+		vbox.AddChild(_characterRoleLabel);
+		AddChild(vbox);
 	}
 
 	private void BuildGameOverScreen()
@@ -279,12 +269,12 @@ public partial class GameManager : Control
 		vbox.AddThemeConstantOverride("separation", 28);
 		vbox.Alignment = BoxContainer.AlignmentMode.Center;
 
-		var heading = new Label { Text = "GAME OVER" };
+		var heading = StyledLabel(); heading.Text = "GAME OVER";
 		heading.HorizontalAlignment = HorizontalAlignment.Center;
 		heading.AddThemeFontSizeOverride("font_size", 32);
 		heading.AddThemeColorOverride("font_color", new Color(1f, 0.45f, 0.35f));
 
-		_gameOverLabel = new Label();
+		_gameOverLabel = StyledLabel();
 		_gameOverLabel.AutowrapMode = TextServer.AutowrapMode.Word;
 		_gameOverLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		_gameOverLabel.AddThemeFontSizeOverride("font_size", 18);
@@ -356,7 +346,7 @@ public partial class GameManager : Control
 		panel.CustomMinimumSize = new Vector2(460f, 80f);
 		panel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.12f, 0.12f, 0.16f), 12));
 
-		var lbl = new Label { Text = $"Promoted to {_state.LevelName}!" };
+		var lbl = StyledLabel(); lbl.Text = $"Promoted to {_state.LevelName}!";
 		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
 		lbl.HorizontalAlignment = HorizontalAlignment.Center;
 		lbl.VerticalAlignment   = VerticalAlignment.Center;
@@ -435,9 +425,11 @@ public partial class GameManager : Control
 		_sprintLabel.Text = $"Sprint {_state.CurrentSprint}  ·  {_state.CurrentDate:MMM yyyy}";
 	}
 
-	private static Label MakeHintLabel(Vector2 pos, Vector2 size, Color color, HorizontalAlignment align)
+	private Label StyledLabel() { var l = new Label(); l.AddThemeFontOverride("font", _roboto); return l; }
+
+	private Label MakeHintLabel(Vector2 pos, Vector2 size, Color color, HorizontalAlignment align)
 	{
-		var lbl = new Label();
+		var lbl = StyledLabel();
 		lbl.Position = pos;
 		lbl.Size = size;
 		lbl.HorizontalAlignment = align;
@@ -448,7 +440,7 @@ public partial class GameManager : Control
 		return lbl;
 	}
 
-	private static Panel MakeArrowCircle(Vector2 pos, string arrow, Color color)
+	private Panel MakeArrowCircle(Vector2 pos, string arrow, Color color)
 	{
 		var panel = new Panel();
 		panel.Position = pos;
@@ -463,7 +455,7 @@ public partial class GameManager : Control
 			CornerRadiusBottomRight = 24,
 		});
 
-		var lbl = new Label { Text = arrow };
+		var lbl = StyledLabel(); lbl.Text = arrow;
 		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
 		lbl.HorizontalAlignment = HorizontalAlignment.Center;
 		lbl.VerticalAlignment = VerticalAlignment.Center;
