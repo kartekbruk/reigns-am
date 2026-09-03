@@ -14,407 +14,549 @@
 -->
 <events>
 
-  <!-- ── Intern-only ───────────────────────────────────────────────────────── -->
+  <!-- ── Intern ───────────────────────────────────────────────────────── -->
 
-  <event id="first_pr_feedback" positions="intern">
-	<title>Your First Pull Request</title>
-	<text>Your tech lead left 52 comments on your first PR. Half are nitpicks about whitespace. You're not sure if this is normal or a sign you should quit.</text>
-    <background>res://sprites/manager.png</background>
-    <left text="Rewrite the whole thing from scratch.">
-      <effect attribute="wellbeing" value="-18"/>
-      <effect attribute="morale" value="-8"/>
-      <effect attribute="codebase" value="12"/>
-      <effect attribute="prosperity" value="-5"/>
-    </left>
-    <right text="Address the key comments and ship it.">
-      <effect attribute="wellbeing" value="5"/>
-      <effect attribute="morale" value="10"/>
-      <effect attribute="codebase" value="8"/>
-      <effect attribute="prosperity" value="5"/>
-    </right>
-  </event>
-
-  <event id="imposter_syndrome" positions="intern">
-    <title>Imposter Syndrome</title>
-	<text>A senior asks you to present your first feature to the whole engineering team. Your code works, but you're convinced everyone will see through you.</text>
-	<background></background>
-	<left text="Say you're sick. Present next time.">
-	  <effect attribute="wellbeing" value="8"/>
-	  <effect attribute="morale" value="-15"/>
-	  <effect attribute="prosperity" value="-8"/>
-	  <effect attribute="codebase" value="0"/>
-	</left>
-	<right text="Do the presentation. Face the fear.">
-	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="18"/>
-	  <effect attribute="prosperity" value="10"/>
-	  <effect attribute="codebase" value="0"/>
-	</right>
-  </event>
-
-  <event id="intern_free_time" positions="intern">
-	<title>Unassigned Friday</title>
-	<text>Your senior is in back-to-back meetings and forgot to give you tasks. The backlog is huge but you're not sure you're allowed to just pick things up.</text>
-	<background></background>
-	<left text="Self-assign a backlog ticket and go.">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="12"/>
-	  <effect attribute="prosperity" value="10"/>
-	  <effect attribute="codebase" value="8"/>
-	</left>
-	<right text="Browse docs and learn something new.">
-	  <effect attribute="wellbeing" value="12"/>
-	  <effect attribute="morale" value="5"/>
-	  <effect attribute="prosperity" value="-5"/>
-	  <effect attribute="codebase" value="5"/>
-	</right>
-  </event>
-
-  <event id="ask_for_help" positions="intern">
-	<title>Stuck for Three Hours</title>
-	<text>You've been staring at the same bug for three hours. You could ask a colleague, but you don't want to seem incompetent on your second week.</text>
-	<background></background>
-	<left text="Keep struggling alone.">
+  <event id="nigerian_prince" positions="intern junior mid senior">
+	<title>Nigeryjski Książe</title>
+	<text>Nigeryjski książe oferuje ci milion pesos.</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Klikam w link">
 	  <effect attribute="wellbeing" value="-15"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="prosperity" value="-10"/>
-	  <effect attribute="codebase" value="-8"/>
+	  <effect attribute="morale" value="-15"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-15"/>
 	</left>
-	<right text="Ask for help. That's what seniors are for.">
-	  <effect attribute="wellbeing" value="10"/>
-	  <effect attribute="morale" value="10"/>
-	  <effect attribute="prosperity" value="5"/>
-	  <effect attribute="codebase" value="10"/>
+	<right text="Zgłaszam phishing">
+	  <effect attribute="wellbeing" value="-1"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
 
-  <!-- ── Junior-only ───────────────────────────────────────────────────────── -->
-
-  <event id="first_production_bug" positions="junior">
-	<title>You Broke Production</title>
-	<text>Your deploy went out and something unrelated stopped working. The logs are a maze. Nobody noticed yet — but it's only a matter of time.</text>
-    <background>res://sprites/manager.png</background>
-    <left text="Ask for help immediately, own it.">
-      <effect attribute="wellbeing" value="5"/>
-      <effect attribute="morale" value="8"/>
-      <effect attribute="codebase" value="10"/>
-      <effect attribute="prosperity" value="-5"/>
-    </left>
-    <right text="Debug in silence and fix it before anyone sees.">
-      <effect attribute="wellbeing" value="-18"/>
-      <effect attribute="morale" value="-5"/>
-      <effect attribute="codebase" value="-12"/>
-      <effect attribute="prosperity" value="-15"/>
-    </right>
-  </event>
-
-  <event id="speak_up_meeting" positions="junior">
-    <title>Speak Up in the Meeting</title>
-    <text>The team is debating a database schema choice. You have a strong opinion from a side project — but nobody asked, and the seniors seem decided.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Stay quiet. You're too junior.">
+  <event id="dewarningization" positions="intern junior mid">
+	<title>Dewarningizacja</title>
+	<text>DealCalculator ma 2137 warningów</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Robimy to">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="-10"/>
-	  <effect attribute="prosperity" value="0"/>
-	  <effect attribute="codebase" value="-8"/>
-    </left>
-	<right text="Share your perspective. Politely.">
-	  <effect attribute="wellbeing" value="10"/>
-	  <effect attribute="morale" value="12"/>
-	  <effect attribute="prosperity" value="5"/>
-	  <effect attribute="codebase" value="8"/>
-    </right>
+	  <effect attribute="codebase" value="25"/>
+	  <effect attribute="prosperity" value="10"/>
+	</left>
+	<right text="Są ważniejsze sprawy">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-10"/>
+	</right>
   </event>
 
-  <event id="mentor_junior" positions="junior mid">
-    <title>New Intern Assigned to You</title>
-    <text>HR just assigned you a new intern to mentor. You barely feel settled yourself. They're asking questions every 20 minutes.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Dedicate real time to mentoring them.">
-	  <effect attribute="wellbeing" value="-8"/>
-	  <effect attribute="morale" value="15"/>
-	  <effect attribute="prosperity" value="8"/>
-	  <effect attribute="codebase" value="5"/>
-    </left>
-	<right text="Point them to the docs and focus on your work.">
+  <event id="integration_event" positions="intern junior mid senior">
+	<title>Wyjazd integracyjny</title>
+	<text>Uwaga! Ważny komunikat! Wyjazd integracyjny do ROMY!</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Jadę!">
+	  <effect attribute="wellbeing" value="20"/>
+	  <effect attribute="morale" value="20"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-10"/>
+	</left>
+	<right text="W ten weekend nie mogę...">
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="1"/>
+	</right>
+  </event>
+
+  <event id="retro" positions="intern junior mid senior">
+	<title>Retro</title>
+	<text>[Urgent][Mandatory] Retro</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Join zoom meeting">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Udaję, że nie widzę">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="game_jam" positions="intern junior mid senior">
+	<title>Game Jam</title>
+	<text>automotiveMasterming Game Jam! Build. Play. Innovate. Powered by AI.</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Nie mam psychy">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Zgłaszam się!">
 	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-12"/>
-	  <effect attribute="prosperity" value="-5"/>
+	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="hackathon" positions="intern junior mid senior">
+	<title>Hackathon</title>
+	<text>We oficially begin our next hackathon!</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Nie chce mi się">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Zgłaszamy się">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value=""/>
+	  <effect attribute="prosperity" value="3"/>
+	</right>
+  </event>
+
+  <event id="custom_fees" positions="intern junior mid senior">
+	<title>Custom fees</title>
+	<text>Trzeba dodać customowe feesy dla Forda</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Nie, kod robi się zbyt skomplikowany">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-4"/>
+	</left>
+	<right text="No dobra">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="3"/>
+	</right>
+  </event>
+
+  <event id="carfax_office" positions="intern junior mid senior">
+	<title>Carfaxy zajęły nam pokój w biurze</title>
+	<text>Carfaxy zajęły nam pokój w biurze</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Zostajemy, niech oni se idą, jak im przeszkadzamy">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Idziemy, przeszkadzają nam">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="town_hall" positions="intern junior mid senior">
+	<title>Town hall</title>
+	<text>Dzisiaj o 16:30 town hall</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Join zoom meeting">
+	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="1"/>
+	</left>
+	<right text="Nie idę">
+	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="local_dev_rotation" positions="intern junior mid senior">
+	<title>Lokalny dev rotation</title>
+	<text>Pojawiła się okazja na popracowanie w innym zespole przez 2 sprinty</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Zgłaszam się na ochotnika">
+	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="5"/>
+	  <effect attribute="prosperity" value="1"/>
+	</left>
+	<right text="Dobrze mi tu, gdzie jestem">
+	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="unclear_pbi" positions="intern junior mid senior">
+	<title>Niejasny PBI</title>
+	<text>PBI 2137: Check and add and test and deploy</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Pytam PO co trzeba zrobić">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="-2"/>
+	  <effect attribute="prosperity" value="2"/>
+	</left>
+	<right text="Pytam tech leada co trzeba zrobić">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-4"/>
+	  <effect attribute="codebase" value="6"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="no_internet_in_office" positions="intern junior mid senior">
+	<title>Nie ma internetu w biurze</title>
+	<text>W biurze nie ma internetu</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Robię hotspota z telefonu">
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="1"/>
+	  <effect attribute="prosperity" value="1"/>
+	</left>
+	<right text="Nie pracuję">
+	  <effect attribute="wellbeing" value="7"/>
+	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-1"/>
+	</right>
+  </event>
+
+  <event id="coffee_machine_malfunction" positions="intern junior mid senior">
+	<title>Awaria ekspresu do kawy</title>
+	<text>Ktoś wyrwał rurkę z ekspresu podłączając do niego pendrive</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Piję wodę jak zwierzę">
+	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Odmawiam pracy">
+	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="-2"/>
+	  <effect attribute="prosperity" value="-1"/>
+	</right>
+  </event>
+
+  <event id="no_clean_mugs" positions="intern junior mid senior">
+	<title>W szafce nie ma czystych kubków</title>
+	<text>W szafce nie ma czystych kubków</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Zaparzam kawę w ustach">
+	  <effect attribute="wellbeing" value="-90"/>
+	  <effect attribute="morale" value="-50"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Myję brudny kubek w zlewie">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="order_food" positions="intern junior mid senior">
+	<title>Ktoś musi zamówić jedzenie</title>
+	<text>Ktoś musi zamówić jedzenie</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Ja mogę">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Karol ma Glovo premium">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="jacek_ping_pong" positions="intern junior mid senior">
+	<title>Gra w ping ponga</title>
+	<text>Co powiesz na meczyk w ping ponga?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Mam dużo roboty">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="7"/>
+	  <effect attribute="prosperity" value="1"/>
+	</left>
+	<right text="Pewnie byku">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="jacek_pr" positions="intern junior mid senior">
+	<title>12 komentarzy Jacka</title>
+	<text>Jacek napisał ci 12 komentarzy pod PR</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Resolwuje wszystkie">
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="-3"/>
+	  <effect attribute="prosperity" value="-1"/>
+	</left>
+	<right text="Poprawiam błędy">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="3"/>
+	  <effect attribute="codebase" value="5"/>
+	  <effect attribute="prosperity" value="1"/>
+	</right>
+  </event>
+
+  <!-- ── Junior ───────────────────────────────────────────────────────── -->
+
+  <event id="marketing_change_for_sean" positions="junior mid senior">
+	<title>Zmiana dla Seana przed marketingiem</title>
+	<text>Hey, guys, can you change OvErMiLeAgEdEaLtYpEpRiCe for tomorrow marketing?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Niech będzie, ale nigdy więcej...">
+	  <effect attribute="wellbeing" value="-12"/>
+	  <effect attribute="morale" value="-12"/>
+	  <effect attribute="codebase" value="-10"/>
+	  <effect attribute="prosperity" value="15"/>
+	</left>
+	<right text="NIE!">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-12"/>
+	</right>
+  </event>
+
+  <event id="matts_idea" positions="junior mid senior">
+	<title>Przewrotny pomysł Matta</title>
+	<text>Hey, guys, I know that you started working on it a week ago, but can we try different approach?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Zróbmy jak mówi Matt...">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="-8"/>
+	  <effect attribute="codebase" value="-7"/>
+	  <effect attribute="prosperity" value="3"/>
+	</left>
+	<right text="Matt znowu Mattuje, nie robimy tego">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="frontend_change" positions="junior mid senior">
+	<title>Zmiana na froncie</title>
+	<text>Trzeba dodać nowe pole na dealsheecie, mógłbyś się tym zająć?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Gracjan zrobi :)">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="10"/>
+	  <effect attribute="prosperity" value="5"/>
+	</left>
+	<right text="Niech będzie">
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="2"/>
+	</right>
+  </event>
+  
+  <event id="add_column" positions="junior mid senior">
+	<title>Dodanie kolumny</title>
+	<text>Dodasz nową kolumnę do bazy?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Wystawię spotkanie na tech governance">
+	  <effect attribute="wellbeing" value="-15"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="5"/>
+	</left>
+	<right text="Dodam, ale po cichu">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-1"/>
+	</right>
+  </event>
+
+  <event id="quality_gate_tests" positions="junior mid senior">
+	<title>Pokrycie testami</title>
+	<text>Quality gate status: ERROR - code covered with tests in 60%!</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Piszę testy">
+	  <effect attribute="wellbeing" value="-8"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="5"/>
+	  <effect attribute="prosperity" value="2"/>
+	</left>
+	<right text="Wrzucam wszystko do jednej linijki">
+	  <effect attribute="wellbeing" value="-2"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="-8"/>
+	  <effect attribute="prosperity" value="-2"/>
+	</right>
+  </event>
+
+  <event id="fix_database" positions="junior mid senior">
+	<title>Naprawa danych</title>
+	<text>Trzeba naprawić dane w bazie</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Używam break glassa">
+	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="5"/>
+	  <effect attribute="prosperity" value="2"/>
+	</left>
+	<right text="Jestem mikroserwisem">
+	  <effect attribute="wellbeing" value="2"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="-3"/>
+	</right>
+  </event>
+
+  <event id="finish_someones_work" positions="junior mid senior">
+	<title>Dokończ czyjąś pracę</title>
+	<text>Twój kolega jest na urlopie, a jego zmiany muszą iść w tym tygodnia na proda</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Jestem zajęty">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="3"/>
+	  <effect attribute="prosperity" value="1"/>
+	</left>
+	<right text="Zajmę się tym">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="3"/>
+	  <effect attribute="prosperity" value="1"/>
+	</right>
+  </event>
+
+  <event id="strange_error" positions="junior mid senior">
+	<title>Dziwny błąd na pipeline</title>
+	<text>Pojawił się dziwny błąd na build pipeline</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Poproś o pomoc kogoś z zespołu">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="codebase" value="2"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Piszę do Marcina">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="4"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="showroom_urgent" positions="junior mid senior">
+	<title>Pilne sprawdzenie Showrooma</title>
+	<text>Mógłby ktoś sprawdzić dlaczego dla FU6969 nie działa Showroom? Pilne!</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Udaję, że nie widzę">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-3"/>
+	</left>
+	<right text="Sprawdzę">
+	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="morale" value="3"/>
+	  <effect attribute="codebase" value="3"/>
+	  <effect attribute="prosperity" value="1"/>
+	</right>
+  </event>
+
+  <event id="sean_new_tool" positions="junior mid senior">
+	<title>Nowy tool dla Seana</title>
+	<text>Hey guys, every week, for 2 days straight, Sean is manually painting cars images. Can you create him a tool, which he won't use anyway?</text>
+    <background>res://sprites/manager.png</background>
+	<left text="No we can't">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+    </left>
+	<right text="Yes we can">
+	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="codebase" value="10"/>
+	  <effect attribute="prosperity" value="1"/>
     </right>
   </event>
 
   <!-- ── Mid & Senior ──────────────────────────────────────────────────────── -->
 
-  <event id="tech_debt_sprint" positions="mid senior">
-    <title>Tech Debt Reckoning</title>
-    <text>The team is drowning in legacy code. Your senior dev insists the next sprint must be a full refactor — no features, just cleanup.</text>
+  <event id="dealcalculator_not_working" positions="mid senior">
+	<title>DealCalculator rzuca errory dla FU6969</title>
+	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/manager.png</background>
-	<left text="We ship features, not refactors.">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-12"/>
-	  <effect attribute="prosperity" value="10"/>
-	  <effect attribute="codebase" value="-18"/>
-    </left>
-	<right text="Schedule the refactor sprint.">
+	<left text="Sprawdzę">
 	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="15"/>
-	  <effect attribute="prosperity" value="-8"/>
-	  <effect attribute="codebase" value="22"/>
-    </right>
-  </event>
-
-  <event id="standup_length" positions="mid senior">
-    <title>Meeting Culture</title>
-    <text>Standups have crept to 45 minutes. One engineer says they're the only alignment we have. Another says they destroy deep work time.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Keep long standups. Communication matters.">
-	  <effect attribute="wellbeing" value="-8"/>
-	  <effect attribute="morale" value="8"/>
-	  <effect attribute="prosperity" value="5"/>
-	  <effect attribute="codebase" value="-5"/>
-    </left>
-	<right text="15-minute cap, async updates for the rest.">
-	  <effect attribute="wellbeing" value="12"/>
 	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="3"/>
-	  <effect attribute="codebase" value="8"/>
+	  <effect attribute="codebase" value="1"/>
+	  <effect attribute="prosperity" value="2"/>
+    </left>
+	<right text="Prawdopodobnie znowu nie my...">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-1"/>
     </right>
   </event>
 
-  <event id="mandatory_code_review" positions="mid senior">
-    <title>Review Policy</title>
-    <text>After a costly regression, your TL proposes mandatory two-person code reviews on all PRs. Junior devs love it. Senior devs call it a bottleneck.</text>
+  <event id="dealcalculator_not_working" positions="mid senior">
+	<title>DealCalculator rzuca errory dla FU6969</title>
+	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/manager.png</background>
-	<left text="Enforce two-person reviews.">
+	<left text="Sprawdzę">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
-	  <effect attribute="prosperity" value="-5"/>
-	  <effect attribute="codebase" value="18"/>
-    </left>
-	<right text="Trust the team. Optional reviews.">
-	  <effect attribute="wellbeing" value="8"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="8"/>
-	  <effect attribute="codebase" value="-12"/>
-    </right>
-  </event>
-
-  <event id="new_framework" positions="mid senior">
-    <title>Shiny New Stack</title>
-    <text>An architect proposes rewriting the diagnostics service in a trendy new framework. Faster long-term, but six months of migration pain first.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Rewrite it. Future-proof the codebase.">
-	  <effect attribute="wellbeing" value="-12"/>
-	  <effect attribute="morale" value="10"/>
-	  <effect attribute="prosperity" value="-15"/>
-	  <effect attribute="codebase" value="20"/>
-    </left>
-	<right text="Keep the legacy service. It works.">
-	  <effect attribute="wellbeing" value="8"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="prosperity" value="10"/>
-	  <effect attribute="codebase" value="-12"/>
-    </right>
-  </event>
-
-  <event id="contractor_hire" positions="senior">
-    <title>Talent Gap</title>
-    <text>A project deadline looms and the team lacks bandwidth. HR proposes hiring an expensive contractor to plug the gap immediately.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Hire the contractor.">
-	  <effect attribute="wellbeing" value="10"/>
-	  <effect attribute="morale" value="8"/>
-	  <effect attribute="prosperity" value="-20"/>
-	  <effect attribute="codebase" value="-5"/>
-    </left>
-	<right text="Push the team harder.">
-	  <effect attribute="wellbeing" value="-18"/>
-	  <effect attribute="morale" value="-12"/>
-	  <effect attribute="prosperity" value="8"/>
-	  <effect attribute="codebase" value="-3"/>
-    </right>
-  </event>
-
-  <event id="security_audit" positions="mid senior">
-    <title>Security Audit Findings</title>
-    <text>A third-party audit uncovered three high-severity vulnerabilities in the OTA update system. Fixing them means halting feature work for two weeks.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Fix everything now.">
-	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="-10"/>
-	  <effect attribute="codebase" value="25"/>
-    </left>
-	<right text="Patch the worst one, defer the rest.">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="5"/>
-	  <effect attribute="prosperity" value="5"/>
-	  <effect attribute="codebase" value="-15"/>
-    </right>
-  </event>
-
-  <event id="oncall_rotation" positions="mid senior">
-    <title>On-Call Roulette</title>
-    <text>Three engineers are bearing the entire on-call load. They want a fair rotation. The rest of the team is nervous — they don't know the system well enough.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Fair rotation for everyone.">
-	  <effect attribute="wellbeing" value="10"/>
-	  <effect attribute="morale" value="12"/>
-	  <effect attribute="prosperity" value="-5"/>
-	  <effect attribute="codebase" value="8"/>
-    </left>
-	<right text="Keep the specialists on-call.">
-	  <effect attribute="wellbeing" value="-15"/>
-	  <effect attribute="morale" value="-10"/>
-	  <effect attribute="prosperity" value="8"/>
-	  <effect attribute="codebase" value="-5"/>
-    </right>
-  </event>
-
-  <event id="enterprise_hack" positions="mid senior">
-    <title>Customer Shortcut</title>
-	<text>Your biggest client asks for a "temporary" hardcoded config flag to bypass the validation pipeline. They need it by Friday or they walk.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Add the flag. Keep the client.">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="prosperity" value="20"/>
-	  <effect attribute="codebase" value="-18"/>
-    </left>
-	<right text="Offer a proper solution in three weeks.">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="8"/>
-	  <effect attribute="prosperity" value="-18"/>
-	  <effect attribute="codebase" value="10"/>
-    </right>
-  </event>
-
-  <event id="monitoring_setup" positions="mid senior">
-    <title>Observability Investment</title>
-    <text>The ops team says without proper monitoring, the next incident will take days to diagnose. Setup takes a sprint. The roadmap is already packed.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Invest in monitoring now.">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="8"/>
-	  <effect attribute="prosperity" value="-10"/>
-	  <effect attribute="codebase" value="18"/>
-    </left>
-	<right text="Add it to the backlog. Ship the roadmap.">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="12"/>
-	  <effect attribute="codebase" value="-12"/>
-    </right>
-  </event>
-
-  <!-- ── All levels ─────────────────────────────────────────────────────────── -->
-
-  <event id="team_offsite">
-    <title>Team Offsite Proposal</title>
-    <text>The people team wants to organise a two-day offsite at a mountain retreat to boost morale after a tough quarter. It's not cheap.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Approve the offsite.">
-	  <effect attribute="wellbeing" value="15"/>
-	  <effect attribute="morale" value="20"/>
-	  <effect attribute="prosperity" value="-14"/>
-	  <effect attribute="codebase" value="0"/>
-    </left>
-	<right text="Virtual coffee chat will do.">
-	  <effect attribute="wellbeing" value="3"/>
-	  <effect attribute="morale" value="-10"/>
-	  <effect attribute="prosperity" value="5"/>
-	  <effect attribute="codebase" value="0"/>
-    </right>
-  </event>
-
-  <event id="crunch_deadline">
-    <title>Deadline Crunch</title>
-    <text>The board pushed the product demo date forward by three weeks. Your PM says mandatory weekends will make it. Your team lead looks exhausted.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Mandatory crunch. Ship it.">
-	  <effect attribute="wellbeing" value="-20"/>
-	  <effect attribute="morale" value="-18"/>
-	  <effect attribute="prosperity" value="15"/>
-	  <effect attribute="codebase" value="-8"/>
-    </left>
-	<right text="Negotiate scope. Protect the team.">
-	  <effect attribute="wellbeing" value="10"/>
-	  <effect attribute="morale" value="12"/>
-	  <effect attribute="prosperity" value="-10"/>
 	  <effect attribute="codebase" value="5"/>
-    </right>
-  </event>
-
-  <event id="open_source_library">
-    <title>Open Source vs In-House</title>
-    <text>Your team wants to use an open-source CAN bus parsing library. Legal flags it as a potential IP risk. Building in-house takes two months.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Use the open-source library. Ship faster.">
-	  <effect attribute="wellbeing" value="8"/>
-	  <effect attribute="morale" value="10"/>
-	  <effect attribute="prosperity" value="12"/>
-	  <effect attribute="codebase" value="-8"/>
+	  <effect attribute="prosperity" value="2"/>
     </left>
-	<right text="Build it in-house. Control the IP.">
-	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="-8"/>
-	  <effect attribute="codebase" value="15"/>
-    </right>
-  </event>
-
-  <event id="production_incident">
-    <title>Production Is on Fire</title>
-    <text>A critical bug has hit the vehicle telemetry pipeline. Engineers want to push a quick hotfix now. QA says wait for a proper review cycle.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Ship the hotfix now.">
-	  <effect attribute="wellbeing" value="-8"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="prosperity" value="12"/>
-	  <effect attribute="codebase" value="-10"/>
-    </left>
-	<right text="Wait for proper QA.">
-	  <effect attribute="wellbeing" value="-12"/>
-	  <effect attribute="morale" value="8"/>
-	  <effect attribute="prosperity" value="-15"/>
-	  <effect attribute="codebase" value="10"/>
-    </right>
-  </event>
-
-  <event id="documentation_day">
-    <title>The Docs Are a Desert</title>
-	<text>New hires are struggling to onboard because almost nothing is documented. Someone proposes a quarterly "docs day" — no feature work, just writing.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Dedicate a full day every quarter.">
-	  <effect attribute="wellbeing" value="8"/>
-	  <effect attribute="morale" value="10"/>
-	  <effect attribute="prosperity" value="-5"/>
-	  <effect attribute="codebase" value="15"/>
-    </left>
-	<right text="Docs happen organically. Back to coding.">
-	  <effect attribute="wellbeing" value="3"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="prosperity" value="8"/>
-	  <effect attribute="codebase" value="-10"/>
-    </right>
-  </event>
-
-  <event id="work_from_home_policy">
-    <title>Return to Office Memo</title>
-    <text>Leadership wants three days in-office per week. Half the team is remote and moved cities. Some say it'll help collaboration. Others say they'll quit.</text>
-    <background>res://sprites/manager.png</background>
-	<left text="Enforce the RTO policy.">
-	  <effect attribute="wellbeing" value="-15"/>
-	  <effect attribute="morale" value="-18"/>
-	  <effect attribute="prosperity" value="8"/>
+	<right text="Prawdopodobnie znowu nie my...">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
-    </left>
-	<right text="Stay fully flexible. Async-first culture.">
-	  <effect attribute="wellbeing" value="15"/>
-	  <effect attribute="morale" value="18"/>
 	  <effect attribute="prosperity" value="-5"/>
-	  <effect attribute="codebase" value="5"/>
+    </right>
+  </event>
+
+  <event id="recrutation_palindrome" positions="mid senior">
+	<title>Rekrutacja osoby, która nie umie palindroma</title>
+	<text>Na rekrutacji jest osoba, która nie umie palindroma</text>
+    <background>res://sprites/manager.png</background>
+	<left text="Skontaktujemy się z tobą">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+    </left>
+	<right text="Bierzemy go">
+	  <effect attribute="wellbeing" value="4"/>
+	  <effect attribute="morale" value="-8"/>
+	  <effect attribute="codebase" value="-2"/>
+	  <effect attribute="prosperity" value="-2"/>
     </right>
   </event>
 
