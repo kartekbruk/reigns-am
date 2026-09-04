@@ -7,6 +7,7 @@ public partial class GameManager : Control
 	private GameState _state = null!;
 	private List<EventData> _events = new();
 	private EventData? _currentEvent;
+	private readonly HashSet<string> _seenEventIds = new();
 
 	private CardController _card = null!;
 	private readonly Dictionary<string, Label> _statIconLabels = new();
@@ -307,8 +308,15 @@ public partial class GameManager : Control
 	private void ShowNextEvent()
 	{
 		var pool = GetEventPool();
-		if (pool.Count == 0) return;
-		_currentEvent = pool[(int)(GD.Randi() % (uint)pool.Count)];
+		var unseen = pool.FindAll(e => !_seenEventIds.Contains(e.Id));
+		if (unseen.Count == 0)
+		{
+			_seenEventIds.Clear();
+			unseen = pool;
+		}
+		if (unseen.Count == 0) return;
+		_currentEvent = unseen[(int)(GD.Randi() % (uint)unseen.Count)];
+		_seenEventIds.Add(_currentEvent.Id);
 		_card.LoadEvent(_currentEvent);
 		_cardTextLabel.Text = _currentEvent.Text;
 
@@ -408,7 +416,7 @@ public partial class GameManager : Control
 	private void OnRestart()
 	{
 		_state.Reset();
-		Shuffle(_events);
+		_seenEventIds.Clear();
 		_gameOverScreen.Visible = false;
 
 		foreach (var key in GameState.Keys)
