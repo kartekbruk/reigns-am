@@ -399,7 +399,7 @@
   <event id="story_points" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
 	<title>Story points</title>
 	<text>Story pointy nie zależą od czasu</text>
-	<background>res://sprites/piotras.png</background>
+	<background>res://sprites/scrum-master.png</background>
 	<left text="Nie zależą">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="-10"/>
@@ -506,7 +506,7 @@
 
   <event id="printer" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Drukarka</title>
-	<text>Drukarka nie działą</text>
+	<text>Drukarka nie działa</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Trudno...">
 	  <effect attribute="wellbeing" value="-5"/>
@@ -571,6 +571,96 @@
 	<right text="Mam dzisiaj swoje...">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="dirty_clothes" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
+	<title>Upaćkanie</title>
+	<text>No nieee, znowu upaćkałem się jedzeniem. Motyla noga!</text>
+	<background>res://sprites/jacek.png</background>
+	<left text="Nic się nie stało">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Ty gałganie">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="talk_about_religion" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
+	<title>Rozmowa o Bogu</title>
+	<text>Czy chcesz porozmawiać o Bogu?</text>
+	<background>res://sprites/jacek.png</background>
+	<left text="Nie, dziękuję">
+	  <effect attribute="wellbeing" value="2"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Chętnie">
+	  <effect attribute="wellbeing" value="-2"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="naruto" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
+	<title>Arc w Naruto</title>
+	<text>Który arc w Naruto jest według ciebie najlepszy?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Pain">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Wojna z Madarą">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="-5"/>
+	</right>
+  </event>
+
+  <event id="pokemon_go" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
+	<title>Pokemon GO</title>
+	<text>Pożyczysz mi telefon? Potrzebuje jeszcze ośmiu na raid w Pokemonach</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Ogarnij się typie">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Pożyczę">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="commander" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
+	<title>Commander</title>
+	<text>Przyniosłem dzisiaj Commanderka</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Ja nie gram">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Dobra gramy">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
