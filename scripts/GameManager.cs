@@ -10,10 +10,12 @@ public partial class GameManager : Control
 	private readonly HashSet<string> _seenEventIds = new();
 
 	private CardController _card = null!;
-	private readonly Dictionary<string, Label> _statIconLabels = new();
-	private readonly Dictionary<string, Color> _statIconColors = new();
-	private readonly Dictionary<string, Label> _attrNameLabels = new();
-	private readonly Dictionary<string, Label> _statDots = new();
+	private readonly Dictionary<string, Control> _statFillMasks  = new();
+	private readonly Dictionary<string, Label>   _statFillLabels = new();
+	private readonly Dictionary<string, Label>   _attrNameLabels = new();
+	private readonly Dictionary<string, Label>   _statDots       = new();
+
+	private const float IconWrapperH = 36f;
 
 	private Font _roboto = null!;
 
@@ -124,11 +126,43 @@ public partial class GameManager : Control
 			col.AddThemeConstantOverride("separation", 5);
 			col.MouseFilter = MouseFilterEnum.Ignore;
 
-			var iconLabel = StyledLabel(); iconLabel.Text = icon;
-			iconLabel.HorizontalAlignment = HorizontalAlignment.Center;
-			iconLabel.AddThemeFontSizeOverride("font_size", 28);
-			iconLabel.AddThemeColorOverride("font_color", color);
-			iconLabel.MouseFilter = MouseFilterEnum.Ignore;
+			float frac = Mathf.Clamp(_state.Get(key) / 100f, 0f, 1f);
+
+			// Icon wrapper — fixed height, clips children for fill effect
+			var iconWrapper = new Control();
+			iconWrapper.CustomMinimumSize = new Vector2(0f, IconWrapperH);
+			iconWrapper.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+			iconWrapper.MouseFilter = MouseFilterEnum.Ignore;
+
+			// Background: dim grey icon (the "empty" portion)
+			var bgIcon = StyledLabel(); bgIcon.Text = icon;
+			bgIcon.SetAnchorsPreset(LayoutPreset.FullRect);
+			bgIcon.HorizontalAlignment = HorizontalAlignment.Center;
+			bgIcon.VerticalAlignment   = VerticalAlignment.Center;
+			bgIcon.AddThemeFontSizeOverride("font_size", 28);
+			bgIcon.AddThemeColorOverride("font_color", new Color(0.22f, 0.22f, 0.22f));
+			bgIcon.MouseFilter = MouseFilterEnum.Ignore;
+			iconWrapper.AddChild(bgIcon);
+
+			// Clip mask anchored to the bottom (fill fraction)
+			var fillMask = new Control();
+			fillMask.ClipContents = true;
+			fillMask.AnchorLeft   = 0f;  fillMask.AnchorRight  = 1f;
+			fillMask.AnchorTop    = 1f - frac;  fillMask.AnchorBottom = 1f;
+			fillMask.MouseFilter  = MouseFilterEnum.Ignore;
+			iconWrapper.AddChild(fillMask);
+
+			// Colored icon inside mask — offset upward so the visible slice aligns with the bg
+			var fillLabel = StyledLabel(); fillLabel.Text = icon;
+			fillLabel.AnchorLeft   = 0f;  fillLabel.AnchorRight  = 1f;
+			fillLabel.AnchorTop    = 0f;  fillLabel.OffsetTop    = -(1f - frac) * IconWrapperH;
+			fillLabel.AnchorBottom = 1f;  fillLabel.OffsetBottom = 0f;
+			fillLabel.HorizontalAlignment = HorizontalAlignment.Center;
+			fillLabel.VerticalAlignment   = VerticalAlignment.Center;
+			fillLabel.AddThemeFontSizeOverride("font_size", 28);
+			fillLabel.AddThemeColorOverride("font_color", color);
+			fillLabel.MouseFilter = MouseFilterEnum.Ignore;
+			fillMask.AddChild(fillLabel);
 
 			var nameLabel = StyledLabel(); nameLabel.Text = displayLabel;
 			nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
@@ -144,14 +178,14 @@ public partial class GameManager : Control
 			dot.MouseFilter = MouseFilterEnum.Ignore;
 
 			col.AddChild(dot);
-			col.AddChild(iconLabel);
+			col.AddChild(iconWrapper);
 			col.AddChild(nameLabel);
 			row.AddChild(col);
 
-			_statIconLabels[key] = iconLabel;
-			_statIconColors[key] = color;
+			_statFillMasks[key]  = fillMask;
+			_statFillLabels[key] = fillLabel;
 			_attrNameLabels[key] = nameLabel;
-			_statDots[key]        = dot;
+			_statDots[key]       = dot;
 		}
 	}
 
@@ -402,9 +436,15 @@ public partial class GameManager : Control
 		}
 	}
 
-	private void OnAttributeChanged(string key, int value)
+	private void OnAttributeChanged(string key, int value) => UpdateIconFill(key, value);
+
+	private void UpdateIconFill(string key, int value)
 	{
-		// Stat values tracked in GameState; no bar animation needed
+		if (!_statFillMasks.TryGetValue(key, out var mask))   return;
+		if (!_statFillLabels.TryGetValue(key, out var label)) return;
+		float frac = Mathf.Clamp(value / 100f, 0f, 1f);
+		mask.AnchorTop   = 1f - frac;
+		label.OffsetTop  = -(1f - frac) * IconWrapperH;
 	}
 
 	private void OnGameOver(string message, bool isWin)
@@ -420,7 +460,10 @@ public partial class GameManager : Control
 		_gameOverScreen.Visible = false;
 
 		foreach (var key in GameState.Keys)
-			SetAttrColor(key, ColGrey); // restores original icon colors
+		{
+			SetAttrColor(key, ColGrey);
+			UpdateIconFill(key, _state.Get(key));
+		}
 
 		UpdateSprintDisplay();
 		ShowNextEvent();
