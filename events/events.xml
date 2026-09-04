@@ -5,6 +5,8 @@
 	title       – short card heading
 	text        – event description shown on the card
 	background  – res:// path to a background image (optional)
+	char_name   – character name shown at the bottom
+	char_role   – character position/role shown at the bottom
 	positions   – space-separated list: intern junior mid senior
 				  omit attribute (or leave empty) to show for all levels
 	left/@text  – label for the left-swipe choice
@@ -16,7 +18,7 @@
 
   <!-- ── Intern ───────────────────────────────────────────────────────── -->
 
-  <event id="nigerian_prince" positions="intern junior mid senior">
+  <event id="nigerian_prince" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Nigeryjski Książe</title>
 	<text>Nigeryjski książe oferuje ci milion pesos.</text>
 	<background>res://sprites/manager.png</background>
@@ -34,10 +36,10 @@
 	</right>
   </event>
 
-  <event id="dewarningization" positions="intern junior mid">
+  <event id="dewarningization" positions="intern junior mid" char_name="Bartek" char_role="Software Engineer">
 	<title>Dewarningizacja</title>
 	<text>DealCalculator ma 2137 warningów</text>
-	<background>res://sprites/jacek.png</background>
+	<background>res://sprites/bartek.png</background>
 	<left text="Czyścimy to">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="-10"/>
@@ -52,7 +54,7 @@
 	</right>
   </event>
 
-  <event id="integration_event" positions="intern junior mid senior">
+  <event id="integration_event" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Wyjazd integracyjny</title>
 	<text>Uwaga! Ważny komunikat! Wyjazd integracyjny do ROMY!</text>
 	<background>res://sprites/manager.png</background>
@@ -70,10 +72,10 @@
 	</right>
   </event>
 
-  <event id="retro" positions="intern junior mid senior">
+  <event id="retro" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
 	<title>Retro</title>
 	<text>[Urgent][Mandatory] Retro</text>
-	<background>res://sprites/manager.png</background>
+	<background>res://sprites/scrum-master.png</background>
 	<left text="Join zoom meeting">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
@@ -88,7 +90,7 @@
 	</right>
   </event>
 
-  <event id="game_jam" positions="intern junior mid senior">
+  <event id="game_jam" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Game Jam</title>
 	<text>automotiveMasterming Game Jam! Build. Play. Innovate. Powered by AI.</text>
 	<background>res://sprites/manager.png</background>
@@ -106,7 +108,7 @@
 	</right>
   </event>
 
-  <event id="hackathon" positions="intern junior mid senior">
+  <event id="hackathon" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Hackathon</title>
 	<text>We oficially begin our next hackathon!</text>
 	<background>res://sprites/manager.png</background>
@@ -124,7 +126,7 @@
 	</right>
   </event>
 
-  <event id="custom_fees" positions="intern junior mid senior">
+  <event id="custom_fees" positions="intern junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Custom fees</title>
 	<text>Trzeba dodać customowe feesy dla Forda</text>
 	<background>res://sprites/piotras.png</background>
@@ -142,7 +144,7 @@
 	</right>
   </event>
 
-  <event id="carfax_office" positions="intern junior mid senior">
+  <event id="carfax_office" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Carfaxy zajęły nam pokój w biurze</title>
 	<text>Carfaxy zajęły nam pokój w biurze</text>
 	<background>res://sprites/manager.png</background>
@@ -160,7 +162,7 @@
 	</right>
   </event>
 
-  <event id="town_hall" positions="intern junior mid senior">
+  <event id="town_hall" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Town hall</title>
 	<text>Dzisiaj o 16:30 town hall</text>
 	<background>res://sprites/manager.png</background>
@@ -178,7 +180,7 @@
 	</right>
   </event>
 
-  <event id="local_dev_rotation" positions="intern junior mid senior">
+  <event id="local_dev_rotation" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Lokalny dev rotation</title>
 	<text>Pojawiła się okazja na popracowanie w innym zespole przez 2 sprinty</text>
 	<background>res://sprites/manager.png</background>
@@ -196,10 +198,10 @@
 	</right>
   </event>
 
-  <event id="unclear_pbi" positions="intern junior mid senior">
+  <event id="unclear_pbi" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
 	<title>Niejasny PBI</title>
 	<text>PBI 2137: Check and add and test and deploy</text>
-	<background>res://sprites/piotras.png</background>
+	<background>res://sprites/scrum-master.png</background>
 	<left text="Pytam PO co trzeba zrobić">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
@@ -214,7 +216,7 @@
 	</right>
   </event>
 
-  <event id="no_internet_in_office" positions="intern junior mid senior">
+  <event id="no_internet_in_office" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
 	<title>Nie ma internetu w biurze</title>
 	<text>W biurze nie ma internetu</text>
 	<background>res://sprites/jacek.png</background>
@@ -232,10 +234,10 @@
 	</right>
   </event>
 
-  <event id="coffee_machine_malfunction" positions="intern junior mid senior">
+  <event id="coffee_machine_malfunction" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
 	<title>Awaria ekspresu do kawy</title>
 	<text>Ktoś wyrwał rurkę z ekspresu podłączając do niego pendrive</text>
-	<background>res://sprites/manager.png</background>
+	<background>res://sprites/bartek.png</background>
 	<left text="Piję wodę jak zwierzę">
 	  <effect attribute="wellbeing" value="3"/>
 	  <effect attribute="morale" value="-5"/>
@@ -250,10 +252,10 @@
 	</right>
   </event>
 
-  <event id="no_clean_mugs" positions="intern junior mid senior">
+  <event id="no_clean_mugs" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
 	<title>W szafce nie ma czystych kubków</title>
 	<text>W szafce nie ma czystych kubków</text>
-	<background>res://sprites/manager.png</background>
+	<background>res://sprites/bartek.png</background>
 	<left text="Zaparzam kawę w ustach">
 	  <effect attribute="wellbeing" value="-90"/>
 	  <effect attribute="morale" value="-50"/>
@@ -268,7 +270,7 @@
 	</right>
   </event>
 
-  <event id="order_food" positions="intern junior mid senior">
+  <event id="order_food" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
 	<title>Ktoś musi zamówić jedzenie</title>
 	<text>Ktoś musi zamówić jedzenie</text>
 	<background>res://sprites/jacek.png</background>
@@ -286,10 +288,10 @@
 	</right>
   </event>
 
-  <event id="jacek_ping_pong" positions="intern junior mid senior">
+  <event id="jacek_ping_pong" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
 	<title>Gra w ping ponga</title>
 	<text>Co powiesz na meczyk w ping ponga?</text>
-	<background>res://sprites/jacek.png</background>
+	<background>res://sprites/bartek.png</background>
 	<left text="Mam dużo roboty">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
@@ -304,7 +306,7 @@
 	</right>
   </event>
 
-  <event id="jacek_pr" positions="intern junior mid senior">
+  <event id="jacek_pr" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
 	<title>12 komentarzy Jacka</title>
 	<text>Jacek napisał ci 12 komentarzy pod PR</text>
 	<background>res://sprites/jacek.png</background>
@@ -322,10 +324,10 @@
 	</right>
   </event>
 
-  <event id="big_pull_request" positions="intern junior mid senior">
+  <event id="big_pull_request" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
 	<title>Duży PR</title>
-	<text>Kolega wysłał PR, w którym zmienił 120 plików</text>
-	<background>res://sprites/manager.png</background>
+	<text>Sprawdzisz mi PR? (zmieniłem 120 plików)</text>
+	<background>res://sprites/bartek.png</background>
 	<left text="Dokładnie sprawdzam każdy plik">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
@@ -340,7 +342,7 @@
 	</right>
   </event>
 
-  <event id="hitster" positions="intern junior mid senior">
+  <event id="hitster" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Hitster</title>
 	<text>Grasz w Hitstera?</text>
 	<background>res://sprites/manager.png</background>
@@ -358,7 +360,7 @@
 	</right>
   </event>
 
-  <event id="hitster_disco_polo" positions="intern junior mid senior">
+  <event id="hitster_disco_polo" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Hitster disco polo</title>
 	<text>Grasz w Hitstera Disco Polo?</text>
 	<background>res://sprites/manager.png</background>
@@ -378,7 +380,7 @@
 
   <!-- ── Junior ───────────────────────────────────────────────────────── -->
 
-  <event id="marketing_change_for_sean" positions="junior mid senior">
+  <event id="marketing_change_for_sean" positions="junior mid senior" char_name="Sean" char_role="DataOps">
 	<title>Zmiana dla Seana przed marketingiem</title>
 	<text>Hey, guys, can you change OvErMiLeAgEdEaLtYpEpRiCe for tomorrow marketing?</text>
 	<background>res://sprites/sean.png</background>
@@ -396,7 +398,7 @@
 	</right>
   </event>
 
-  <event id="matts_idea" positions="junior mid senior">
+  <event id="matts_idea" positions="junior mid senior" char_name="Matt" char_role="Product Manager">
 	<title>Przewrotny pomysł Matta</title>
 	<text>Hey, guys, I know that you started working on it a week ago, but can we try different approach?</text>
 	<background>res://sprites/matt.png</background>
@@ -414,7 +416,7 @@
 	</right>
   </event>
 
-  <event id="frontend_change" positions="junior mid senior">
+  <event id="frontend_change" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Zmiana na froncie</title>
 	<text>Trzeba dodać nowe pole na dealsheecie, mógłbyś się tym zająć?</text>
 	<background>res://sprites/piotras.png</background>
@@ -431,8 +433,8 @@
 	  <effect attribute="prosperity" value="2"/>
 	</right>
   </event>
-  
-  <event id="add_column" positions="junior mid senior">
+
+  <event id="add_column" positions="junior mid senior" char_name="Boris" char_role="Architect">
 	<title>Dodanie kolumny</title>
 	<text>Will you add this column to database?</text>
 	<background>res://sprites/boris.png</background>
@@ -450,7 +452,7 @@
 	</right>
   </event>
 
-  <event id="quality_gate_tests" positions="junior mid senior">
+  <event id="quality_gate_tests" positions="junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Pokrycie testami</title>
 	<text>Quality gate status: ERROR - code covered with tests in 60%!</text>
 	<background>res://sprites/manager.png</background>
@@ -468,7 +470,7 @@
 	</right>
   </event>
 
-  <event id="fix_database" positions="junior mid senior">
+  <event id="fix_database" positions="junior mid senior" char_name="Boris" char_role="Architect">
 	<title>Naprawa danych</title>
 	<text>Can you fix the production database?</text>
 	<background>res://sprites/boris.png</background>
@@ -486,7 +488,7 @@
 	</right>
   </event>
 
-  <event id="finish_someones_work" positions="junior mid senior">
+  <event id="finish_someones_work" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Dokończ czyjąś pracę</title>
 	<text>On jest na urlopie, a jego zmiany muszą iść w tym tygodnia na proda</text>
 	<background>res://sprites/piotras.png</background>
@@ -504,7 +506,7 @@
 	</right>
   </event>
 
-  <event id="strange_error" positions="junior mid senior">
+  <event id="strange_error" positions="junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Dziwny błąd na pipeline</title>
 	<text>Pojawił się dziwny błąd na build pipeline</text>
 	<background>res://sprites/manager.png</background>
@@ -522,7 +524,7 @@
 	</right>
   </event>
 
-  <event id="showroom_urgent" positions="junior mid senior">
+  <event id="showroom_urgent" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Pilne sprawdzenie Showrooma</title>
 	<text>Mógłby ktoś sprawdzić dlaczego dla FU6969 nie działa Showroom? Pilne!</text>
 	<background>res://sprites/piotras.png</background>
@@ -540,7 +542,7 @@
 	</right>
   </event>
 
-  <event id="sean_new_tool" positions="junior mid senior">
+  <event id="sean_new_tool" positions="junior mid senior" char_name="Matt" char_role="Product Manager">
 	<title>Nowy tool dla Seana</title>
 	<text>Hey guys, every week, for 2 days straight, Sean is manually painting cars images. Can you create him a tool, which he won't use anyway?</text>
     <background>res://sprites/matt.png</background>
@@ -560,7 +562,7 @@
 
   <!-- ── Mid & Senior ──────────────────────────────────────────────────────── -->
 
-  <event id="dealcalculator_not_working" positions="mid senior">
+  <event id="dealcalculator_not_working" positions="mid senior" char_name="Kryz" char_role="Manager">
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/manager.png</background>
@@ -578,7 +580,7 @@
     </right>
   </event>
 
-  <event id="dealcalculator_not_working" positions="mid senior">
+  <event id="dealcalculator_not_working_2" positions="mid senior" char_name="Kryz" char_role="Manager">
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/manager.png</background>
@@ -596,7 +598,7 @@
     </right>
   </event>
 
-  <event id="recrutation_palindrome" positions="mid senior">
+  <event id="recrutation_palindrome" positions="mid senior" char_name="Kryz" char_role="Manager">
 	<title>Rekrutacja osoby, która nie umie palindroma</title>
 	<text>Na rekrutacji jest osoba, która nie umie palindroma</text>
     <background>res://sprites/manager.png</background>
@@ -614,7 +616,7 @@
     </right>
   </event>
 
-  <event id="help_intern" positions="mid senior">
+  <event id="help_intern" positions="mid senior" char_name="Kryz" char_role="Manager">
 	<title>Intern potrzebuje pomocy</title>
 	<text>Nowy intern nie wie o co chodzi w jego PBI</text>
     <background>res://sprites/manager.png</background>
