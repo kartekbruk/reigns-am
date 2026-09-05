@@ -9,6 +9,7 @@ public partial class GameState : Node
 	[Signal] public delegate void AttributeChangedEventHandler(string key, int value);
 	[Signal] public delegate void GameOverEventHandler(string message, bool isWin);
 	[Signal] public delegate void SavedByChanceEventHandler(string message);
+	[Signal] public delegate void GoodMomentEventHandler(int total);
 
 	public static readonly string[] Keys = { "wellbeing", "morale", "prosperity", "codebase" };
 
@@ -30,9 +31,12 @@ public partial class GameState : Node
 
 	private bool _gameOver = false;
 	private int _chancesUsed = 0;
+	private int _goodMoments = 0;
 
-	// One chance granted per completed year
-	public int AvailableChances => _totalMonths / 12 - _chancesUsed;
+	public int GoodMoments => _goodMoments;
+
+	// One chance granted per completed year, never stacks above 1
+	public int AvailableChances => Mathf.Min(1, _totalMonths / 12 - _chancesUsed);
 
 	private static readonly DateTime StartDate = new(2025, 1, 1);
 	private int _totalMonths = 0;
@@ -83,16 +87,30 @@ public partial class GameState : Node
 		_gameOver = false;
 		_totalMonths = 0;
 		_chancesUsed = 0;
+		_goodMoments = 0;
 		foreach (var key in Keys)
 			_values[key] = 50;
 	}
 
 	private void CheckEndConditions()
 	{
+		// Good moments: every attribute that hit 100 drops to 75 and scores a point
 		foreach (var key in Keys)
 		{
-			int v = _values[key];
-			if (v <= 0)
+			if (_values[key] >= 100)
+			{
+				_goodMoments++;
+				_values[key] = 75;
+				EmitSignal(SignalName.AttributeChanged, key, 75);
+				EmitSignal(SignalName.GoodMoment, _goodMoments);
+			}
+		}
+
+		// Loss conditions: first attribute at 0 triggers a chance or game over
+		if (_gameOver) return;
+		foreach (var key in Keys)
+		{
+			if (_values[key] <= 0)
 			{
 				if (AvailableChances > 0)
 				{
@@ -107,12 +125,6 @@ public partial class GameState : Node
 				}
 				_gameOver = true;
 				EmitSignal(SignalName.GameOver, LossMessage(key), false);
-				return;
-			}
-			if (v >= 100)
-			{
-				_gameOver = true;
-				EmitSignal(SignalName.GameOver, MaxMessage(key), false);
 				return;
 			}
 		}
@@ -136,12 +148,4 @@ public partial class GameState : Node
 		_            => "It all fell apart."
 	};
 
-	private static string MaxMessage(string key) => key switch
-	{
-		"wellbeing"  => "You're so well-rested you stopped caring about work.",
-		"morale"     => "The team is so hyped they're ignoring all process. Chaos.",
-		"prosperity" => "Uncontrolled growth caught up with you. Total chaos.",
-		"codebase"   => "Perfect code, zero features. Customers moved on.",
-		_            => "Too much of a good thing."
-	};
 }

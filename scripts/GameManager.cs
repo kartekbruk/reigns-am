@@ -28,6 +28,7 @@ public partial class GameManager : Control
 	private Label _gameOverLabel = null!;
 	private Label _sprintLabel = null!;
 	private Label _chancesLabel = null!;
+	private Label _goodMomentsLabel = null!;
 	private Label _characterNameLabel = null!;
 	private Label _characterRoleLabel = null!;
 
@@ -46,6 +47,7 @@ public partial class GameManager : Control
 		_state.AttributeChanged += OnAttributeChanged;
 		_state.GameOver         += OnGameOver;
 		_state.SavedByChance    += OnSavedByChance;
+		_state.GoodMoment       += OnGoodMoment;
 
 		_roboto = GD.Load<FontFile>("res://fonts/RobotoMono-Regular.ttf");
 
@@ -58,6 +60,7 @@ public partial class GameManager : Control
 		BuildBackground();
 		BuildSprintDisplay();
 		BuildChancesDisplay();
+		BuildGoodMomentsDisplay();
 		BuildStatIcons();
 		BuildCard();
 		BuildCharacterInfo();
@@ -97,6 +100,23 @@ public partial class GameManager : Control
 		AddChild(_sprintLabel);
 
 		UpdateSprintDisplay();
+	}
+
+	private void BuildGoodMomentsDisplay()
+	{
+		var vp = GetViewportRect().Size;
+
+		_goodMomentsLabel = StyledLabel();
+		_goodMomentsLabel.Position = new Vector2(10f, 14f);
+		_goodMomentsLabel.Size = new Vector2(120f, 32f);
+		_goodMomentsLabel.HorizontalAlignment = HorizontalAlignment.Left;
+		_goodMomentsLabel.VerticalAlignment = VerticalAlignment.Center;
+		_goodMomentsLabel.AddThemeFontSizeOverride("font_size", 13);
+		_goodMomentsLabel.AddThemeColorOverride("font_color", new Color(0.30f, 0.30f, 0.30f));
+		_goodMomentsLabel.MouseFilter = MouseFilterEnum.Ignore;
+		AddChild(_goodMomentsLabel);
+
+		UpdateGoodMomentsDisplay();
 	}
 
 	private void BuildChancesDisplay()
@@ -474,6 +494,32 @@ public partial class GameManager : Control
 		_gameOverScreen.Visible = true;
 	}
 
+	private void OnGoodMoment(int total)
+	{
+		UpdateGoodMomentsDisplay();
+
+		var panel = new Panel();
+		panel.SetAnchorsPreset(LayoutPreset.Center);
+		panel.GrowHorizontal = GrowDirection.Both;
+		panel.GrowVertical   = GrowDirection.Both;
+		panel.CustomMinimumSize = new Vector2(380f, 70f);
+		panel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.08f, 0.16f, 0.10f), 12));
+
+		var lbl = StyledLabel(); lbl.Text = $"★  Good Moment!  ×{total}";
+		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
+		lbl.HorizontalAlignment = HorizontalAlignment.Center;
+		lbl.VerticalAlignment   = VerticalAlignment.Center;
+		lbl.AddThemeFontSizeOverride("font_size", 18);
+		lbl.AddThemeColorOverride("font_color", new Color(0.40f, 0.95f, 0.60f));
+		panel.AddChild(lbl);
+		AddChild(panel);
+
+		var tw = CreateTween();
+		tw.TweenInterval(2.2f);
+		tw.TweenProperty(panel, "modulate:a", 0f, 0.6f);
+		tw.TweenCallback(Callable.From(() => panel.QueueFree()));
+	}
+
 	private void OnSavedByChance(string message)
 	{
 		UpdateChancesDisplay();
@@ -514,6 +560,7 @@ public partial class GameManager : Control
 
 		UpdateSprintDisplay();
 		UpdateChancesDisplay();
+		UpdateGoodMomentsDisplay();
 		ShowNextEvent();
 	}
 
@@ -522,6 +569,15 @@ public partial class GameManager : Control
 	private void UpdateSprintDisplay()
 	{
 		_sprintLabel.Text = $"Sprint {_state.CurrentSprint}  ·  {_state.CurrentDate:MMM yyyy}";
+	}
+
+	private void UpdateGoodMomentsDisplay()
+	{
+		int n = _state.GoodMoments;
+		_goodMomentsLabel.Text = $"★ {n}";
+		_goodMomentsLabel.AddThemeColorOverride("font_color", n > 0
+			? new Color(0.40f, 0.85f, 0.55f)
+			: new Color(0.30f, 0.30f, 0.30f));
 	}
 
 	private void UpdateChancesDisplay()
