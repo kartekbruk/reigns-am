@@ -27,6 +27,7 @@ public partial class GameManager : Control
 	private Control _gameOverScreen = null!;
 	private Label _gameOverLabel = null!;
 	private Label _sprintLabel = null!;
+	private Label _chancesLabel = null!;
 	private Label _characterNameLabel = null!;
 	private Label _characterRoleLabel = null!;
 
@@ -43,7 +44,8 @@ public partial class GameManager : Control
 	{
 		_state = GetNode<GameState>("/root/GameState");
 		_state.AttributeChanged += OnAttributeChanged;
-		_state.GameOver += OnGameOver;
+		_state.GameOver         += OnGameOver;
+		_state.SavedByChance    += OnSavedByChance;
 
 		_roboto = GD.Load<FontFile>("res://fonts/RobotoMono-Regular.ttf");
 
@@ -55,6 +57,7 @@ public partial class GameManager : Control
 
 		BuildBackground();
 		BuildSprintDisplay();
+		BuildChancesDisplay();
 		BuildStatIcons();
 		BuildCard();
 		BuildCharacterInfo();
@@ -94,6 +97,23 @@ public partial class GameManager : Control
 		AddChild(_sprintLabel);
 
 		UpdateSprintDisplay();
+	}
+
+	private void BuildChancesDisplay()
+	{
+		var vp = GetViewportRect().Size;
+
+		_chancesLabel = StyledLabel();
+		_chancesLabel.Position = new Vector2(vp.X - 130f, 14f);
+		_chancesLabel.Size = new Vector2(120f, 32f);
+		_chancesLabel.HorizontalAlignment = HorizontalAlignment.Right;
+		_chancesLabel.VerticalAlignment = VerticalAlignment.Center;
+		_chancesLabel.AddThemeFontSizeOverride("font_size", 13);
+		_chancesLabel.AddThemeColorOverride("font_color", new Color(0.95f, 0.80f, 0.40f));
+		_chancesLabel.MouseFilter = MouseFilterEnum.Ignore;
+		AddChild(_chancesLabel);
+
+		UpdateChancesDisplay();
 	}
 
 	private void BuildStatIcons()
@@ -371,6 +391,7 @@ public partial class GameManager : Control
 		var newLevel = _state.CurrentLevel;
 
 		UpdateSprintDisplay();
+		UpdateChancesDisplay();
 
 		if (newLevel != prevLevel)
 			ShowPromotion();
@@ -453,6 +474,32 @@ public partial class GameManager : Control
 		_gameOverScreen.Visible = true;
 	}
 
+	private void OnSavedByChance(string message)
+	{
+		UpdateChancesDisplay();
+		var panel = new Panel();
+		panel.SetAnchorsPreset(LayoutPreset.Center);
+		panel.GrowHorizontal = GrowDirection.Both;
+		panel.GrowVertical   = GrowDirection.Both;
+		panel.CustomMinimumSize = new Vector2(460f, 80f);
+		panel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.10f, 0.10f, 0.16f), 12));
+
+		var lbl = StyledLabel(); lbl.Text = message;
+		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
+		lbl.HorizontalAlignment = HorizontalAlignment.Center;
+		lbl.VerticalAlignment   = VerticalAlignment.Center;
+		lbl.AutowrapMode = TextServer.AutowrapMode.Word;
+		lbl.AddThemeFontSizeOverride("font_size", 18);
+		lbl.AddThemeColorOverride("font_color", new Color(0.95f, 0.80f, 0.40f));
+		panel.AddChild(lbl);
+		AddChild(panel);
+
+		var tw = CreateTween();
+		tw.TweenInterval(2.8f);
+		tw.TweenProperty(panel, "modulate:a", 0f, 0.6f);
+		tw.TweenCallback(Callable.From(() => panel.QueueFree()));
+	}
+
 	private void OnRestart()
 	{
 		_state.Reset();
@@ -466,6 +513,7 @@ public partial class GameManager : Control
 		}
 
 		UpdateSprintDisplay();
+		UpdateChancesDisplay();
 		ShowNextEvent();
 	}
 
@@ -474,6 +522,15 @@ public partial class GameManager : Control
 	private void UpdateSprintDisplay()
 	{
 		_sprintLabel.Text = $"Sprint {_state.CurrentSprint}  ·  {_state.CurrentDate:MMM yyyy}";
+	}
+
+	private void UpdateChancesDisplay()
+	{
+		int n = _state.AvailableChances;
+		_chancesLabel.Text = $"✦ {n}";
+		_chancesLabel.AddThemeColorOverride("font_color", n > 0
+			? new Color(0.95f, 0.80f, 0.40f)
+			: new Color(0.30f, 0.30f, 0.30f));
 	}
 
 	private Label StyledLabel() { var l = new Label(); l.AddThemeFontOverride("font", _roboto); return l; }

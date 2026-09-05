@@ -8,6 +8,7 @@ public partial class GameState : Node
 {
 	[Signal] public delegate void AttributeChangedEventHandler(string key, int value);
 	[Signal] public delegate void GameOverEventHandler(string message, bool isWin);
+	[Signal] public delegate void SavedByChanceEventHandler(string message);
 
 	public static readonly string[] Keys = { "wellbeing", "morale", "prosperity", "codebase" };
 
@@ -28,6 +29,10 @@ public partial class GameState : Node
 	};
 
 	private bool _gameOver = false;
+	private int _chancesUsed = 0;
+
+	// One chance granted per completed year
+	public int AvailableChances => _totalMonths / 12 - _chancesUsed;
 
 	private static readonly DateTime StartDate = new(2025, 1, 1);
 	private int _totalMonths = 0;
@@ -77,6 +82,7 @@ public partial class GameState : Node
 	{
 		_gameOver = false;
 		_totalMonths = 0;
+		_chancesUsed = 0;
 		foreach (var key in Keys)
 			_values[key] = 50;
 	}
@@ -88,6 +94,17 @@ public partial class GameState : Node
 			int v = _values[key];
 			if (v <= 0)
 			{
+				if (AvailableChances > 0)
+				{
+					_chancesUsed++;
+					foreach (var k in Keys)
+					{
+						_values[k] = 25;
+						EmitSignal(SignalName.AttributeChanged, k, 25);
+					}
+					EmitSignal(SignalName.SavedByChance, ChanceMessage(key));
+					return;
+				}
 				_gameOver = true;
 				EmitSignal(SignalName.GameOver, LossMessage(key), false);
 				return;
@@ -100,6 +117,15 @@ public partial class GameState : Node
 			}
 		}
 	}
+
+	private static string ChanceMessage(string key) => key switch
+	{
+		"wellbeing"  => "You took a recharge.",
+		"morale"     => "Your manager organised a CSGO LAN party.",
+		"prosperity" => "Your company demerged — fresh start.",
+		"codebase"   => "You refactored the codebase.",
+		_            => "A second chance."
+	};
 
 	private static string LossMessage(string key) => key switch
 	{
