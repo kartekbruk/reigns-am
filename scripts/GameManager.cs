@@ -10,6 +10,7 @@ public partial class GameManager : Control
 	private EventData? _currentEvent;
 	private readonly HashSet<string> _seenEventIds = new();
 	private readonly Queue<string> _pendingConsequences = new();
+	private string? _immediateConsequence = null;
 
 	private CardController _card = null!;
 	private readonly Dictionary<string, Control> _statFillMasks  = new();
@@ -419,6 +420,19 @@ public partial class GameManager : Control
 
 	private void ShowNextEvent()
 	{
+		// Instant consequence — guaranteed to fire as the very next card
+		if (_immediateConsequence != null)
+		{
+			string cid = _immediateConsequence;
+			_immediateConsequence = null;
+			var conseq = _consequences.Find(e => e.Id == cid);
+			if (conseq != null)
+			{
+				ShowEvent(conseq);
+				return;
+			}
+		}
+
 		// With ~35% probability per turn, fire a pending consequence event instead
 		if (_pendingConsequences.Count > 0 && GD.Randf() < 0.35f)
 		{
@@ -462,10 +476,14 @@ public partial class GameManager : Control
 		var effects = isRight ? _currentEvent.RightEffects : _currentEvent.LeftEffects;
 		_state.Apply(effects);
 
-		string cid = isRight ? _currentEvent.RightConsequenceId : _currentEvent.LeftConsequenceId;
+		string cid     = isRight ? _currentEvent.RightConsequenceId    : _currentEvent.LeftConsequenceId;
+		bool   instant = isRight ? _currentEvent.RightConsequenceInstant : _currentEvent.LeftConsequenceInstant;
 		if (!string.IsNullOrEmpty(cid))
 		{
-			_pendingConsequences.Enqueue(cid);
+			if (instant)
+				_immediateConsequence = cid;
+			else
+				_pendingConsequences.Enqueue(cid);
 			ShowConsequenceWarning();
 		}
 
@@ -638,6 +656,7 @@ public partial class GameManager : Control
 		_state.Reset();
 		_seenEventIds.Clear();
 		_pendingConsequences.Clear();
+		_immediateConsequence = null;
 		_gameOverScreen.Visible = false;
 
 		foreach (var key in GameState.Keys)

@@ -22,7 +22,7 @@
 	<title>Nigeryjski Książe</title>
 	<text>Nigeryjski książe oferuje ci milion pesos.</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Klikam w link" consequence="phishing_training">
+	<left text="Klikam w link" consequence="phishing_training" consequence_instant="true">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="-15"/>
 	  <effect attribute="codebase" value="0"/>
@@ -670,7 +670,7 @@
 	<title>Piątkowy deploy</title>
 	<text>Jest piątek, dzisiaj tego już nie deployuj</text>
 	<background>res://sprites/manager.png</background>
-	<left text="ESSA LECIMY BĘDZIE DOBRZE" consequence="friday_deploy_consequence">
+	<left text="ESSA LECIMY BĘDZIE DOBRZE" consequence="friday_deploy_consequence" consequence_instant="true">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="-5"/>

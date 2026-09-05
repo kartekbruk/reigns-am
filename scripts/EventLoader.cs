@@ -46,16 +46,18 @@ public static class EventLoader
 							currentChoice = "left";
 							if (current != null)
 							{
-								current.LeftChoiceText    = Attr(parser, "text");
-								current.LeftConsequenceId = Attr(parser, "consequence");
+								current.LeftChoiceText       = Attr(parser, "text");
+								current.LeftConsequenceId    = Attr(parser, "consequence");
+								current.LeftConsequenceInstant = Attr(parser, "consequence_instant") == "true";
 							}
 							break;
 						case "right":
 							currentChoice = "right";
 							if (current != null)
 							{
-								current.RightChoiceText    = Attr(parser, "text");
-								current.RightConsequenceId = Attr(parser, "consequence");
+								current.RightChoiceText       = Attr(parser, "text");
+								current.RightConsequenceId    = Attr(parser, "consequence");
+								current.RightConsequenceInstant = Attr(parser, "consequence_instant") == "true";
 							}
 							break;
 						case "effect":
