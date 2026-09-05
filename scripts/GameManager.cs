@@ -27,8 +27,10 @@ public partial class GameManager : Control
 	private static readonly Color ColNegative = new(1.00f, 0.32f, 0.32f);
 
 	private Label _cardTextLabel = null!;
+	private Control _startScreen = null!;
 	private Control _gameOverScreen = null!;
 	private Label _gameOverLabel = null!;
+	private Label _gameOverStatsLabel = null!;
 	private Label _sprintLabel = null!;
 	private Label _chancesLabel = null!;
 	private Label _goodMomentsLabel = null!;
@@ -74,7 +76,7 @@ public partial class GameManager : Control
 		Shuffle(_events);
 		_consequences = EventLoader.Load("res://events/consequences.xml");
 
-		ShowNextEvent();
+		BuildStartScreen();
 	}
 
 	// ── UI Construction ──────────────────────────────────────────────────────
@@ -395,19 +397,100 @@ public partial class GameManager : Control
 		_gameOverLabel.AddThemeFontSizeOverride("font_size", 18);
 		_gameOverLabel.AddThemeColorOverride("font_color", Colors.White);
 
-		var btn = new Button { Text = "Try Again" };
+		_gameOverStatsLabel = StyledLabel();
+		_gameOverStatsLabel.AutowrapMode = TextServer.AutowrapMode.Word;
+		_gameOverStatsLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_gameOverStatsLabel.AddThemeFontSizeOverride("font_size", 14);
+		_gameOverStatsLabel.AddThemeColorOverride("font_color", new Color(0.65f, 0.65f, 0.65f));
+
+		var btn = new Button { Text = "Back to Menu" };
 		btn.CustomMinimumSize = new Vector2(180f, 52f);
 		btn.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
 		btn.Pressed += OnRestart;
 
 		vbox.AddChild(heading);
 		vbox.AddChild(_gameOverLabel);
+		vbox.AddChild(_gameOverStatsLabel);
 		vbox.AddChild(btn);
 		center.AddChild(vbox);
 
 		_gameOverScreen.AddChild(overlay);
 		_gameOverScreen.AddChild(center);
 		AddChild(_gameOverScreen);
+	}
+
+	private void BuildStartScreen()
+	{
+		_startScreen = new Control { Visible = true };
+		_startScreen.SetAnchorsPreset(LayoutPreset.FullRect);
+		_startScreen.MouseFilter = MouseFilterEnum.Stop;
+
+		var overlay = new ColorRect { Color = new Color(0.04f, 0.04f, 0.04f, 0.96f) };
+		overlay.SetAnchorsPreset(LayoutPreset.FullRect);
+
+		var center = new CenterContainer();
+		center.SetAnchorsPreset(LayoutPreset.FullRect);
+
+		var vbox = new VBoxContainer();
+		vbox.CustomMinimumSize = new Vector2(420f, 0f);
+		vbox.AddThemeConstantOverride("separation", 24);
+		vbox.Alignment = BoxContainer.AlignmentMode.Center;
+
+		var title = StyledLabel(); title.Text = "Reigns AM";
+		title.HorizontalAlignment = HorizontalAlignment.Center;
+		title.AddThemeFontSizeOverride("font_size", 52);
+		title.AddThemeColorOverride("font_color", Colors.White);
+
+		var subtitle = StyledLabel(); subtitle.Text = "Survive the corporate ladder";
+		subtitle.HorizontalAlignment = HorizontalAlignment.Center;
+		subtitle.AutowrapMode = TextServer.AutowrapMode.Word;
+		subtitle.AddThemeFontSizeOverride("font_size", 15);
+		subtitle.AddThemeColorOverride("font_color", new Color(0.50f, 0.50f, 0.50f));
+
+		// ── Hints panel ──────────────────────────────────────────────────────
+		var hintsPanel = new PanelContainer();
+		hintsPanel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		hintsPanel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.10f, 0.10f, 0.13f), 10));
+
+		var margin = new MarginContainer();
+		margin.AddThemeConstantOverride("margin_left",   20);
+		margin.AddThemeConstantOverride("margin_right",  20);
+		margin.AddThemeConstantOverride("margin_top",    18);
+		margin.AddThemeConstantOverride("margin_bottom", 18);
+
+		var hintsVbox = new VBoxContainer();
+		hintsVbox.AddThemeConstantOverride("separation", 14);
+		margin.AddChild(hintsVbox);
+		hintsPanel.AddChild(margin);
+
+		hintsVbox.AddChild(HintRow("← Swipe cards left or right to make choices →",
+			new Color(0.75f, 0.60f, 1.00f), 13));
+
+		hintsVbox.AddChild(HintRow("♥  ◉  ↗  </>   Keep all four stats above zero to survive",
+			new Color(0.80f, 0.80f, 0.80f), 13));
+
+		hintsVbox.AddChild(HintRow("★  Good Moments  —  top-left corner  —  earned when any stat hits 100",
+			new Color(0.40f, 0.90f, 0.60f), 12));
+
+		hintsVbox.AddChild(HintRow("✦  Extra Chances  —  top-right corner  —  one chance per year, saves you at 25% when any stat hits zero",
+			new Color(0.95f, 0.80f, 0.40f), 12));
+
+		// ─────────────────────────────────────────────────────────────────────
+
+		var btn = new Button { Text = "New Game" };
+		btn.CustomMinimumSize = new Vector2(200f, 56f);
+		btn.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+		btn.Pressed += OnNewGame;
+
+		vbox.AddChild(title);
+		vbox.AddChild(subtitle);
+		vbox.AddChild(hintsPanel);
+		vbox.AddChild(btn);
+		center.AddChild(vbox);
+
+		_startScreen.AddChild(overlay);
+		_startScreen.AddChild(center);
+		AddChild(_startScreen);
 	}
 
 	// ── Game Logic ───────────────────────────────────────────────────────────
@@ -573,6 +656,19 @@ public partial class GameManager : Control
 	private void OnGameOver(string message, bool isWin)
 	{
 		_gameOverLabel.Text = message;
+
+		int months = _state.CurrentSprint - 1;
+		int years  = months / 12;
+		int rem    = months % 12;
+		string timeStr = years > 0
+			? $"{years} yr {rem} mo"
+			: $"{months} mo";
+
+		_gameOverStatsLabel.Text =
+			$"Position · {_state.LevelName}\n" +
+			$"Time worked · {timeStr}\n" +
+			$"Good Moments · {_state.GoodMoments}";
+
 		_gameOverScreen.Visible = true;
 	}
 
@@ -669,6 +765,12 @@ public partial class GameManager : Control
 		UpdateSprintDisplay();
 		UpdateChancesDisplay();
 		UpdateGoodMomentsDisplay();
+		_startScreen.Visible = true;
+	}
+
+	private void OnNewGame()
+	{
+		_startScreen.Visible = false;
 		ShowNextEvent();
 	}
 
@@ -698,6 +800,17 @@ public partial class GameManager : Control
 	}
 
 	private Label StyledLabel() { var l = new Label(); l.AddThemeFontOverride("font", _roboto); return l; }
+
+	private Label HintRow(string text, Color color, int fontSize)
+	{
+		var lbl = StyledLabel();
+		lbl.Text = text;
+		lbl.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+		lbl.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		lbl.AddThemeFontSizeOverride("font_size", fontSize);
+		lbl.AddThemeColorOverride("font_color", color);
+		return lbl;
+	}
 
 	private Label MakeHintLabel(Vector2 pos, Vector2 size, Color color, HorizontalAlignment align)
 	{
