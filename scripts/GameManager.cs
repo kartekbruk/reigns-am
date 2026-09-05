@@ -6,8 +6,10 @@ public partial class GameManager : Control
 {
 	private GameState _state = null!;
 	private List<EventData> _events = new();
+	private List<EventData> _consequences = new();
 	private EventData? _currentEvent;
 	private readonly HashSet<string> _seenEventIds = new();
+	private readonly Queue<string> _pendingConsequences = new();
 
 	private CardController _card = null!;
 	private readonly Dictionary<string, Control> _statFillMasks  = new();
@@ -69,6 +71,7 @@ public partial class GameManager : Control
 
 		_events = EventLoader.Load("res://events/events.xml");
 		Shuffle(_events);
+		_consequences = EventLoader.Load("res://events/consequences.xml");
 
 		ShowNextEvent();
 	}
@@ -416,6 +419,18 @@ public partial class GameManager : Control
 
 	private void ShowNextEvent()
 	{
+		// With ~35% probability per turn, fire a pending consequence event instead
+		if (_pendingConsequences.Count > 0 && GD.Randf() < 0.35f)
+		{
+			string cid = _pendingConsequences.Dequeue();
+			var conseq = _consequences.Find(e => e.Id == cid);
+			if (conseq != null)
+			{
+				ShowEvent(conseq);
+				return;
+			}
+		}
+
 		var pool = GetEventPool();
 		var unseen = pool.FindAll(e => !_seenEventIds.Contains(e.Id));
 		if (unseen.Count == 0)
@@ -424,13 +439,19 @@ public partial class GameManager : Control
 			unseen = pool;
 		}
 		if (unseen.Count == 0) return;
-		_currentEvent = unseen[(int)(GD.Randi() % (uint)unseen.Count)];
-		_seenEventIds.Add(_currentEvent.Id);
-		_card.LoadEvent(_currentEvent);
-		_cardTextLabel.Text = _currentEvent.Text;
+		var next = unseen[(int)(GD.Randi() % (uint)unseen.Count)];
+		_seenEventIds.Add(next.Id);
+		ShowEvent(next);
+	}
 
-		string charName = string.IsNullOrEmpty(_currentEvent.CharacterName) ? "Kryz" : _currentEvent.CharacterName;
-		string charRole = string.IsNullOrEmpty(_currentEvent.CharacterRole) ? "Manager" : _currentEvent.CharacterRole;
+	private void ShowEvent(EventData ev)
+	{
+		_currentEvent = ev;
+		_card.LoadEvent(ev);
+		_cardTextLabel.Text = ev.Text;
+
+		string charName = string.IsNullOrEmpty(ev.CharacterName) ? "Kryz" : ev.CharacterName;
+		string charRole = string.IsNullOrEmpty(ev.CharacterRole) ? "Manager" : ev.CharacterRole;
 		_characterNameLabel.Text = charName;
 		_characterRoleLabel.Text = charRole;
 	}
@@ -440,6 +461,13 @@ public partial class GameManager : Control
 		if (_currentEvent == null) return;
 		var effects = isRight ? _currentEvent.RightEffects : _currentEvent.LeftEffects;
 		_state.Apply(effects);
+
+		string cid = isRight ? _currentEvent.RightConsequenceId : _currentEvent.LeftConsequenceId;
+		if (!string.IsNullOrEmpty(cid))
+		{
+			_pendingConsequences.Enqueue(cid);
+			ShowConsequenceWarning();
+		}
 
 		var prevLevel = _state.CurrentLevel;
 		_state.AdvanceMonth();
@@ -555,6 +583,30 @@ public partial class GameManager : Control
 		tw.TweenCallback(Callable.From(() => panel.QueueFree()));
 	}
 
+	private void ShowConsequenceWarning()
+	{
+		var panel = new Panel();
+		panel.SetAnchorsPreset(LayoutPreset.Center);
+		panel.GrowHorizontal = GrowDirection.Both;
+		panel.GrowVertical   = GrowDirection.Both;
+		panel.CustomMinimumSize = new Vector2(420f, 70f);
+		panel.AddThemeStyleboxOverride("panel", RoundedBox(new Color(0.16f, 0.10f, 0.10f), 12));
+
+		var lbl = StyledLabel(); lbl.Text = "This choice will have consequences...";
+		lbl.SetAnchorsPreset(LayoutPreset.FullRect);
+		lbl.HorizontalAlignment = HorizontalAlignment.Center;
+		lbl.VerticalAlignment   = VerticalAlignment.Center;
+		lbl.AddThemeFontSizeOverride("font_size", 16);
+		lbl.AddThemeColorOverride("font_color", new Color(0.95f, 0.55f, 0.20f));
+		panel.AddChild(lbl);
+		AddChild(panel);
+
+		var tw = CreateTween();
+		tw.TweenInterval(2.0f);
+		tw.TweenProperty(panel, "modulate:a", 0f, 0.5f);
+		tw.TweenCallback(Callable.From(() => panel.QueueFree()));
+	}
+
 	private void OnSavedByChance(string message)
 	{
 		UpdateChancesDisplay();
@@ -585,6 +637,7 @@ public partial class GameManager : Control
 	{
 		_state.Reset();
 		_seenEventIds.Clear();
+		_pendingConsequences.Clear();
 		_gameOverScreen.Visible = false;
 
 		foreach (var key in GameState.Keys)

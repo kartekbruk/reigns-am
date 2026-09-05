@@ -14,4 +14,6 @@ public class EventData
 	public List<string> Positions { get; set; } = new();
 	public string CharacterName { get; set; } = "";
 	public string CharacterRole { get; set; } = "";
+	public string LeftConsequenceId  { get; set; } = "";
+	public string RightConsequenceId { get; set; } = "";
 }
