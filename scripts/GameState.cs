@@ -56,10 +56,10 @@ public partial class GameState : Node
 	public string LevelName => CurrentLevel switch
 	{
 		CareerLevel.Intern => "Intern",
-		CareerLevel.Junior => "Junior Developer",
-		CareerLevel.Mid    => "Mid Developer",
-		CareerLevel.Senior => "Senior Developer",
-		_                  => "Senior Developer",
+		CareerLevel.Junior => "Junior Software Engineer",
+		CareerLevel.Mid    => "Mid Software Engineer",
+		CareerLevel.Senior => "Senior Software Engineer",
+		_                  => "Senior Software Engineer",
 	};
 
 	public string LevelKey => CurrentLevel.ToString().ToLower();
@@ -132,20 +132,20 @@ public partial class GameState : Node
 
 	private static string ChanceMessage(string key) => key switch
 	{
-		"wellbeing"  => "You took a recharge.",
-		"morale"     => "Your manager organised a CSGO LAN party.",
-		"prosperity" => "Your company demerged — fresh start.",
-		"codebase"   => "You refactored the codebase.",
-		_            => "A second chance."
+		"wellbeing"  => "Wziąłeś recharge",
+		"morale"     => "Twój manager zorganizował LAN Party w CS:GO",
+		"prosperity" => "Twoja firma rozdzieliła się. Great Success",
+		"codebase"   => "Robicie gigantyczny refactor kodu",
+		_            => "Dodatkowa szansa"
 	};
 
 	private static string LossMessage(string key) => key switch
 	{
-		"wellbeing"  => "You burned out completely.\nTime to take a sabbatical.",
-		"morale"     => "The team had enough.\nMass resignation emails are incoming.",
-		"prosperity" => "The company went bankrupt.\nThe investors are not happy.",
-		"codebase"   => "Production is on fire.\nThe codebase finally collapsed.",
-		_            => "It all fell apart."
+		"wellbeing"  => "Wypaliłeś się",
+		"morale"     => "Zespół ma dość. Programiści masowo składają wypowiedzenia",
+		"prosperity" => "Dealerze rezygnują z waszych usług. Firma upada",
+		"codebase"   => "Produkcja płonie. Czas spłacić dług technologiczny",
+		_            => "Koniec gry"
 	};
 
 }
