@@ -464,10 +464,9 @@ public partial class GameManager : Control
 		_card.LoadEvent(ev);
 		_cardTextLabel.Text = ev.Text;
 
-		string charName = string.IsNullOrEmpty(ev.CharacterName) ? "Kryz" : ev.CharacterName;
-		string charRole = string.IsNullOrEmpty(ev.CharacterRole) ? "Manager" : ev.CharacterRole;
-		_characterNameLabel.Text = charName;
-		_characterRoleLabel.Text = charRole;
+		_characterNameLabel.Text = string.IsNullOrEmpty(ev.CharacterName) ? "Kryz" : ev.CharacterName;
+		_characterRoleLabel.Text    = ev.CharacterRole ?? "";
+		_characterRoleLabel.Visible = !string.IsNullOrEmpty(ev.CharacterRole);
 	}
 
 	private void OnChoiceMade(bool isRight)
