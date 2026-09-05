@@ -36,10 +36,10 @@
 	</right>
   </event>
 
-  <event id="dewarningization" positions="intern junior mid" char_name="Bartek" char_role="Software Engineer">
+  <event id="dewarningization" positions="intern junior mid" char_name="Azure DevOps" char_role="">
 	<title>Dewarningizacja</title>
 	<text>DealCalculator ma 2137 warningów</text>
-	<background>res://sprites/bartek.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Czyścimy to">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="-10"/>
@@ -72,10 +72,10 @@
 	</right>
   </event>
 
-  <event id="retro" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
+  <event id="retro" positions="intern junior mid senior" char_name="Slack Notification" char_role="">
 	<title>Retro</title>
 	<text>[Urgent][Mandatory] Retro</text>
-	<background>res://sprites/scrum-master.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Join zoom meeting">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
@@ -162,10 +162,10 @@
 	</right>
   </event>
 
-  <event id="town_hall" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
+  <event id="town_hall" positions="intern junior mid senior" char_name="Slack Notification" char_role="">
 	<title>Town hall</title>
-	<text>Dzisiaj o 16:30 town hall</text>
-	<background>res://sprites/manager.png</background>
+	<text>[16:30] Town hall</text>
+	<background>res://sprites/workstation.png</background>
 	<left text="Join zoom meeting">
 	  <effect attribute="wellbeing" value="-3"/>
 	  <effect attribute="morale" value="0"/>
@@ -198,10 +198,10 @@
 	</right>
   </event>
 
-  <event id="unclear_pbi" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
+  <event id="unclear_pbi" positions="intern junior mid senior" char_name="Azure DevOps" char_role="">
 	<title>Niejasny PBI</title>
 	<text>PBI 2137: Check and add and test and deploy</text>
-	<background>res://sprites/scrum-master.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Pytam PO co trzeba zrobić">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
@@ -216,10 +216,10 @@
 	</right>
   </event>
 
-  <event id="no_internet_in_office" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
+  <event id="no_internet_in_office" positions="intern junior mid senior" char_name="MacBook" char_role="">
 	<title>Nie ma internetu w biurze</title>
 	<text>W biurze nie ma internetu</text>
-	<background>res://sprites/jacek.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Robię hotspota z telefonu">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="0"/>
@@ -288,7 +288,7 @@
 	</right>
   </event>
 
-  <event id="jacek_ping_pong" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
+  <event id="bartek_ping_pong" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
 	<title>Gra w ping ponga</title>
 	<text>Co powiesz na meczyk w ping ponga?</text>
 	<background>res://sprites/bartek.png</background>
@@ -389,8 +389,8 @@
 	  <effect attribute="prosperity" value="-10"/>
 	</left>
 	<right text="Liczy się dobra zabawa">
-	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="10"/>
+	  <effect attribute="wellbeing" value="-20"/>
+	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -684,10 +684,10 @@
 	</right>
   </event>
 
-  <event id="cobe" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
+  <event id="cobe" positions="intern junior mid senior" char_name="Fritz" char_role="">
 	<title>COBE</title>
-	<text>Zrób COBE</text>
-	<background>res://sprites/manager.png</background>
+	<text>COBE</text>
+	<background>res://sprites/workstation.png</background>
 	<left text="Nie dzisiaj" consequence="cobe">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
@@ -776,10 +776,10 @@
 	</right>
   </event>
 
-  <event id="quality_gate_tests" positions="junior mid senior" char_name="Kryz" char_role="Manager">
+  <event id="quality_gate_tests" positions="junior mid senior" char_name="SonarGate" char_role="">
 	<title>Pokrycie testami</title>
 	<text>Quality gate status: ERROR - code covered with tests in 60%!</text>
-	<background>res://sprites/manager.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Piszę testy">
 	  <effect attribute="wellbeing" value="-8"/>
 	  <effect attribute="morale" value="5"/>
@@ -830,10 +830,10 @@
 	</right>
   </event>
 
-  <event id="strange_error" positions="junior mid senior" char_name="Kryz" char_role="Manager">
+  <event id="strange_error" positions="junior mid senior" char_name="Azure DevOps" char_role="">
 	<title>Dziwny błąd na pipeline</title>
 	<text>Pojawił się dziwny błąd na build pipeline</text>
-	<background>res://sprites/manager.png</background>
+	<background>res://sprites/workstation.png</background>
 	<left text="Poproś o pomoc kogoś z zespołu">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-3"/>
@@ -922,10 +922,10 @@
 
   <!-- ── Mid & Senior ──────────────────────────────────────────────────────── -->
 
-  <event id="dealcalculator_not_working" positions="mid senior" char_name="Kryz" char_role="Manager">
+  <event id="dealcalculator_not_working" positions="mid senior" char_name="DealCalculator" char_role="">
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
-    <background>res://sprites/manager.png</background>
+    <background>res://sprites/workstation.png</background>
 	<left text="Sprawdzę">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
@@ -940,10 +940,10 @@
     </right>
   </event>
 
-  <event id="dealcalculator_not_working_2" positions="mid senior" char_name="Kryz" char_role="Manager">
+  <event id="dealcalculator_not_working_2" positions="mid senior" char_name="DealCalculator" char_role="">
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
-    <background>res://sprites/manager.png</background>
+    <background>res://sprites/workstation.png</background>
 	<left text="Sprawdzę">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
@@ -1012,10 +1012,10 @@
     </right>
   </event>
 
-  <event id="pre_refinement" positions="mid senior" char_name="Kryz" char_role="Managerr">
+  <event id="pre_refinement" positions="mid senior" char_name="Slack Notification" char_role="">
 	<title>Pre refinement</title>
 	<text>Pre-refinement</text>
-    <background>res://sprites/manager.png</background>
+    <background>res://sprites/workstation.png</background>
 	<left text="Udaję, ze nie widzę">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
