@@ -406,6 +406,7 @@ public partial class GameManager : Control
 		var btn = new Button { Text = "Back to Menu" };
 		btn.CustomMinimumSize = new Vector2(180f, 52f);
 		btn.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+		btn.AddThemeFontOverride("font", _roboto);
 		btn.Pressed += OnRestart;
 
 		vbox.AddChild(heading);
@@ -480,6 +481,7 @@ public partial class GameManager : Control
 		var btn = new Button { Text = "New Game" };
 		btn.CustomMinimumSize = new Vector2(200f, 56f);
 		btn.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+		btn.AddThemeFontOverride("font", _roboto);
 		btn.Pressed += OnNewGame;
 
 		vbox.AddChild(title);
