@@ -434,7 +434,7 @@
 
   <event id="occupied" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Occupied</title>
-	<text>Co jest ja tu sram!?</text>
+	<text>Co jest?! Ja tu sram!</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Zamykam drzwi">
 	  <effect attribute="wellbeing" value="-1"/>

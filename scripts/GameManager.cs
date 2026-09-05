@@ -62,6 +62,7 @@ public partial class GameManager : Control
 		BuildChancesDisplay();
 		BuildGoodMomentsDisplay();
 		BuildStatIcons();
+		BuildDeck();
 		BuildCard();
 		BuildCharacterInfo();
 		BuildGameOverScreen();
@@ -238,6 +239,40 @@ public partial class GameManager : Control
 	{
 		float maxH = vp.Y - CardY() - HintAreaH - CharInfoH;
 		return Mathf.Max(200f, Mathf.Min(ColWidth(vp), maxH));
+	}
+
+	private void BuildDeck()
+	{
+		var vp    = GetViewportRect().Size;
+		float colW = ColWidth(vp);
+		float colX = ColX(vp);
+		float size = CardSize(vp);
+		float cardX = colX + (colW - size) / 2f;
+		float cardY = CardY();
+
+		var reverse = GD.Load<Texture2D>("res://sprites/fritz-reverse-crop.png");
+
+		var stack = new (float dx, float dy, float rot)[]
+		{
+			(6f, 5f,   0.022f),
+			(3f, 2.5f, 0.011f),
+			(0f, 0f,   0f),
+		};
+
+		foreach (var (dx, dy, rot) in stack)
+		{
+			var img = new NinePatchRect();
+			img.Texture           = reverse;
+			img.Position          = new Vector2(cardX + dx, cardY + dy);
+			img.Size              = new Vector2(size, size);
+			img.Rotation          = rot;
+			img.PatchMarginLeft   = 0;
+			img.PatchMarginRight  = 0;
+			img.PatchMarginTop    = 0;
+			img.PatchMarginBottom = 0;
+			img.MouseFilter       = MouseFilterEnum.Ignore;
+			AddChild(img);
+		}
 	}
 
 	private void BuildCard()
