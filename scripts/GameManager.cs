@@ -310,25 +310,26 @@ public partial class GameManager : Control
 		_card.ChoiceMade          += OnChoiceMade;
 		_card.DragDirectionChanged += OnDragDirectionChanged;
 
-		// Choice text hints below card
-		float hintY = cardY + size + 6f;
-		float halfCol = colW / 2f;
+		// Hint labels live inside the card so they rotate/move with it
+		var hintColor = new Color(0.75f, 0.60f, 1.00f);
+		float hintW = size * 0.4f;
+		float hintH = size * 0.35f;
 
 		var leftHint = MakeHintLabel(
-			new Vector2(colX, hintY),
-			new Vector2(halfCol - 8f, 38f),
-			new Color(1.00f, 0.40f, 0.40f),
+			new Vector2(12f, 12f),
+			new Vector2(hintW, hintH),
+			hintColor,
 			HorizontalAlignment.Left);
 
 		var rightHint = MakeHintLabel(
-			new Vector2(colX + halfCol + 8f, hintY),
-			new Vector2(halfCol - 8f, 38f),
-			new Color(0.40f, 1.00f, 0.55f),
+			new Vector2(size - 12f - hintW, 12f),
+			new Vector2(hintW, hintH),
+			hintColor,
 			HorizontalAlignment.Right);
 
 		AddChild(_card);
-		AddChild(leftHint);
-		AddChild(rightHint);
+		_card.AddChild(leftHint);
+		_card.AddChild(rightHint);
 
 		_card.LeftHintLabel  = leftHint;
 		_card.RightHintLabel = rightHint;
@@ -707,6 +708,8 @@ public partial class GameManager : Control
 		lbl.AutowrapMode = TextServer.AutowrapMode.Word;
 		lbl.AddThemeFontSizeOverride("font_size", 13);
 		lbl.AddThemeColorOverride("font_color", color);
+		lbl.AddThemeConstantOverride("outline_size", 6);
+		lbl.AddThemeColorOverride("font_outline_color", new Color(0f, 0f, 0f, 0.85f));
 		lbl.Modulate = new Color(1f, 1f, 1f, 0f);
 		return lbl;
 	}
