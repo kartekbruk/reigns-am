@@ -418,7 +418,7 @@
 	<title>Zapchana toaleta</title>
 	<text>Zapchałeś toaletę</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Uciekam">
+	<left text="Uciekam" consequence="prison_break" consequence_instant="true">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -750,7 +750,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="5"/>
 	</left>
-	<right text="Dodam, ale po cichu">
+	<right text="Dodam, ale po cichu" consequence="boris_broken_pipeline" consequence_instant="tru">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>

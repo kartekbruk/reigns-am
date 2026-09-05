@@ -488,7 +488,8 @@ public partial class GameManager : Control
 		}
 
 		var prevLevel = _state.CurrentLevel;
-		_state.AdvanceMonth();
+		if (!_currentEvent.NoTimeSkip)
+			_state.AdvanceMonth();
 		var newLevel = _state.CurrentLevel;
 
 		UpdateSprintDisplay();

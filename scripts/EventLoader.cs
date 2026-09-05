@@ -39,6 +39,7 @@ public static class EventLoader
 								Positions = ParsePositions(Attr(parser, "positions")),
 								CharacterName = Attr(parser, "char_name"),
 								CharacterRole = Attr(parser, "char_role"),
+								NoTimeSkip = Attr(parser, "no_time_skip") == "true",
 							};
 							currentChoice = null;
 							break;

@@ -60,7 +60,7 @@
 	</right>
   </event>
 
-  <event id="friday_deploy_consequence" char_name="Kryz" char_role="Manager">
+  <event id="friday_deploy_consequence" char_name="Kryz" char_role="Manager" no_time_skip="true">
 	<title>Konsekwencje piątkowego deploya</title>
 	<text>[23:30] Pamiętasz tego piątkowego deploya? Trzeba zrobić hotfixa</text>
 	<background>res://sprites/manager.png</background>
@@ -93,6 +93,206 @@
 	  <effect attribute="morale" value="-15"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-5"/>
+	</right>
+  </event>
+
+<!--Seria eventów zapchanej toalety-->
+  <event id="prison_break" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break</title>
+	<text>Wychodząc z kabiny spotykasz sprzątaczkę. Patrzy najpierw na ciebie, a potem na syf, który zostawiłeś</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Przyznaję się do winy">
+	  <effect attribute="wellbeing" value="-15"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="UCIEKAM" consequence="prison_break_2" consequence_instant="true">
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_2" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break 2</title>
+	<text>Napotykasz drzwi</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Używam badge" consequence="prison_break_3" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Z BUTA WJEŻDŻAM" consequence="prison_break_failed" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_3" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break 3</title>
+	<text>Gdzie biegniesz?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="W lewo" consequence="prison_break_failed" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="W prawo" consequence="prison_break_4" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_4" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break 4</title>
+	<text>Gdzie teraz?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="W lewo" consequence="prison_break_5" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="W prawo" consequence="prison_break_failed" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_5" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break 5</title>
+	<text>Co teraz?</text>
+	<background>res://sprites/manager.png</background>
+	<left text="W lewo" consequence="prison_break_6" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="W prawo" consequence="prison_break_failed" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_6" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break 6</title>
+	<text>Prawie to masz!</text>
+	<background>res://sprites/manager.png</background>
+	<left text="W lewo" consequence="prison_break_success" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="W prawo" consequence="prison_break_failed" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_failed" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break failed</title>
+	<text>Sprzątaczka łapie cię za fraki i wnosi do klopa. Ucieczka zakończona niepowodzeniem</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Przyjmuję porażkę">
+	  <effect attribute="wellbeing" value="-25"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Przyjmuję porażkę">
+	  <effect attribute="wellbeing" value="-25"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="prison_break_success" char_name="Ewa" char_role="Sprzątaczka" no_time_skip="true">
+	<title>Prison break success</title>
+	<text>Wybiegasz z biura, jesteś bezpieczny</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Idę do windy">
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Idę schodami">
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <!--Konsekwencje zepsutego pipeline Borysa-->
+  <event id="boris_broken_pipeline" char_name="Boris" char_role="Architect" no_time_skip="true">
+	<title>Broken pipeline 1</title>
+	<text>PIPELINE ERROR: неизвестная ошибка</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Я добавляю пробел" consequence="boris_broken_pipeline_success" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="повторная постановка в очередь" consequence="boris_broken_pipeline_2" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="boris_broken_pipeline_2" char_name="Boris" char_role="Architect" no_time_skip="true">
+	<title>Broken pipeline 2</title>
+	<text>PIPELINE ERROR: ещё одна ошибка</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Я добавляю пробел" consequence="boris_broken_pipeline_success" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Я делаю странные вещи" consequence="boris_broken_pipeline" consequence_instant="true">
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</right>
+  </event>
+
+  <event id="boris_broken_pipeline_success" char_name="Boris" char_role="Architect" no_time_skip="true">
+	<title>Broken pipeline success</title>
+	<text>Naprawa powiodła się</text>
+	<background>res://sprites/manager.png</background>
+	<left text="Uff...">
+	  <effect attribute="wellbeing" value="1"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
+	</left>
+	<right text="Uff...">
+	  <effect attribute="wellbeing" value="1"/>
+	  <effect attribute="morale" value="0"/>
+	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
 

@@ -18,4 +18,5 @@ public class EventData
 	public string RightConsequenceId      { get; set; } = "";
 	public bool   LeftConsequenceInstant  { get; set; } = false;
 	public bool   RightConsequenceInstant { get; set; } = false;
+	public bool   NoTimeSkip { get; set; } = false;
 }
