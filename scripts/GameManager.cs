@@ -559,7 +559,14 @@ public partial class GameManager : Control
 	{
 		if (_currentEvent == null) return;
 		var effects = isRight ? _currentEvent.RightEffects : _currentEvent.LeftEffects;
+
+		// Snapshot before Apply so we can detect whether a chance was consumed.
+		// If a chance fires, OnSavedByChance already updates the display correctly.
+		// We must not overwrite it after AdvanceMonth(), which could cross a year
+		// boundary and make AvailableChances jump back to 1.
+		int chancesSnapshot = _state.AvailableChances;
 		_state.Apply(effects);
+		bool chanceConsumed = _state.AvailableChances < chancesSnapshot;
 
 		string cid     = isRight ? _currentEvent.RightConsequenceId    : _currentEvent.LeftConsequenceId;
 		bool   instant = isRight ? _currentEvent.RightConsequenceInstant : _currentEvent.LeftConsequenceInstant;
@@ -578,7 +585,12 @@ public partial class GameManager : Control
 		var newLevel = _state.CurrentLevel;
 
 		UpdateSprintDisplay();
-		UpdateChancesDisplay();
+		// Only refresh the counter if no chance was spent this sprint.
+		// When a chance IS spent, OnSavedByChance already set the display to 0
+		// and we don't want AdvanceMonth()'s potential year-boundary unlock to
+		// overwrite that before the player even sees it.
+		if (!chanceConsumed)
+			UpdateChancesDisplay();
 
 		if (newLevel != prevLevel)
 			ShowPromotion();

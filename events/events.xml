@@ -41,14 +41,14 @@
 	<text>DealCalculator ma 2137 warningów</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Czyścimy to">
-	  <effect attribute="wellbeing" value="-8"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="25"/>
 	  <effect attribute="prosperity" value="10"/>
 	</left>
 	<right text="Są ważniejsze sprawy">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="0"/>
+	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-10"/>
 	</right>
@@ -59,16 +59,16 @@
 	<text>Uwaga! Ważny komunikat! Wyjazd integracyjny do ROMY!</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Jadę!">
-	  <effect attribute="wellbeing" value="20"/>
-	  <effect attribute="morale" value="20"/>
+	  <effect attribute="wellbeing" value="15"/>
+	  <effect attribute="morale" value="15"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="-10"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="W ten weekend nie mogę...">
 	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
 
@@ -77,14 +77,14 @@
 	<text>[Urgent][Mandatory] Retro</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Join zoom meeting">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Udaję, że nie widzę">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -96,14 +96,14 @@
 	<background>res://sprites/manager.png</background>
 	<left text="Nie mam psychy">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="0"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Zgłaszam się!">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="5"/>
-	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
@@ -113,14 +113,14 @@
 	<text>We oficially begin our next hackathon!</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Nie chce mi się">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Zgłaszamy się">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value=""/>
 	  <effect attribute="prosperity" value="3"/>
 	</right>
@@ -134,13 +134,13 @@
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="-4"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="No dobra">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="codebase" value="-5"/>
-	  <effect attribute="prosperity" value="3"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="-10"/>
+	  <effect attribute="prosperity" value="5"/>
 	</right>
   </event>
 
@@ -149,14 +149,14 @@
 	<text>Carfaxy zajęły nam pokój w biurze</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Zostajemy, niech oni se idą, jak im przeszkadzamy">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Idziemy, przeszkadzają nam">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -167,13 +167,13 @@
 	<text>[16:30] Town hall</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Join zoom meeting">
-	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="prosperity" value="2"/>
 	</left>
 	<right text="Nie idę">
-	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
@@ -185,13 +185,13 @@
 	<text>Pojawiła się okazja na popracowanie w innym zespole przez 2 sprinty</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Zgłaszam się na ochotnika">
-	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="5"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="codebase" value="10"/>
+	  <effect attribute="prosperity" value="5"/>
 	</left>
 	<right text="Dobrze mi tu, gdzie jestem">
-	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
@@ -205,13 +205,13 @@
 	<left text="Pytam PO co trzeba zrobić">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="-2"/>
-	  <effect attribute="prosperity" value="2"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="5"/>
 	</left>
 	<right text="Pytam tech leada co trzeba zrobić">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-4"/>
-	  <effect attribute="codebase" value="6"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
@@ -221,14 +221,14 @@
 	<text>W biurze nie ma internetu</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Robię hotspota z telefonu">
-	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="1"/>
+	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="1"/>
 	</left>
 	<right text="Nie pracuję">
-	  <effect attribute="wellbeing" value="7"/>
-	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</right>
@@ -239,15 +239,15 @@
 	<text>Ktoś wyrwał rurkę z ekspresu podłączając do niego pendrive</text>
 	<background>res://sprites/cleaning-lady.png</background>
 	<left text="Piję wodę jak zwierzę">
-	  <effect attribute="wellbeing" value="3"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Odmawiam pracy">
-	  <effect attribute="wellbeing" value="3"/>
+	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="-2"/>
+	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</right>
   </event>
@@ -257,8 +257,8 @@
 	<text>W szafce nie ma czystych kubków</text>
 	<background>res://sprites/bartek.png</background>
 	<left text="Zaparzam kawę w ustach">
-	  <effect attribute="wellbeing" value="-90"/>
-	  <effect attribute="morale" value="-50"/>
+	  <effect attribute="wellbeing" value="-75"/>
+	  <effect attribute="morale" value="-25"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
@@ -275,14 +275,14 @@
 	<text>Ktoś musi zamówić jedzenie</text>
 	<background>res://sprites/jacek.png</background>
 	<left text="Ja mogę">
-	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Karol ma Glovo premium">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="8"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -293,9 +293,9 @@
 	<text>Co powiesz na meczyk w ping ponga?</text>
 	<background>res://sprites/bartek.png</background>
 	<left text="Mam dużo roboty">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="codebase" value="7"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="15"/>
 	  <effect attribute="prosperity" value="1"/>
 	</left>
 	<right text="Pewnie byku">
@@ -312,13 +312,13 @@
 	<background>res://sprites/jacek.png</background>
 	<left text="Nie czytam, resolwuje wszystkie">
 	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="codebase" value="-3"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</left>
 	<right text="Poprawiam błędy">
 	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="3"/>
+	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="1"/>
 	</right>
@@ -353,8 +353,8 @@
 	  <effect attribute="prosperity" value="1"/>
 	</left>
 	<right text="Pewnie byku">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -366,7 +366,7 @@
 	<background>res://sprites/manager.png</background>
 	<left text="Wszystko tylko nie to">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="0"/>
+	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
@@ -402,15 +402,15 @@
 	<background>res://sprites/scrum-master.png</background>
 	<left text="Nie zależą">
 	  <effect attribute="wellbeing" value="-10"/>
-	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="-10"/>
-	  <effect attribute="prosperity" value="-10"/>
+	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Zależą">
-	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="5"/>
-	  <effect attribute="prosperity" value="5"/>
+	  <effect attribute="wellbeing" value="10"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="10"/>
+	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
 
@@ -422,10 +422,10 @@
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="-3"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="Debuguje">
-	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
@@ -437,14 +437,14 @@
 	<text>Co jest?! Ja tu sram!</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Zamykam drzwi">
-	  <effect attribute="wellbeing" value="-1"/>
-	  <effect attribute="morale" value="-1"/>
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Dosiadam się">
 	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-15"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -455,16 +455,16 @@
 	<text>Głosujcie na story pointy</text>
 	<background>res://sprites/piotras.png</background>
 	<left text="Daję na pałę, i tak nie rozumiem PBI">
-	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="-1"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="Daję przemyślaną wartość">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="prosperity" value="5"/>
 	</right>
   </event>
 
@@ -497,7 +497,7 @@
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Siedzę cicho">
-	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
@@ -545,14 +545,14 @@
 	<text>W warhammerze było, że...</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Dalej nie słucham">
-	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Słucham uważnie">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="-15"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -564,9 +564,9 @@
 	<background>res://sprites/scrum-master.png</background>
 	<left text="Ja chcę z szynką">
 	  <effect attribute="wellbeing" value="5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="0"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="Mam dzisiaj swoje...">
 	  <effect attribute="wellbeing" value="-5"/>
@@ -582,13 +582,13 @@
 	<background>res://sprites/jacek.png</background>
 	<left text="Nic się nie stało">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Ty gałganie">
-	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -599,13 +599,13 @@
 	<text>Czy chcesz porozmawiać o Bogu?</text>
 	<background>res://sprites/jacek.png</background>
 	<left text="Nie, dziękuję">
-	  <effect attribute="wellbeing" value="2"/>
+	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Chętnie">
-	  <effect attribute="wellbeing" value="-2"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
@@ -636,13 +636,13 @@
 	<background>res://sprites/manager.png</background>
 	<left text="Ogarnij się typie">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Pożyczę">
 	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
@@ -727,16 +727,16 @@
 	<text>Hey, guys, I know that you started working on it a week ago, but can we try different approach?</text>
 	<background>res://sprites/matt.png</background>
 	<left text="Zróbmy jak mówi Matt...">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="codebase" value="-7"/>
-	  <effect attribute="prosperity" value="3"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="-10"/>
+	  <effect attribute="codebase" value="-10"/>
+	  <effect attribute="prosperity" value="10"/>
 	</left>
 	<right text="Matt znowu Mattuje, nie robimy tego">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="0"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</right>
   </event>
 
@@ -754,7 +754,7 @@
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="-5"/>
-	  <effect attribute="prosperity" value="2"/>
+	  <effect attribute="prosperity" value="3"/>
 	</right>
   </event>
 
@@ -781,16 +781,16 @@
 	<text>Quality gate status: ERROR - code covered with tests in 60%!</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Piszę testy">
-	  <effect attribute="wellbeing" value="-8"/>
+	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
-	  <effect attribute="prosperity" value="2"/>
+	  <effect attribute="prosperity" value="5"/>
 	</left>
 	<right text="Wrzucam wszystko do jednej linijki">
-	  <effect attribute="wellbeing" value="-2"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="-8"/>
-	  <effect attribute="prosperity" value="-2"/>
+	  <effect attribute="codebase" value="-10"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</right>
   </event>
 
@@ -799,13 +799,13 @@
 	<text>Can you fix the production database?</text>
 	<background>res://sprites/boris.png</background>
 	<left text="Używam break glassa">
-	  <effect attribute="wellbeing" value="-3"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="2"/>
 	</left>
 	<right text="Jestem mikroserwisem">
-	  <effect attribute="wellbeing" value="2"/>
+	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-3"/>
@@ -814,18 +814,18 @@
 
   <event id="finish_someones_work" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Dokończ czyjąś pracę</title>
-	<text>On jest na urlopie, a jego zmiany muszą iść w tym tygodnia na proda</text>
+	<text>Kolega jest na urlopie, a jego zmiany muszą iść w tym tygodnia na proda</text>
 	<background>res://sprites/piotras.png</background>
 	<left text="Jestem zajęty">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="codebase" value="3"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="-1"/>
 	</left>
 	<right text="Zajmę się tym">
-	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="5"/>
-	  <effect attribute="codebase" value="3"/>
+	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="1"/>
 	</right>
   </event>
@@ -836,14 +836,14 @@
 	<background>res://sprites/workstation.png</background>
 	<left text="Proszę o pomoc kogoś z zespołu">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-3"/>
-	  <effect attribute="codebase" value="2"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
 	<right text="Piszę do Marcina">
-	  <effect attribute="wellbeing" value="0"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
-	  <effect attribute="codebase" value="4"/>
+	  <effect attribute="codebase" value="10"/>
 	  <effect attribute="prosperity" value="0"/>
 	</right>
   </event>
@@ -854,14 +854,14 @@
 	<background>res://sprites/piotras.png</background>
 	<left text="Udaję, że nie widzę">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-3"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
-	  <effect attribute="prosperity" value="-3"/>
+	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="Sprawdzę">
-	  <effect attribute="wellbeing" value="-3"/>
-	  <effect attribute="morale" value="3"/>
-	  <effect attribute="codebase" value="3"/>
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="1"/>
 	</right>
   </event>
@@ -877,10 +877,10 @@
 	  <effect attribute="prosperity" value="0"/>
     </left>
 	<right text="Yes we can">
-	  <effect attribute="wellbeing" value="-3"/>
-	  <effect attribute="morale" value="-3"/>
-	  <effect attribute="codebase" value="10"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="codebase" value="15"/>
+	  <effect attribute="prosperity" value="5"/>
     </right>
   </event>
 
@@ -889,14 +889,14 @@
 	<text>W nowym dotnecie dodali return switcha</text>
     <background>res://sprites/maxchill.png</background>
 	<left text="Updatuję PRa">
-	  <effect attribute="wellbeing" value="-2"/>
+	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
     </left>
 	<right text="Zostawiam jak jest">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-2"/>
+	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
     </right>
@@ -908,7 +908,7 @@
     <background>res://sprites/maxchill.png</background>
 	<left text="Resolve">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-2"/>
+	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="0"/>
     </left>
@@ -927,10 +927,10 @@
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/workstation.png</background>
 	<left text="Sprawdzę">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="-5"/>
-	  <effect attribute="codebase" value="1"/>
-	  <effect attribute="prosperity" value="2"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="10"/>
+	  <effect attribute="codebase" value="5"/>
+	  <effect attribute="prosperity" value="5"/>
     </left>
 	<right text="Prawdopodobnie znowu nie my...">
 	  <effect attribute="wellbeing" value="0"/>
@@ -945,8 +945,8 @@
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/workstation.png</background>
 	<left text="Sprawdzę">
-	  <effect attribute="wellbeing" value="-5"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="wellbeing" value="-10"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="2"/>
     </left>
@@ -969,10 +969,10 @@
 	  <effect attribute="prosperity" value="0"/>
     </left>
 	<right text="Bierzemy go" consequence="palindrome_guy_consequence">
-	  <effect attribute="wellbeing" value="4"/>
-	  <effect attribute="morale" value="-8"/>
-	  <effect attribute="codebase" value="-2"/>
-	  <effect attribute="prosperity" value="-2"/>
+	  <effect attribute="wellbeing" value="5"/>
+	  <effect attribute="morale" value="-15"/>
+	  <effect attribute="codebase" value="-5"/>
+	  <effect attribute="prosperity" value="-5"/>
     </right>
   </event>
 
@@ -1000,12 +1000,12 @@
     <background>res://sprites/piotras.png</background>
 	<left text="Nie mogę">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
     </left>
 	<right text="No dobra">
-	  <effect attribute="wellbeing" value="-5"/>
+	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>

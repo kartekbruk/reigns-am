@@ -18,7 +18,7 @@
 	</left>
 	<right text="Udaję, że nie widzę" consequence="phishing_training">
 	  <effect attribute="wellbeing" value="0"/>
-	  <effect attribute="morale" value="-5"/>
+	  <effect attribute="morale" value="-7"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</right>
@@ -67,14 +67,14 @@
 	<left text="Udaję, że śpię">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
-	  <effect attribute="codebase" value="0"/>
+	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-5"/>
 	</left>
 	<right text="Odpalam kompa">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
-	  <effect attribute="prosperity" value="1"/>
+	  <effect attribute="prosperity" value="5"/>
 	</right>
   </event>
 
@@ -84,9 +84,9 @@
 	<background>res://sprites/workstation.png</background>
 	<left text="Pomagam naprawić">
 	  <effect attribute="wellbeing" value="-15"/>
-	  <effect attribute="morale" value="5"/>
+	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="5"/>
-	  <effect attribute="prosperity" value="0"/>
+	  <effect attribute="prosperity" value="3"/>
 	</left>
 	<right text="Zwalam winę">
 	  <effect attribute="wellbeing" value="0"/>
