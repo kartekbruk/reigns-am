@@ -464,16 +464,16 @@ public partial class GameManager : Control
 		margin.AddChild(hintsVbox);
 		hintsPanel.AddChild(margin);
 
-		hintsVbox.AddChild(HintRow("← Swipe cards left or right to make choices →",
+		hintsVbox.AddChild(HintRow("← Przesuwaj karty na lewo i prawo, aby dokonać wyboru →",
 			new Color(0.75f, 0.60f, 1.00f), 13));
 
-		hintsVbox.AddChild(HintRow("♥  ◉  ↗  </>   Keep all four stats above zero to survive",
+		hintsVbox.AddChild(HintRow("♥  ◉  ↗  </>   Utrzymuj wszystkie statystyki na wysokim poziome",
 			new Color(0.80f, 0.80f, 0.80f), 13));
 
-		hintsVbox.AddChild(HintRow("★  Good Moments  —  top-left corner  —  earned when any stat hits 100",
+		hintsVbox.AddChild(HintRow("★  Good Moments  —  lewy górny róg  —  zdobywasz, gdy dowolna statystyka osiągnie maksymalny poziom",
 			new Color(0.40f, 0.90f, 0.60f), 12));
 
-		hintsVbox.AddChild(HintRow("✦  Extra Chances  —  top-right corner  —  one chance per year, saves you at 25% when any stat hits zero",
+		hintsVbox.AddChild(HintRow("✦  Extra Chances  —  prawy górny róg  —  jedno koło ratunkowe na rok: gdy dowolna statystyka spadnie do 0, wracasz do gry z poziomami statystyk = 25%",
 			new Color(0.95f, 0.80f, 0.40f), 12));
 
 		// ─────────────────────────────────────────────────────────────────────
