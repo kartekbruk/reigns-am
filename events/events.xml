@@ -1030,4 +1030,22 @@
     </right>
   </event>
 
+  <event id="cost" positions="mid senior" char_name="Boris" char_role="Architect">
+    <title>Cost</title>
+    <text>But what about the cuost?</text>
+    <background>res://sprites/boris.png</background>
+    <left text="Doesn't matter">
+      <effect attribute="wellbeing" value=""/>
+      <effect attribute="morale" value=""/>
+      <effect attribute="prosperity" value="-5"/>
+      <effect attribute="codebase" value="10"/>
+    </left>
+    <right text="Cuost to big">
+      <effect attribute="wellbeing" value=""/>
+      <effect attribute="morale" value=""/>
+      <effect attribute="prosperity" value=""/>
+      <effect attribute="codebase" value="-5"/>
+    </right>
+  </event>
+
 </events>
