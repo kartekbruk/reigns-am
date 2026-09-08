@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Event schema:
-	id          – unique identifier (slug)
-	title       – short card heading
-	text        – event description shown on the card
-	background  – res:// path to a background image (optional)
-	char_name   – character name shown at the bottom
-	char_role   – character position/role shown at the bottom
-	positions   – space-separated list: intern junior mid senior
+	id          â unique identifier (slug)
+	title       â short card heading
+	text        â event description shown on the card
+	background  â res:// path to a background image (optional)
+	char_name   â character name shown at the bottom
+	char_role   â character position/role shown at the bottom
+	positions   â space-separated list: intern junior mid senior
 				  omit attribute (or leave empty) to show for all levels
-	left/@text  – label for the left-swipe choice
-	right/@text – label for the right-swipe choice
-	effect/@attribute – one of: wellbeing | morale | prosperity | codebase
-	effect/@value     – integer delta (positive or negative)
+	left/@text  â label for the left-swipe choice
+	right/@text â label for the right-swipe choice
+	effect/@attribute â one of: wellbeing | morale | prosperity | codebase
+	effect/@value     â integer delta (positive or negative)
 -->
 <events>
 
-  <!-- ── Intern ───────────────────────────────────────────────────────── -->
+  <!-- ââ Intern âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 
-  <event id="nigerian_prince" positions="intern junior mid senior" char_name="Musa z Mali" char_role="Książe">
-	<title>Nigeryjski Książe</title>
-	<text>Nigeryjski książe oferuje ci milion pesos.</text>
+  <event id="nigerian_prince" positions="intern junior mid senior" char_name="Musa z Mali" char_role="KsiÄÅ¼e">
+	<title>Nigeryjski KsiÄÅ¼e</title>
+	<text>Nigeryjski ksiÄÅ¼e oferuje ci milion pesos.</text>
 	<background>res://sprites/workstation.png</background>
 	<left text="Klikam w link" consequence="phishing_training" consequence_instant="true">
 	  <effect attribute="wellbeing" value="-15"/>
@@ -28,7 +28,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-15"/>
 	</left>
-	<right text="Zgłaszam phishing">
+	<right text="ZgÅaszam phishing">
 	  <effect attribute="wellbeing" value="-1"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -38,15 +38,15 @@
 
   <event id="dewarningization" positions="intern junior mid" char_name="Azure DevOps" char_role="">
 	<title>Dewarningizacja</title>
-	<text>DealCalculator ma 2137 warningów</text>
+	<text>DealCalculator ma 2137 warningÃ³w</text>
 	<background>res://sprites/workstation.png</background>
-	<left text="Czyścimy to">
+	<left text="CzyÅcimy to">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="25"/>
 	  <effect attribute="prosperity" value="10"/>
 	</left>
-	<right text="Są ważniejsze sprawy">
+	<right text="SÄ waÅ¼niejsze sprawy">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -56,15 +56,15 @@
 
   <event id="integration_event" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Wyjazd integracyjny</title>
-	<text>Uwaga! Ważny komunikat! Wyjazd integracyjny do ROMY!</text>
+	<text>Uwaga! WaÅ¼ny komunikat! Wyjazd integracyjny do ROMY!</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Jadę!">
+	<left text="JadÄ!">
 	  <effect attribute="wellbeing" value="15"/>
 	  <effect attribute="morale" value="15"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-5"/>
 	</left>
-	<right text="W ten weekend nie mogę...">
+	<right text="W ten weekend nie mogÄ...">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -82,7 +82,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Udaję, że nie widzę">
+	<right text="UdajÄ, Å¼e nie widzÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -100,7 +100,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Zgłaszam się!">
+	<right text="ZgÅaszam siÄ!">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -112,13 +112,13 @@
 	<title>Hackathon</title>
 	<text>We oficially begin our next hackathon!</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Nie chce mi się">
+	<left text="Nie chce mi siÄ">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Zgłaszamy się">
+	<right text="ZgÅaszamy siÄ">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value=""/>
@@ -128,9 +128,9 @@
 
   <event id="custom_fees" positions="intern junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Custom fees</title>
-	<text>Trzeba dodać customowe feesy dla Forda</text>
+	<text>Trzeba dodaÄ customowe feesy dla Forda</text>
 	<background>res://sprites/piotras.png</background>
-	<left text="Nie, kod robi się zbyt skomplikowany">
+	<left text="Nie, kod robi siÄ zbyt skomplikowany">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -145,16 +145,16 @@
   </event>
 
   <event id="carfax_office" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
-	<title>Carfaxy zajęły nam pokój w biurze</title>
-	<text>Carfaxy zajęły nam pokój w biurze</text>
+	<title>Carfaxy zajÄÅy nam pokÃ³j w biurze</title>
+	<text>Carfaxy zajÄÅy nam pokÃ³j w biurze</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Zostajemy, niech oni se idą, jak im przeszkadzamy">
+	<left text="Zostajemy, niech oni se idÄ, jak im przeszkadzamy">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Idziemy, przeszkadzają nam">
+	<right text="Idziemy, przeszkadzajÄ nam">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -172,7 +172,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="2"/>
 	</left>
-	<right text="Nie idę">
+	<right text="Nie idÄ">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -182,9 +182,9 @@
 
   <event id="local_dev_rotation" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Lokalny dev rotation</title>
-	<text>Pojawiła się okazja na popracowanie w innym zespole przez 2 sprinty</text>
+	<text>PojawiÅa siÄ okazja na popracowanie w innym zespole przez 2 sprinty</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Zgłaszam się na ochotnika">
+	<left text="ZgÅaszam siÄ na ochotnika">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="10"/>
@@ -202,13 +202,13 @@
 	<title>Niejasny PBI</title>
 	<text>PBI 2137: Check and add and test and deploy</text>
 	<background>res://sprites/workstation.png</background>
-	<left text="Pytam PO co trzeba zrobić">
+	<left text="Pytam PO co trzeba zrobiÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="5"/>
 	</left>
-	<right text="Pytam tech leada co trzeba zrobić">
+	<right text="Pytam tech leada co trzeba zrobiÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -220,13 +220,13 @@
 	<title>Nie ma internetu w biurze</title>
 	<text>W biurze nie ma internetu</text>
 	<background>res://sprites/workstation.png</background>
-	<left text="Robię hotspota z telefonu">
+	<left text="RobiÄ hotspota z telefonu">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="1"/>
 	</left>
-	<right text="Nie pracuję">
+	<right text="Nie pracujÄ">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -234,11 +234,11 @@
 	</right>
   </event>
 
-  <event id="coffee_machine_malfunction" positions="intern junior mid senior" char_name="Ewa" char_role="Sprzątaczka">
+  <event id="coffee_machine_malfunction" positions="intern junior mid senior" char_name="Ewa" char_role="SprzÄtaczka">
 	<title>Awaria ekspresu do kawy</title>
-	<text>Ktoś wyrwał rurkę z ekspresu podłączając do niego pendrive</text>
+	<text>KtoÅ wyrwaÅ rurkÄ z ekspresu podÅÄczajÄc do niego pendrive</text>
 	<background>res://sprites/cleaning-lady.png</background>
-	<left text="Piję wodę jak zwierzę">
+	<left text="PijÄ wodÄ jak zwierzÄ">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -253,16 +253,16 @@
   </event>
 
   <event id="no_clean_mugs" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
-	<title>W szafce nie ma czystych kubków</title>
-	<text>W szafce nie ma czystych kubków</text>
+	<title>W szafce nie ma czystych kubkÃ³w</title>
+	<text>W szafce nie ma czystych kubkÃ³w</text>
 	<background>res://sprites/bartek.png</background>
-	<left text="Zaparzam kawę w ustach">
+	<left text="Zaparzam kawÄ w ustach">
 	  <effect attribute="wellbeing" value="-75"/>
 	  <effect attribute="morale" value="-25"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Myję brudny kubek w zlewie">
+	<right text="MyjÄ brudny kubek w zlewie">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -271,10 +271,10 @@
   </event>
 
   <event id="order_food" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
-	<title>Ktoś musi zamówić jedzenie</title>
-	<text>Ktoś musi zamówić jedzenie</text>
+	<title>KtoÅ musi zamÃ³wiÄ jedzenie</title>
+	<text>KtoÅ musi zamÃ³wiÄ jedzenie</text>
 	<background>res://sprites/jacek.png</background>
-	<left text="Ja mogę">
+	<left text="Ja mogÄ">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -292,7 +292,7 @@
 	<title>Gra w ping ponga</title>
 	<text>Co powiesz na meczyk w ping ponga?</text>
 	<background>res://sprites/bartek.png</background>
-	<left text="Mam dużo roboty">
+	<left text="Mam duÅ¼o roboty">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="15"/>
@@ -308,7 +308,7 @@
 
   <event id="jacek_pr" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
 	<title>12 komentarzy Jacka</title>
-	<text>Jacek napisał ci 12 komentarzy pod PR</text>
+	<text>Jacek napisaÅ ci 12 komentarzy pod PR</text>
 	<background>res://sprites/jacek.png</background>
 	<left text="Nie czytam, resolwuje wszystkie">
 	  <effect attribute="wellbeing" value="5"/>
@@ -316,7 +316,7 @@
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</left>
-	<right text="Poprawiam błędy">
+	<right text="Poprawiam bÅÄdy">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -325,10 +325,10 @@
   </event>
 
   <event id="big_pull_request" positions="intern junior mid senior" char_name="Bartek" char_role="Software Engineer">
-	<title>Duży PR</title>
-	<text>Sprawdzisz mi PR? (zmieniłem 120 plików)</text>
+	<title>DuÅ¼y PR</title>
+	<text>Sprawdzisz mi PR? (zmieniÅem 120 plikÃ³w)</text>
 	<background>res://sprites/bartek.png</background>
-	<left text="Dokładnie sprawdzam każdy plik">
+	<left text="DokÅadnie sprawdzam kaÅ¼dy plik">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="10"/>
@@ -346,7 +346,7 @@
 	<title>Hitster</title>
 	<text>Grasz w Hitstera?</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Muszę skończyć PR">
+	<left text="MuszÄ skoÅczyÄ PR">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="10"/>
@@ -380,15 +380,15 @@
 
   <event id="achilles" positions="intern junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Achilles</title>
-	<text>Zerwałeś achillesa na firmowym evencie</text>
+	<text>ZerwaÅeÅ achillesa na firmowym evencie</text>
 	<background>res://sprites/piotras.png</background>
-	<left text="Pozywam firmę">
+	<left text="Pozywam firmÄ">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-10"/>
 	</left>
-	<right text="Liczy się dobra zabawa">
+	<right text="Liczy siÄ dobra zabawa">
 	  <effect attribute="wellbeing" value="-20"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -398,15 +398,15 @@
 
   <event id="story_points" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
 	<title>Story points</title>
-	<text>Story pointy nie zależą od czasu</text>
+	<text>Story pointy nie zaleÅ¼Ä od czasu</text>
 	<background>res://sprites/scrum-master.png</background>
-	<left text="Nie zależą">
+	<left text="Nie zaleÅ¼Ä">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="-10"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Zależą">
+	<right text="ZaleÅ¼Ä">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="10"/>
@@ -416,7 +416,7 @@
 
   <event id="debug_toilet" positions="intern junior mid senior" char_name="Toaleta" char_role="Miejsce">
 	<title>Zapchana toaleta</title>
-	<text>Zapchałeś toaletę</text>
+	<text>ZapchaÅeÅ toaletÄ</text>
 	<background>res://sprites/cleaning-lady.png</background>
 	<left text="Uciekam" consequence="prison_break" consequence_instant="true">
 	  <effect attribute="wellbeing" value="0"/>
@@ -442,7 +442,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Dosiadam się">
+	<right text="Dosiadam siÄ">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-15"/>
 	  <effect attribute="codebase" value="0"/>
@@ -452,15 +452,15 @@
 
   <event id="refinement" positions="intern junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Refinement</title>
-	<text>Głosujcie na story pointy</text>
+	<text>GÅosujcie na story pointy</text>
 	<background>res://sprites/piotras.png</background>
-	<left text="Daję na pałę, i tak nie rozumiem PBI">
+	<left text="DajÄ na paÅÄ, i tak nie rozumiem PBI">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-5"/>
 	</left>
-	<right text="Daję przemyślaną wartość">
+	<right text="DajÄ przemyÅlanÄ wartoÅÄ">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -470,15 +470,15 @@
 
   <event id="scrum_training" positions="intern junior mid senior" char_name="Kuba" char_role="Scrum Master">
 	<title>Szkolenie ze scruma</title>
-	<text>Na szkoleniu scrumowym mówili...</text>
+	<text>Na szkoleniu scrumowym mÃ³wili...</text>
 	<background>res://sprites/scrum-master.png</background>
-	<left text="Dalej nie słucham">
+	<left text="Dalej nie sÅucham">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Słucham do końca">
+	<right text="SÅucham do koÅca">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -486,17 +486,17 @@
 	</right>
   </event>
 
-  <event id="melisa" positions="intern junior mid senior" char_name="Michał" char_role="Tech Lead">
+  <event id="melisa" positions="intern junior mid senior" char_name="MichaÅ" char_role="Tech Lead">
 	<title>Meliska</title>
-	<text>Ale mnie ten skrzekun *******! Zaraz coś ***********!</text>
+	<text>Ale mnie ten skrzekun *******! Zaraz coÅ ***********!</text>
 	<background>res://sprites/maxchill.png</background>
-	<left text="Napij się meliski słońce">
+	<left text="Napij siÄ meliski sÅoÅce">
 	  <effect attribute="wellbeing" value="-50"/>
 	  <effect attribute="morale" value="-50"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Siedzę cicho">
+	<right text="SiedzÄ cicho">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -506,7 +506,7 @@
 
   <event id="printer" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Drukarka</title>
-	<text>Drukarka nie działa</text>
+	<text>Drukarka nie dziaÅa</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Trudno...">
 	  <effect attribute="wellbeing" value="-5"/>
@@ -514,7 +514,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Drukuję u HRów">
+	<right text="DrukujÄ u HRÃ³w">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -524,9 +524,9 @@
 
   <event id="coca_cola" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Coca Cola</title>
-	<text>Dupnę sobie 5 litrów kolki, możesz wyzerować licznik dni bez cukru</text>
+	<text>DupnÄ sobie 5 litrÃ³w kolki, moÅ¼esz wyzerowaÄ licznik dni bez cukru</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Zeruję">
+	<left text="ZerujÄ">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -542,15 +542,15 @@
 
   <event id="warhammer" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Warhammer</title>
-	<text>W warhammerze było, że...</text>
+	<text>W warhammerze byÅo, Å¼e...</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Dalej nie słucham">
+	<left text="Dalej nie sÅucham">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Słucham uważnie">
+	<right text="SÅucham uwaÅ¼nie">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -562,7 +562,7 @@
 	<title>Pizza Retro</title>
 	<text>Pizza Retro</text>
 	<background>res://sprites/scrum-master.png</background>
-	<left text="Ja chcę z szynką">
+	<left text="Ja chcÄ z szynkÄ">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -577,16 +577,16 @@
   </event>
 
   <event id="dirty_clothes" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
-	<title>Upaćkanie</title>
-	<text>No nieee, znowu upaćkałem się jedzeniem. Motyla noga!</text>
+	<title>UpaÄkanie</title>
+	<text>No nieee, znowu upaÄkaÅem siÄ jedzeniem. Motyla noga!</text>
 	<background>res://sprites/jacek.png</background>
-	<left text="Nic się nie stało">
+	<left text="Nic siÄ nie staÅo">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Ty gałganie">
+	<right text="Ty gaÅganie">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -596,15 +596,15 @@
 
   <event id="talk_about_religion" positions="intern junior mid senior" char_name="Jacek" char_role="Senior Software Engineer">
 	<title>Rozmowa o Bogu</title>
-	<text>Czy chcesz porozmawiać o Bogu?</text>
+	<text>Czy chcesz porozmawiaÄ o Bogu?</text>
 	<background>res://sprites/jacek.png</background>
-	<left text="Nie, dziękuję">
+	<left text="Nie, dziÄkujÄ">
 	  <effect attribute="wellbeing" value="5"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Chętnie">
+	<right text="ChÄtnie">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -614,7 +614,7 @@
 
   <event id="naruto" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Arc w Naruto</title>
-	<text>Który arc w Naruto jest według ciebie najlepszy?</text>
+	<text>KtÃ³ry arc w Naruto jest wedÅug ciebie najlepszy?</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Pain">
 	  <effect attribute="wellbeing" value="0"/>
@@ -622,7 +622,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Wojna z Madarą">
+	<right text="Wojna z MadarÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -632,15 +632,15 @@
 
   <event id="pokemon_go" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Pokemon GO</title>
-	<text>Pożyczysz mi telefon? Potrzebuje jeszcze ośmiu na raid w Pokemonach</text>
+	<text>PoÅ¼yczysz mi telefon? Potrzebuje jeszcze oÅmiu na raid w Pokemonach</text>
 	<background>res://sprites/manager.png</background>
-	<left text="Ogarnij się typie">
+	<left text="Ogarnij siÄ typie">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Pożyczę">
+	<right text="PoÅ¼yczÄ">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -650,7 +650,7 @@
 
   <event id="commander" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
 	<title>Commander</title>
-	<text>Przyniosłem dzisiaj Commanderka</text>
+	<text>PrzyniosÅem dzisiaj Commanderka</text>
 	<background>res://sprites/manager.png</background>
 	<left text="Ja nie gram">
 	  <effect attribute="wellbeing" value="0"/>
@@ -667,16 +667,16 @@
   </event>
 
   <event id="friday_deploy" positions="intern junior mid senior" char_name="Kryz" char_role="Manager">
-	<title>Piątkowy deploy</title>
-	<text>Jest piątek, dzisiaj tego już nie deployuj</text>
+	<title>PiÄtkowy deploy</title>
+	<text>Jest piÄtek, dzisiaj tego juÅ¼ nie deployuj</text>
 	<background>res://sprites/manager.png</background>
-	<left text="ESSA LECIMY BĘDZIE DOBRZE" consequence="friday_deploy_consequence" consequence_instant="true">
+	<left text="ESSA LECIMY BÄDZIE DOBRZE" consequence="friday_deploy_consequence" consequence_instant="true">
 	  <effect attribute="wellbeing" value="10"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-5"/>
 	</left>
-	<right text="Wiadomo, tylko środa dzień proda">
+	<right text="Wiadomo, tylko Åroda dzieÅ proda">
 	  <effect attribute="wellbeing" value="-3"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -694,7 +694,7 @@
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Już robię" consequence="cobe_sequence_1" consequence_instant="true">
+	<right text="JuÅ¼ robiÄ" consequence="cobe_sequence_1" consequence_instant="true">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -702,13 +702,13 @@
 	</right>
   </event>
 
-  <!-- ── Junior ───────────────────────────────────────────────────────── -->
+  <!-- ââ Junior âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 
   <event id="marketing_change_for_sean" positions="junior mid senior" char_name="Sean" char_role="DataOps">
 	<title>Zmiana dla Seana przed marketingiem</title>
 	<text>Hey, guys, can you change OvErMiLeAgEdEaLtYpEpRiCe for tomorrow marketing?</text>
 	<background>res://sprites/sean.png</background>
-	<left text="Niech będzie, ale nigdy więcej...">
+	<left text="Niech bÄdzie, ale nigdy wiÄcej...">
 	  <effect attribute="wellbeing" value="-12"/>
 	  <effect attribute="morale" value="-12"/>
 	  <effect attribute="codebase" value="-10"/>
@@ -723,10 +723,10 @@
   </event>
 
   <event id="matts_idea" positions="junior mid senior" char_name="Matt" char_role="Product Manager">
-	<title>Przewrotny pomysł Matta</title>
+	<title>Przewrotny pomysÅ Matta</title>
 	<text>Hey, guys, I know that you started working on it a week ago, but can we try different approach?</text>
 	<background>res://sprites/matt.png</background>
-	<left text="Zróbmy jak mówi Matt...">
+	<left text="ZrÃ³bmy jak mÃ³wi Matt...">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="-10"/>
@@ -742,7 +742,7 @@
 
   <event id="frontend_change" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Zmiana na froncie</title>
-	<text>Trzeba dodać nowe pole na dealsheecie, mógłbyś się tym zająć?</text>
+	<text>Trzeba dodaÄ nowe pole na dealsheecie, mÃ³gÅbyÅ siÄ tym zajÄÄ?</text>
 	<background>res://sprites/piotras.png</background>
 	<left text="Gracjan zrobi :)">
 	  <effect attribute="wellbeing" value="0"/>
@@ -750,7 +750,7 @@
 	  <effect attribute="codebase" value="10"/>
 	  <effect attribute="prosperity" value="5"/>
 	</left>
-	<right text="Niech będzie">
+	<right text="Niech bÄdzie">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="-5"/>
@@ -762,7 +762,7 @@
 	<title>Dodanie kolumny</title>
 	<text>Will you add this column to database?</text>
 	<background>res://sprites/boris.png</background>
-	<left text="Wystawię tech governance">
+	<left text="WystawiÄ tech governance">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -780,7 +780,7 @@
 	<title>Pokrycie testami</title>
 	<text>Quality gate status: ERROR - code covered with tests in 60%!</text>
 	<background>res://sprites/workstation.png</background>
-	<left text="Piszę testy">
+	<left text="PiszÄ testy">
 	  <effect attribute="wellbeing" value="-15"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -798,7 +798,7 @@
 	<title>Naprawa danych</title>
 	<text>Can you fix the production database?</text>
 	<background>res://sprites/boris.png</background>
-	<left text="Używam break glassa">
+	<left text="UÅ¼ywam break glassa">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="5"/>
@@ -813,16 +813,16 @@
   </event>
 
   <event id="finish_someones_work" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
-	<title>Dokończ czyjąś pracę</title>
-	<text>Kolega jest na urlopie, a jego zmiany muszą iść w tym tygodnia na proda</text>
+	<title>DokoÅcz czyjÄÅ pracÄ</title>
+	<text>Kolega jest na urlopie, a jego zmiany muszÄ iÅÄ w tym tygodnia na proda</text>
 	<background>res://sprites/piotras.png</background>
-	<left text="Jestem zajęty">
+	<left text="Jestem zajÄty">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="-5"/>
 	  <effect attribute="prosperity" value="-1"/>
 	</left>
-	<right text="Zajmę się tym">
+	<right text="ZajmÄ siÄ tym">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -831,16 +831,16 @@
   </event>
 
   <event id="strange_error" positions="junior mid senior" char_name="Azure DevOps" char_role="">
-	<title>Dziwny błąd na pipeline</title>
-	<text>Pojawił się dziwny błąd na build pipeline</text>
+	<title>Dziwny bÅÄd na pipeline</title>
+	<text>PojawiÅ siÄ dziwny bÅÄd na build pipeline</text>
 	<background>res://sprites/workstation.png</background>
-	<left text="Proszę o pomoc kogoś z zespołu">
+	<left text="ProszÄ o pomoc kogoÅ z zespoÅu">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
 	</left>
-	<right text="Piszę do Marcina">
+	<right text="PiszÄ do Marcina">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="10"/>
@@ -850,15 +850,15 @@
 
   <event id="showroom_urgent" positions="junior mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Pilne sprawdzenie Showrooma</title>
-	<text>Mógłby ktoś sprawdzić dlaczego dla FU6969 nie działa Showroom? Pilne!</text>
+	<text>MÃ³gÅby ktoÅ sprawdziÄ dlaczego dla FU6969 nie dziaÅa Showroom? Pilne!</text>
 	<background>res://sprites/piotras.png</background>
-	<left text="Udaję, że nie widzę">
+	<left text="UdajÄ, Å¼e nie widzÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
 	  <effect attribute="prosperity" value="-5"/>
 	</left>
-	<right text="Sprawdzę">
+	<right text="SprawdzÄ">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="5"/>
@@ -884,11 +884,11 @@
     </right>
   </event>
 
-  <event id="new_dotnet_feature" positions="junior mid senior" char_name="Michał" char_role="Tech Lead">
+  <event id="new_dotnet_feature" positions="junior mid senior" char_name="MichaÅ" char_role="Tech Lead">
 	<title>Nowy feature w dotnecie</title>
 	<text>W nowym dotnecie dodali return switcha</text>
     <background>res://sprites/maxchill.png</background>
-	<left text="Updatuję PRa">
+	<left text="UpdatujÄ PRa">
 	  <effect attribute="wellbeing" value="-5"/>
 	  <effect attribute="morale" value="5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -902,7 +902,7 @@
     </right>
   </event>
 
-  <event id="no" positions="junior mid senior" char_name="Michał" char_role="Tech Lead">
+  <event id="no" positions="junior mid senior" char_name="MichaÅ" char_role="Tech Lead">
 	<title>Nie</title>
 	<text>Nie.</text>
     <background>res://sprites/maxchill.png</background>
@@ -920,13 +920,13 @@
     </right>
   </event>
 
-  <!-- ── Mid & Senior ──────────────────────────────────────────────────────── -->
+  <!-- ââ Mid & Senior ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 
   <event id="dealcalculator_not_working" positions="mid senior" char_name="DealCalculator" char_role="">
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/workstation.png</background>
-	<left text="Sprawdzę">
+	<left text="SprawdzÄ">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="5"/>
@@ -944,7 +944,7 @@
 	<title>DealCalculator rzuca errory dla FU6969</title>
 	<text>DealCalculator rzuca errory dla FU6969</text>
     <background>res://sprites/workstation.png</background>
-	<left text="Sprawdzę">
+	<left text="SprawdzÄ">
 	  <effect attribute="wellbeing" value="-10"/>
 	  <effect attribute="morale" value="10"/>
 	  <effect attribute="codebase" value="5"/>
@@ -959,10 +959,10 @@
   </event>
 
   <event id="recrutation_palindrome" positions="mid senior" char_name="Kryz" char_role="Manager">
-	<title>Rekrutacja osoby, która nie umie palindroma</title>
-	<text>Na rekrutacji jest osoba, która nie umie palindroma</text>
+	<title>Rekrutacja osoby, ktÃ³ra nie umie palindroma</title>
+	<text>Na rekrutacji jest osoba, ktÃ³ra nie umie palindroma</text>
     <background>res://sprites/manager.png</background>
-	<left text="Skontaktujemy się z tobą">
+	<left text="Skontaktujemy siÄ z tobÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="0"/>
 	  <effect attribute="codebase" value="0"/>
@@ -986,7 +986,7 @@
 	  <effect attribute="codebase" value="5"/>
 	  <effect attribute="prosperity" value="0"/>
     </left>
-	<right text="Spytaj kogoś innego">
+	<right text="Spytaj kogoÅ innego">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="5"/>
@@ -996,9 +996,9 @@
 
   <event id="sprint_review" positions="mid senior" char_name="Piotras" char_role="Product Owner">
 	<title>Sprint review</title>
-	<text>Mozesz pójść za mnie na sprint review?</text>
+	<text>Mozesz pÃ³jÅÄ za mnie na sprint review?</text>
     <background>res://sprites/piotras.png</background>
-	<left text="Nie mogę">
+	<left text="Nie mogÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-10"/>
 	  <effect attribute="codebase" value="0"/>
@@ -1016,7 +1016,7 @@
 	<title>Pre refinement</title>
 	<text>Pre-refinement</text>
     <background>res://sprites/workstation.png</background>
-	<left text="Udaję, ze nie widzę">
+	<left text="UdajÄ, ze nie widzÄ">
 	  <effect attribute="wellbeing" value="0"/>
 	  <effect attribute="morale" value="-5"/>
 	  <effect attribute="codebase" value="0"/>
@@ -1048,4 +1048,21 @@
     </right>
   </event>
 
+  <event id="test" positions="intern junior mid senior" char_name="test" char_role="test">
+    <title>test</title>
+    <text>etst</text>
+    <background>res://sprites/fritz-reverse-crop.png</background>
+    <left text="test">
+      <effect attribute="wellbeing" value=""/>
+      <effect attribute="morale" value=""/>
+      <effect attribute="prosperity" value=""/>
+      <effect attribute="codebase" value=""/>
+    </left>
+    <right text="right">
+      <effect attribute="wellbeing" value=""/>
+      <effect attribute="morale" value=""/>
+      <effect attribute="prosperity" value=""/>
+      <effect attribute="codebase" value=""/>
+    </right>
+  </event>
 </events>
