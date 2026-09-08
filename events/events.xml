@@ -1048,4 +1048,22 @@
     </right>
   </event>
 
+  <event id="gracjan_badge" positions="junior mid senior" char_name="Gracjan" char_role="Junior Software Engineer">
+    <title>Gracjan zapomniał badge</title>
+    <text>Gracjan zapomniał badge do biura</text>
+    <background>res://sprites/gracjan.png</background>
+    <left text="Otwieram mu drzwi">
+      <effect attribute="wellbeing" value="-5"/>
+      <effect attribute="morale" value="10"/>
+      <effect attribute="prosperity" value=""/>
+      <effect attribute="codebase" value=""/>
+    </left>
+    <right text="To nielegalne">
+      <effect attribute="wellbeing" value="0"/>
+      <effect attribute="morale" value="-10"/>
+      <effect attribute="prosperity" value=""/>
+      <effect attribute="codebase" value=""/>
+    </right>
+  </event>
+
 </events>
